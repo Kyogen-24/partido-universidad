@@ -111,9 +111,6 @@ export default function RepresentativesCarousel() {
                       <h3 className="mt-2 font-heading text-base font-semibold">
                         {rep.shortName}
                       </h3>
-                      <p className="mt-1 text-sm text-muted-foreground">
-                        {rep.position}
-                      </p>
                       <p className="mt-1 text-xs text-muted-foreground/60">
                         {rep.career}
                       </p>
