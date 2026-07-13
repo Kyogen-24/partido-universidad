@@ -1,0 +1,38 @@
+---
+import { ShieldCheck, ScrollText, Brain, Laptop, Globe, HeartHandshake, BookOpen } from "lucide-react";
+
+const ejes = [
+  { title: "Gobernanza moderna", desc: "Sistemas integrados de planeamiento y calidad para una gestión ordenada, transparente y basada en buenas prácticas.", Icon: ShieldCheck },
+  { title: "Calidad académica", desc: "Acreditación de programas, actualización curricular por competencias y formación docente continua.", Icon: ScrollText },
+  { title: "Bienestar estudiantil", desc: "Tutoría y consejería académica, becas equitativas, salud mental y comedor universitario.", Icon: Brain },
+  { title: "Transformación digital", desc: "Modernización de la infraestructura tecnológica, digitalización de procesos y plataformas de servicio al estudiante.", Icon: Laptop },
+  { title: "Investigación e innovación", desc: "Fondos concursables, laboratorios modernos, producción científica y vinculación con el sector productivo.", Icon: Globe },
+  { title: "Responsabilidad social", desc: "RSU articulada con docencia e investigación para impactar en los desafíos prioritarios de Cajamarca.", Icon: HeartHandshake },
+  { title: "Internacionalización", desc: "Movilidad estudiantil y docente, convenios internacionales y participación en redes académicas globales.", Icon: BookOpen },
+];
+---
+
+<section id="propuesta" class="border-t border-border/40">
+  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+        Nuestra propuesta 2026&ndash;2031
+      </h2>
+      <p class="mt-4 text-muted-foreground">
+        Construimos nuestro plan sobre un diagnóstico realista de la UNC y un enfoque
+        de <strong>mejora continua</strong>, alineado a SUNEDU y SINEACE.
+      </p>
+    </div>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {ejes.map((eje) => (
+        <article class="group relative overflow-hidden rounded-2xl border border-border/40 bg-card p-6 transition-all hover:scale-[1.02] hover:shadow-lg">
+          <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+            <eje.Icon class="h-5 w-5" />
+          </div>
+          <h3 class="font-heading text-lg font-semibold">{eje.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-muted-foreground">{eje.desc}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

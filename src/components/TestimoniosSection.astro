@@ -1,0 +1,48 @@
+---
+import { Quote } from "lucide-react";
+
+const testimonios = [
+  {
+    quote: "Eres UNC representa el cambio que necesitamos. Por primera vez siento que hay un plan real para mejorar la calidad educativa y el bienestar estudiantil.",
+    author: "Camila Rodríguez",
+    role: "Estudiante de Derecho, 4to año",
+  },
+  {
+    quote: "El eje de investigación me convenció. Propuestas concretas para modernizar los laboratorios y fomentar la publicación científica estudiantil.",
+    author: "Mateo Fernández",
+    role: "Estudiante de Ingeniería, 3er año",
+  },
+  {
+    quote: "Como deportista universitaria, ver que incluyen el deporte como eje prioritario me da esperanza. Merecemos infraestructura digna.",
+    author: "Valentina Morales",
+    role: "Deportista destacada — Atletismo",
+  },
+];
+---
+
+<section id="testimonios" class="border-t border-border/40 bg-muted/20">
+  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+        Voces que nos apoyan
+      </h2>
+      <p class="mt-4 text-muted-foreground">
+        Estudiantes de toda la universidad respaldan este proyecto.
+      </p>
+    </div>
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {testimonios.map((t) => (
+        <div class="relative rounded-2xl border border-border/40 bg-card p-6 transition-all hover:shadow-md">
+          <Quote class="mb-3 h-6 w-6 text-primary/40" />
+          <blockquote class="text-sm leading-relaxed text-muted-foreground">
+            &ldquo;{t.quote}&rdquo;
+          </blockquote>
+          <div class="mt-4 border-t border-border/40 pt-4">
+            <p class="text-sm font-medium">{t.author}</p>
+            <p class="text-xs text-muted-foreground">{t.role}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,11 +1,30 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroCarousel from "../components/HeroCarousel";
+import QuienesSomos from "../components/QuienesSomos.astro";
+import Vision from "../components/Vision.astro";
+import Mision from "../components/Mision.astro";
+import Valores from "../components/Valores.astro";
+import PropuestaGrid from "../components/PropuestaGrid.astro";
+import PlanTrabajo from "../components/PlanTrabajo.astro";
+import RepresentativesCarousel from "../components/RepresentativesCarousel";
+import PorQueEres from "../components/PorQueEres.astro";
+import EventosTimeline from "../components/EventosTimeline.astro";
+import TestimoniosSection from "../components/TestimoniosSection.astro";
+import ContactoForm from "../components/ContactoForm";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout>
+  <HeroCarousel client:load />
+  <RepresentativesCarousel client:visible />
+  <QuienesSomos />
+  <Vision />
+  <Mision />
+  <Valores />
+  <PropuestaGrid />
+  <PlanTrabajo />
+  <PorQueEres />
+  <EventosTimeline />
+  <TestimoniosSection />
+  <ContactoForm client:visible />
+</BaseLayout>
