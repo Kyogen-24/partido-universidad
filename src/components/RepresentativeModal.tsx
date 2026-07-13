@@ -23,7 +23,7 @@ export default function RepresentativeModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-md">
         <DialogHeader>
           <div className="flex items-center gap-4">
             <img

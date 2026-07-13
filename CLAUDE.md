@@ -1,22 +1,45 @@
-## Development
+## Stack
 
-When starting the dev server, use background mode:
+Single-page Astro 7 site (Spanish, university political party). React components for interactive widgets, Tailwind CSS v4 (Vite plugin), shadcn/ui (base-nova style), Lucide icons, `astro-icon`.
 
-```
+## Dev server
+
+Background mode (required for agent use):
+
+```sh
 astro dev --background
+astro dev status
+astro dev stop
+astro dev logs
 ```
 
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+## Key commands
 
-## Documentation
+| Command | Notes |
+|---|---|
+| `pnpm install` | package manager (pnpm-lock.yaml present) |
+| `astro build` | outputs to `dist/` |
+| `astro check` | type-check via `npm run astro -- check` |
 
-Full documentation: https://docs.astro.build
+No lint, format, or test scripts configured. Node >=22.12.0 required.
 
-Consult these guides before working on related tasks:
+## Project structure
 
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+```
+src/
+├── pages/index.astro     # single page, imports all sections
+├── components/           # .astro sections + .tsx React islands
+│   └── ui/               # shadcn primitives (button, card, dialog)
+├── data/representatives.ts
+├── layouts/BaseLayout.astro
+├── lib/utils.ts          # shadcn `cn()` helper
+└── styles/global.css     # Tailwind + shadcn theme vars
+```
+
+## Conventions
+
+- **Path alias**: `@/*` → `./src/*` (tsconfig paths)
+- **React islands**: use `client:load` (hero, form) or `client:visible` (carousels) — do not use `client:only` unless SSR is intentionally skipped
+- **shadcn**: add components via `npx shadcn add <name>`; style is `base-nova`, no RSC
+- **Language**: all user-facing text is Spanish
+- **Theme**: light/dark via `.dark` class on `<html>`; CSS vars in `global.css`

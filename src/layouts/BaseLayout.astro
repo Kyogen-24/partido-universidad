@@ -38,8 +38,21 @@ import { Menu, X } from "lucide-react";
           </a>
         </nav>
         <button id="menu-toggle" class="flex items-center justify-center md:hidden" aria-label="Menú">
-          <Menu class="h-6 w-6" />
+          <Menu class="h-6 w-6" id="menu-icon-open" />
+          <X class="h-6 w-6 hidden" id="menu-icon-close" />
         </button>
+      </div>
+      <div id="mobile-menu" class="hidden border-t border-border/40 bg-background/95 backdrop-blur-md md:hidden">
+        <nav class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6 lg:px-8">
+          <a href="#equipo" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Equipo</a>
+          <a href="#propuesta" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Propuesta</a>
+          <a href="#calendario" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Calendario</a>
+          <a href="#testimonios" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Testimonios</a>
+          <a href="#contacto" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Contacto</a>
+          <a href="#contacto" class="mt-2 inline-flex h-10 items-center justify-center rounded-lg bg-primary px-3 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/80">
+            Sumate
+          </a>
+        </nav>
       </div>
     </header>
 
@@ -55,7 +68,7 @@ import { Menu, X } from "lucide-react";
             <span class="h-5 w-px bg-border" />
             <img src="/logo.png" alt="Eres UNC" class="h-8 w-auto" />
           </div>
-          <nav class="flex gap-6 text-sm text-muted-foreground">
+          <nav class="flex flex-col items-center gap-3 text-sm text-muted-foreground sm:flex-row sm:gap-6">
             <a href="#propuesta" class="transition-colors hover:text-foreground">Propuesta</a>
             <a href="#equipo" class="transition-colors hover:text-foreground">Equipo</a>
             <a href="#calendario" class="transition-colors hover:text-foreground">Calendario</a>
@@ -67,5 +80,27 @@ import { Menu, X } from "lucide-react";
         </div>
       </div>
     </footer>
+
+    <script>
+      const toggle = document.getElementById("menu-toggle")!;
+      const menu = document.getElementById("mobile-menu")!;
+      const iconOpen = document.getElementById("menu-icon-open")!;
+      const iconClose = document.getElementById("menu-icon-close")!;
+
+      toggle.addEventListener("click", () => {
+        const isOpen = !menu.classList.contains("hidden");
+        menu.classList.toggle("hidden");
+        iconOpen.classList.toggle("hidden");
+        iconClose.classList.toggle("hidden");
+      });
+
+      menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.add("hidden");
+          iconOpen.classList.remove("hidden");
+          iconClose.classList.add("hidden");
+        });
+      });
+    </script>
   </body>
 </html>
