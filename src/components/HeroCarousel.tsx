@@ -56,7 +56,7 @@ export default function HeroCarousel() {
       {/* Left arrow */}
       <button
         onClick={goPrev}
-        className="absolute left-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white/60 backdrop-blur-sm transition-all hover:bg-white/30 hover:text-white/80 sm:h-12 sm:w-12"
+        className="absolute left-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white/60 backdrop-blur-sm transition-all hover:bg-white/30 hover:text-white/80 sm:left-6 sm:h-12 sm:w-12"
         aria-label="Anterior"
       >
         <ChevronLeft className="h-5 w-5" />
@@ -65,7 +65,7 @@ export default function HeroCarousel() {
       {/* Right arrow */}
       <button
         onClick={goNext}
-        className="absolute right-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white/60 backdrop-blur-sm transition-all hover:bg-white/30 hover:text-white/80 sm:h-12 sm:w-12"
+        className="absolute right-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white/60 backdrop-blur-sm transition-all hover:bg-white/30 hover:text-white/80 sm:right-6 sm:h-12 sm:w-12"
         aria-label="Siguiente"
       >
         <ChevronRight className="h-5 w-5" />

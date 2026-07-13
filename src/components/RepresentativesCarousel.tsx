@@ -56,7 +56,7 @@ export default function RepresentativesCarousel() {
 
   return (
     <section id="equipo" className="border-t border-border/40 bg-muted/20">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 pt-20 pb-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
             La fórmula del cambio
