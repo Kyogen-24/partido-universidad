@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 const images = ["/fondo1.jpg", "/fondo2.jpg", "/fondo3.jpg", "/fondo.jpg"];
 
@@ -51,28 +51,17 @@ export default function HeroCarousel() {
       </div>
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 -z-10 bg-black/40" />
+      <div className="absolute inset-0 -z-10 bg-black/55" />
 
-      {/* Left arrow */}
-      <button
-        onClick={goPrev}
-        className="absolute left-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white/60 backdrop-blur-sm transition-all hover:bg-white/30 hover:text-white/80 sm:left-6 sm:h-12 sm:w-12"
-        aria-label="Anterior"
-      >
-        <ChevronLeft className="h-5 w-5" />
-      </button>
-
-      {/* Right arrow */}
-      <button
-        onClick={goNext}
-        className="absolute right-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white/60 backdrop-blur-sm transition-all hover:bg-white/30 hover:text-white/80 sm:right-6 sm:h-12 sm:w-12"
-        aria-label="Siguiente"
-      >
-        <ChevronRight className="h-5 w-5" />
-      </button>
-
-      {/* Dots */}
-      <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2">
+      {/* Bottom controls */}
+      <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 items-center gap-3">
+        <button
+          onClick={goPrev}
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white/60 backdrop-blur-sm transition-all hover:bg-white/30 hover:text-white/80"
+          aria-label="Anterior"
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </button>
         {images.map((_, i) => (
           <button
             key={i}
@@ -85,23 +74,39 @@ export default function HeroCarousel() {
             aria-label={`Imagen ${i + 1}`}
           />
         ))}
-      </div>
-
-      {/* Top badge */}
-      <div className="absolute top-6 left-0 right-0 z-20 flex justify-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[10px] font-medium text-white/90 backdrop-blur-sm sm:text-xs">
-          <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
-          Movimiento Académico ERES UNC
-        </div>
+        <button
+          onClick={goNext}
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white/60 backdrop-blur-sm transition-all hover:bg-white/30 hover:text-white/80"
+          aria-label="Siguiente"
+        >
+          <ChevronRight className="h-4 w-4" />
+        </button>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-32 sm:px-6 sm:py-56 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-40 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="font-heading text-2xl font-normal tracking-tight text-white sm:text-3xl lg:text-4xl">
-            <span className="text-primary">ERES</span> la mejora continua{" "}
-            <span className="text-secondary">en tiempos de cambio</span>
+          <h1 className="font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <span className="text-primary">ERES</span> la mejora continua
           </h1>
+          <p className="mt-4 max-w-2xl mx-auto text-sm text-white/70 sm:text-base">
+            Transformando la UNC con innovación, transparencia y participación estudiantil.
+          </p>
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
+            <a
+              href="#propuesta"
+              className="inline-flex h-11 items-center gap-2 rounded-xl border border-primary/30 bg-primary/20 px-6 text-sm font-medium text-white backdrop-blur-sm shadow-lg shadow-primary/20 transition-all hover:bg-primary/30 hover:shadow-primary/30"
+            >
+              Conoce la propuesta
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <a
+              href="#contacto"
+              className="inline-flex h-11 items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-6 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20"
+            >
+              Únete al movimiento
+            </a>
+          </div>
         </div>
       </div>
     </section>
