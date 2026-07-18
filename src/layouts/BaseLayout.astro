@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
-import { Menu, X } from "lucide-react";
+import { MoreVertical, X } from "lucide-react";
+import SiteBackground from "../components/SiteBackground";
 ---
 
 <!doctype html>
@@ -13,19 +14,12 @@ import { Menu, X } from "lucide-react";
     <title>Eres UNC — Partido Universitario</title>
     <meta name="description" content="Construyamos juntos la universidad que queremos. Elecciones UNC 2026-2031." />
   </head>
-  <body class="relative min-h-screen bg-background text-foreground antialiased">
-    <img
-      class="pointer-events-none fixed inset-0 -z-10 h-full w-full object-cover opacity-50"
-      src="/bg-pattern.png"
-      alt=""
-      aria-hidden="true"
-    />
-    <header class="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/90 backdrop-blur-md">
+  <body class="relative min-h-screen text-foreground antialiased">
+    <SiteBackground client:load />
+    <header class="fixed top-0 left-0 right-0 z-50 bg-transparent">
       <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a href="/" class="flex items-center gap-2.5 font-heading text-lg font-semibold tracking-tight">
-          <img src="/images/LOGO_UNC.png" alt="UNC" class="h-10 w-auto" />
-          <span class="h-6 w-px bg-border" />
-          <img src="/logo.png" alt="Eres UNC" class="h-10 w-10" />
+          <img src="/logo.png" alt="Eres UNC" class="h-14 w-14 object-contain" />
         </a>
         <nav class="hidden items-center gap-6 md:flex">
           <a href="#equipo" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Equipo</a>
@@ -38,7 +32,7 @@ import { Menu, X } from "lucide-react";
           </a>
         </nav>
         <button id="menu-toggle" class="flex items-center justify-center md:hidden" aria-label="Menú">
-          <Menu class="h-6 w-6" id="menu-icon-open" />
+          <MoreVertical class="h-6 w-6" id="menu-icon-open" />
           <X class="h-6 w-6 hidden" id="menu-icon-close" />
         </button>
       </div>

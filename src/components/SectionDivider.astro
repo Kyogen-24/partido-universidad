@@ -1,0 +1,88 @@
+---
+interface Props {
+  /**
+   * Optional label shown above the logo, e.g. "EQUIPO" or "PROPUESTA".
+   * If omitted the kicker line is not rendered.
+   */
+  kicker?: string;
+}
+
+const { kicker } = Astro.props;
+---
+
+<div class="section-divider">
+  {kicker && <p class="section-divider__kicker">{kicker}</p>}
+  <div class="section-divider__rule">
+    <span class="section-divider__line" />
+    <div class="section-divider__emblem">
+      <img src="/logo.png" alt="Eres UNC" />
+    </div>
+    <span class="section-divider__line" />
+  </div>
+</div>
+
+<style>
+  .section-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding-block: 2.5rem;
+    width: 100%;
+  }
+
+  .section-divider__kicker {
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  .section-divider__rule {
+    display: flex;
+    align-items: center;
+    width: min(420px, 90%);
+    gap: 1rem;
+  }
+
+  .section-divider__line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+      to var(--dir, right),
+      transparent,
+      color-mix(in oklch, var(--color-primary) 35%, transparent)
+    );
+  }
+
+  .section-divider__rule .section-divider__line:first-child {
+    --dir: right;
+  }
+
+  .section-divider__rule .section-divider__line:last-child {
+    --dir: left;
+  }
+
+  .section-divider__emblem {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in oklch, var(--color-primary) 30%, transparent);
+    background: color-mix(in oklch, var(--color-primary) 6%, transparent);
+    padding: 0.35rem;
+  }
+
+  .section-divider__emblem img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+</style>

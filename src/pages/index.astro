@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroCarousel from "../components/HeroCarousel";
+import SectionDivider from "../components/SectionDivider.astro";
 import PorQueEres from "../components/PorQueEres.astro";
 import RepresentativesCarousel from "../components/RepresentativesCarousel";
 import QuienesSomos from "../components/QuienesSomos.astro";
@@ -16,15 +17,26 @@ import ContactoForm from "../components/ContactoForm";
 
 <BaseLayout>
   <HeroCarousel client:load />
+  <SectionDivider kicker="¿Por qué ERES?" />
   <PorQueEres />
+  <SectionDivider kicker="Equipo" />
   <RepresentativesCarousel client:visible />
+  <SectionDivider kicker="Quiénes somos" />
   <QuienesSomos />
+  <SectionDivider kicker="Visión" />
   <Vision />
+  <SectionDivider kicker="Misión" />
   <Mision />
+  <SectionDivider kicker="Valores" />
   <Valores />
+  <SectionDivider kicker="Propuesta" />
   <PropuestaGrid />
+  <SectionDivider kicker="Plan de Trabajo" />
   <PlanTrabajo />
+  <SectionDivider kicker="Calendario" />
   <EventosTimeline />
+  <SectionDivider kicker="Testimonios" />
   <TestimoniosSection />
+  <SectionDivider kicker="Contacto" />
   <ContactoForm client:visible />
 </BaseLayout>
