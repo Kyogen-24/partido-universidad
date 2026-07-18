@@ -69,22 +69,22 @@ export default function HeroCarousel() {
       {/* Dark overlay */}
       <div className="absolute inset-0 -z-10 bg-black/35" />
 
+
+
       {/* Top Content: Title (just below navbar) */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-16 sm:pt-28 sm:px-6 lg:px-8 w-full text-center">
-        <h1 className="font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl drop-shadow-md">
-          <span className="text-primary">ERES</span> la mejora continua
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-24 sm:pt-32 sm:px-6 lg:px-8 w-full text-center">
+        <h1 className="font-heading tracking-tight drop-shadow-lg text-xl sm:text-2xl lg:text-3xl leading-tight">
+          <span className="text-primary">ERES</span>{" "}
+          <span className="text-white">la mejora continua</span>
         </h1>
       </div>
 
-      {/* Bottom Content: Description and Buttons (just above dots) */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8 w-full text-center mt-auto">
-        <p className="max-w-xl mx-auto text-sm text-white sm:text-white/90 sm:text-base drop-shadow-md font-medium leading-relaxed">
-          Transformando la UNC con innovación, transparencia y participación estudiantil.
-        </p>
-        <div className="mt-5 flex flex-row justify-center items-center gap-3">
+      {/* Bottom Content: Buttons only */}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-20 sm:pb-24 sm:px-6 lg:px-8 w-full text-center mt-auto">
+        <div className="flex flex-row justify-center items-center gap-3">
           <a
             href="#propuesta"
-            className="inline-flex h-9 items-center justify-center rounded-lg bg-primary px-5 text-xs font-semibold text-white shadow-md shadow-primary/20 transition-all hover:bg-primary/80 hover:shadow-primary/30"
+            className="inline-flex h-9 items-center justify-center rounded-lg bg-white/15 hover:bg-white/25 px-5 text-xs font-semibold text-white border border-white/25 backdrop-blur-xs transition-all"
           >
             Propuesta
           </a>
