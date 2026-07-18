@@ -1,29 +1,80 @@
 ---
-import { Users } from "lucide-react";
+import { Sparkles, ShieldCheck, Flame, HeartHandshake, Shield, Scale, BookOpen, Users } from "lucide-react";
+
+const acronimo = [
+  { label: "Experiencia", color: "text-blue-600 dark:text-blue-400", Icon: Sparkles },
+  { label: "Responsabilidad", color: "text-teal-600 dark:text-teal-400", Icon: ShieldCheck },
+  { label: "Esfuerzo", color: "text-emerald-600 dark:text-emerald-400", Icon: Flame },
+  { label: "Servicio", color: "text-green-600 dark:text-green-400", Icon: HeartHandshake },
+];
+
+const valores = [
+  { title: "Autonomía universitaria", desc: "Democracia institucional y respeto al Estatuto de la UNC.", Icon: Shield },
+  { title: "Ética e integridad", desc: "Transparencia y meritocracia en cada decisión.", Icon: Scale },
+  { title: "Libertad de cátedra", desc: "Pensamiento crítico y respeto a la pluralidad.", Icon: BookOpen },
+  { title: "Compromiso social", desc: "Vinculación con los problemas de Cajamarca y la región.", Icon: Users },
+];
 ---
 
 <section id="quienes-somos" class="border-t border-border/40">
-  <div class="mx-auto max-w-7xl px-4 pt-8 pb-20 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-3xl">
-      <div class="flex items-center gap-3">
-        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-          <Users class="h-5 w-5" />
+  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+
+    <!-- Encabezado -->
+    <div class="mb-14 max-w-xl">
+      <h2 class="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+        Somos ERES UNC
+      </h2>
+    </div>
+
+    <!-- 3 columnas -->
+    <div class="grid grid-cols-1 gap-10 sm:grid-cols-3">
+
+      <!-- Columna 1: resumen -->
+      <div>
+        <p class="text-sm leading-relaxed text-muted-foreground">
+        Un movimiento académico comprometido con una universidad innovadora, inclusiva, 
+        autónoma y competitiva. Unimos a docentes, estudiantes y colaboradores 
+        para transformar el futuro, situando al estudiante en el centro de cada decisión.
+        </p>
+      </div>
+
+      <!-- Columna 2: acrónimo ERES -->
+      <div>
+        <h3 class="mb-5 font-heading text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+          El acrónimo ERES
+        </h3>
+        <div class="space-y-5">
+          {acronimo.map((a) => (
+            <div class="group flex items-center gap-3.5">
+              <a.Icon className={`h-5 w-5 shrink-0 ${a.color} transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12`} />
+              <span class="text-sm font-semibold text-foreground">
+                <span class={`text-base font-extrabold tracking-wide ${a.color}`}>{a.label.charAt(0)}</span>{a.label.slice(1)}
+              </span>
+            </div>
+          ))}
         </div>
-        <h2 class="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-          Quiénes somos
-        </h2>
       </div>
-      <div class="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
-        <p>
-          Somos el Movimiento Académico <strong>ERES UNC</strong>, integrado por
-          docentes, estudiantes y personal comprometido con una UNC más innovadora,
-          inclusiva y competitiva.
-        </p>
-        <p>
-          Apostamos por una universidad que defiende su autonomía, practica la
-          transparencia y sitúa al estudiante en el centro de todas las decisiones.
-        </p>
+
+      <!-- Columna 3: valores -->
+      <div>
+        <h3 class="mb-5 font-heading text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+          Nuestros valores
+        </h3>
+        <div class="space-y-4">
+          {valores.map((v) => (
+            <div class="group flex items-start gap-3">
+              <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary/15">
+                <v.Icon className="h-4 w-4" />
+              </div>
+              <div>
+                <p class="text-sm font-semibold">{v.title}</p>
+                <p class="text-xs leading-relaxed text-muted-foreground">{v.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+
     </div>
   </div>
 </section>

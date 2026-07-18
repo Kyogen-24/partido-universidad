@@ -1,12 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroCarousel from "../components/HeroCarousel";
-import PorQueEres from "../components/PorQueEres.astro";
 import RepresentativesCarousel from "../components/RepresentativesCarousel";
 import QuienesSomos from "../components/QuienesSomos.astro";
-import Vision from "../components/Vision.astro";
-import Mision from "../components/Mision.astro";
-import Valores from "../components/Valores.astro";
 import PropuestaGrid from "../components/PropuestaGrid.astro";
 import NoticiasSection from "../components/NoticiasSection.astro";
 import PlanTrabajo from "../components/PlanTrabajo.astro";
@@ -17,12 +13,8 @@ import ContactoForm from "../components/ContactoForm";
 
 <BaseLayout>
   <HeroCarousel client:load />
-  <PorQueEres />
   <RepresentativesCarousel client:visible />
   <QuienesSomos />
-  <Vision />
-  <Mision />
-  <Valores />
   <PropuestaGrid />
   <NoticiasSection />
   <PlanTrabajo />
