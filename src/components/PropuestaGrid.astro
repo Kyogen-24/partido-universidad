@@ -1,38 +1,70 @@
 ---
-import { ShieldCheck, ScrollText, Brain, Laptop, Globe, HeartHandshake, BookOpen } from "lucide-react";
+import { ShieldCheck, ScrollText, Brain, Laptop, Globe, HeartHandshake } from "lucide-react";
 
 const ejes = [
-  { title: "Gobernanza moderna", desc: "Sistemas integrados de planeamiento y calidad para una gestión ordenada, transparente y basada en buenas prácticas.", Icon: ShieldCheck },
-  { title: "Calidad académica", desc: "Acreditación de programas, actualización curricular por competencias y formación docente continua.", Icon: ScrollText },
-  { title: "Bienestar estudiantil", desc: "Tutoría y consejería académica, becas equitativas, salud mental y comedor universitario.", Icon: Brain },
-  { title: "Transformación digital", desc: "Modernización de la infraestructura tecnológica, digitalización de procesos y plataformas de servicio al estudiante.", Icon: Laptop },
-  { title: "Investigación e innovación", desc: "Fondos concursables, laboratorios modernos, producción científica y vinculación con el sector productivo.", Icon: Globe },
-  { title: "Responsabilidad social", desc: "RSU articulada con docencia e investigación para impactar en los desafíos prioritarios de Cajamarca.", Icon: HeartHandshake },
-  { title: "Internacionalización", desc: "Movilidad estudiantil y docente, convenios internacionales y participación en redes académicas globales.", Icon: BookOpen },
+  { title: "Gobernanza moderna", desc: "Gestión ordenada, transparente y basada en buenas prácticas institucionales.", Icon: ShieldCheck },
+  { title: "Calidad académica", desc: "Acreditación de programas, actualización curricular y formación docente continua.", Icon: ScrollText },
+  { title: "Bienestar estudiantil", desc: "Tutoría académica, becas equitativas, salud mental y comedor universitario.", Icon: Brain },
+  { title: "Transformación digital", desc: "Modernización tecnológica y digitalización de procesos de servicio al estudiante.", Icon: Laptop },
+  { title: "Investigación e innovación", desc: "Fondos concursables, laboratorios modernos y vinculación con el sector productivo.", Icon: Globe },
+  { title: "Responsabilidad social", desc: "RSU articulada con docencia e investigación para impactar en Cajamarca.", Icon: HeartHandshake },
 ];
+
 ---
 
-<section id="propuesta" class="border-t border-border/40">
+<section id="propuesta" class="border-t border-border/40 bg-background">
   <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-2xl text-center">
-      <h2 class="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-        Nuestra propuesta 2026&ndash;2031
-      </h2>
-      <p class="mt-4 text-muted-foreground">
-        Construimos nuestro plan sobre un diagnóstico realista de la UNC y un enfoque
-        de <strong>mejora continua</strong>, alineado a SUNEDU y SINEACE.
-      </p>
-    </div>
-    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {ejes.map((eje) => (
-        <article class="group relative overflow-hidden rounded-2xl border border-border/40 bg-card p-6 transition-all hover:scale-[1.02] hover:shadow-lg">
-          <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            <eje.Icon class="h-5 w-5" />
-          </div>
-          <h3 class="font-heading text-lg font-semibold">{eje.title}</h3>
-          <p class="mt-2 text-sm leading-relaxed text-muted-foreground">{eje.desc}</p>
-        </article>
-      ))}
+
+    <!-- Grid principal -->
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-8">
+
+      <!-- Columna izquierda: encabezado + lista de ejes (2 cols en sm+) -->
+      <div class="lg:col-span-2">
+        <!-- Encabezado -->
+        <div class="mb-14">
+          <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Plan de Gobierno 2026–2031</p>
+          <h2 class="font-heading text-3xl font-bold tracking-tight sm:text-4xl max-w-xl">
+            Nuestra propuesta de mejora continua
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+          {ejes.map((eje) => (
+            <div class="flex items-start gap-4 group">
+              <div class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-primary/20 bg-primary/8 text-primary transition-colors group-hover:bg-primary/15">
+                <eje.Icon class="h-4 w-4" />
+              </div>
+              <div>
+                <h3 class="font-heading text-sm font-semibold">{eje.title}</h3>
+                <p class="mt-1 text-xs leading-relaxed text-muted-foreground">{eje.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Columna derecha: previsualización PDF + descarga -->
+      <div class="flex flex-col justify-start gap-4">
+        <!-- Preview del PDF -->
+        <div class="overflow-hidden rounded-2xl border border-border/40 shadow-lg bg-muted/30 aspect-[15/16] relative">
+          <iframe
+            src="/plan-trabajo.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=0"
+            class="h-full w-full"
+            title="Plan de Trabajo 2026–2031"
+          ></iframe>
+        </div>
+        <!-- Botón de descarga -->
+        <a
+          href="/plan-trabajo.pdf"
+          download
+          class="inline-flex h-10 w-full items-center justify-center gap-2 rounded-xl border border-primary/30 bg-primary/8 px-5 text-sm font-semibold text-primary transition-all hover:bg-primary/15 hover:border-primary/50"
+        >
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          Descargar Plan de Trabajo
+        </a>
+      </div>
+
     </div>
   </div>
 </section>
