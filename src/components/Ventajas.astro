@@ -1,0 +1,33 @@
+---
+import { GraduationCap, Users, BarChart3, Shield, BookOpen, Heart } from "lucide-react";
+
+const ventajas = [
+  { title: "DOLOR FIT BOR", desc: "voluptat. Ut wisi enim ad minim veniam, quis nostrud", Icon: GraduationCap },
+  { title: "POSTURMAT", desc: "eiusmod tincidunt ut laoreet dolore magna aliquam erat", Icon: Users },
+  { title: "BITUS GOROTUS", desc: "laoreet dolore magna aliquam erat voluptat. Ut", Icon: BarChart3 },
+  { title: "FIT BOR", desc: "eiusmod tincidunt ut laoreet dolore magna aliquam erat", Icon: Shield },
+  { title: "GROBUR", desc: "voluptat. Ut wisi enim ad minim veniam, quis nostrud", Icon: BookOpen },
+  { title: "NOGITS MOTPO", desc: "eiusmod tincidunt ut laoreet dolore magna aliquam erat", Icon: Heart },
+];
+---
+
+<section class="border-t border-border/40 bg-muted/30">
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <h2 class="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+      COMPANY ADVANTAGES
+    </h2>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {ventajas.map((v) => (
+        <div class="flex gap-4 rounded-2xl border border-border/40 bg-card p-4 transition-all hover:shadow-md">
+          <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+            <v.Icon class="h-6 w-6" />
+          </div>
+          <div>
+            <h3 class="font-heading text-sm font-semibold">{v.title}</h3>
+            <p class="mt-1 text-xs leading-relaxed text-muted-foreground">{v.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,73 @@
+---
+import { Play } from "@/lib/icons";
+---
+
+<section id="hero" class="relative overflow-hidden py-16 lg:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div class="space-y-6">
+        <h1 class="font-heading text-5xl font-bold leading-tight text-eres-blue md:text-6xl lg:text-7xl">
+          ERES UNC
+        </h1>
+        <h2 class="font-heading text-xl font-semibold text-muted-foreground md:text-2xl">
+          La mejora continua en tiempos de cambio
+        </h2>
+        <p class="text-lg text-muted-foreground">
+          Conoce a nuestro Rector y Vicerrectores para transformar nuestra casa de estudios.
+        </p>
+        <div class="flex flex-wrap gap-8 pt-4">
+          <div>
+            <p class="font-heading text-3xl font-bold text-eres-amber">30+</p>
+            <p class="text-sm text-muted-foreground">Años de experiencia</p>
+          </div>
+          <div>
+            <p class="font-heading text-3xl font-bold text-eres-blue">100%</p>
+            <p class="text-sm text-muted-foreground">Gobierno transparente</p>
+          </div>
+          <div>
+            <p class="font-heading text-3xl font-bold text-eres-green">UNC</p>
+            <p class="text-sm text-muted-foreground">Universidad Nacional de Cajamarca</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4 pt-2">
+          <a
+            href="#candidatos"
+            class="inline-flex items-center gap-2 rounded-lg bg-eres-blue px-6 py-3 text-sm font-bold text-white shadow-lg transition-all hover:bg-eres-blue/90 hover:shadow-xl"
+          >
+            Nuestro Equipo
+            <span class="ml-1">→</span>
+          </a>
+          <a
+            href="#compromisos"
+            class="inline-flex items-center gap-2 rounded-lg border-2 border-foreground/20 px-6 py-3 text-sm font-bold text-foreground transition-all hover:border-eres-blue hover:text-eres-blue"
+          >
+            Propuestas
+            <span class="ml-1">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="relative overflow-hidden rounded-2xl shadow-2xl">
+          <img
+            src="/fondo1.jpg"
+            alt="Nuestra Visión"
+            class="h-64 w-full object-cover md:h-80 lg:h-96"
+          />
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center">
+              <button
+                class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-foreground shadow-lg transition-all hover:scale-110 hover:bg-white"
+                aria-label="Reproducir video"
+              >
+                <Play class="ml-1 h-8 w-8" />
+              </button>
+              <p class="text-lg font-bold text-white md:text-xl">NUESTRA VISIÓN</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

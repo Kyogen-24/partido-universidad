@@ -1,0 +1,92 @@
+---
+import { ChevronLeft, ChevronRight } from "@/lib/icons";
+
+const images = [
+  { src: "/fondo1.jpg", alt: "Campaña en el campus 1" },
+  { src: "/fondo2.jpg", alt: "Campaña en el campus 2" },
+  { src: "/fondo3.jpg", alt: "Campaña en el campus 3" },
+];
+---
+
+<section class="py-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mb-12 text-center">
+      <span class="inline-block rounded-full bg-eres-amber px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-black">
+        Campaña
+      </span>
+      <h2 class="mt-4 font-heading text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
+        CAMPAÑA EN EL CAMPUS
+      </h2>
+    </div>
+
+    <div class="relative">
+      <div class="overflow-hidden rounded-2xl shadow-lg">
+        <div id="campana-track" class="flex transition-transform duration-500 ease-in-out">
+          {images.map((img) => (
+            <div class="w-full shrink-0">
+              <img
+                src={img.src}
+                alt={img.alt}
+                class="h-64 w-full object-cover md:h-96"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <button
+        id="campana-prev"
+        class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow-lg transition-all hover:bg-white hover:shadow-xl"
+        aria-label="Anterior"
+      >
+        <ChevronLeft class="h-6 w-6 text-eres-blue" />
+      </button>
+      <button
+        id="campana-next"
+        class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow-lg transition-all hover:bg-white hover:shadow-xl"
+        aria-label="Siguiente"
+      >
+        <ChevronRight class="h-6 w-6 text-eres-blue" />
+      </button>
+
+      <div class="mt-6 flex justify-center gap-3">
+        {images.map((_, i) => (
+          <button
+            class:list={[
+              "h-3 w-3 rounded-full transition-colors",
+              i === 0 ? "bg-eres-blue" : "bg-border",
+            ]}
+            data-slide={i}
+            aria-label={`Ir a slide ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const track = document.getElementById("campana-track")!;
+  const prevBtn = document.getElementById("campana-prev")!;
+  const nextBtn = document.getElementById("campana-next")!;
+  const dots = document.querySelectorAll("[data-slide]");
+  const slides = track.children;
+  let current = 0;
+
+  function goTo(index: number) {
+    current = (index + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("bg-eres-blue", i === current);
+      dot.classList.toggle("bg-border", i !== current);
+    });
+  }
+
+  prevBtn.addEventListener("click", () => goTo(current - 1));
+  nextBtn.addEventListener("click", () => goTo(current + 1));
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => goTo(Number(dot.getAttribute("data-slide"))));
+  });
+
+  setInterval(() => goTo(current + 1), 5000);
+</script>

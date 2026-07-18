@@ -1,30 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HeroCarousel from "../components/HeroCarousel";
-import PorQueEres from "../components/PorQueEres.astro";
-import RepresentativesCarousel from "../components/RepresentativesCarousel";
-import QuienesSomos from "../components/QuienesSomos.astro";
-import Vision from "../components/Vision.astro";
-import Mision from "../components/Mision.astro";
-import Valores from "../components/Valores.astro";
-import PropuestaGrid from "../components/PropuestaGrid.astro";
-import PlanTrabajo from "../components/PlanTrabajo.astro";
-import EventosTimeline from "../components/EventosTimeline.astro";
-import TestimoniosSection from "../components/TestimoniosSection.astro";
-import ContactoForm from "../components/ContactoForm";
+import HeroSection from "../components/HeroSection.astro";
+import FormulaCambio from "../components/FormulaCambio.astro";
+import CompromisosSection from "../components/CompromisosSection.astro";
+import CampanaCarousel from "../components/CampanaCarousel.astro";
+import ContactSection from "../components/ContactSection.astro";
 ---
 
 <BaseLayout>
-  <HeroCarousel client:load />
-  <PorQueEres />
-  <RepresentativesCarousel client:visible />
-  <QuienesSomos />
-  <Vision />
-  <Mision />
-  <Valores />
-  <PropuestaGrid />
-  <PlanTrabajo />
-  <EventosTimeline />
-  <TestimoniosSection />
-  <ContactoForm client:visible />
+  <HeroSection />
+  <FormulaCambio />
+  <CompromisosSection />
+  <CampanaCarousel />
+  <ContactSection />
 </BaseLayout>

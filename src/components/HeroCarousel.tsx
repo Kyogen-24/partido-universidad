@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "@/lib/icons";
+import { RotatingTextContainer, RotatingText } from "@/components/animate-ui/primitives/texts/rotating";
+import { RippleButton, RippleButtonRipples } from "@/components/animate-ui/components/buttons/ripple";
 
 const images = ["/fondo1.jpg", "/fondo2.jpg", "/fondo3.jpg", "/fondo.jpg"];
 
@@ -89,23 +91,45 @@ export default function HeroCarousel() {
           <h1 className="font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
             <span className="text-primary">ERES</span> la mejora continua
           </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-sm text-white/70 sm:text-base">
-            Transformando la UNC con innovación, transparencia y participación estudiantil.
-          </p>
+          <div className="mt-4 max-w-2xl mx-auto text-sm text-white/70 sm:text-base">
+            Nuestra fórmula postula a{" "}
+            <RotatingTextContainer
+              text={["Rector", "Vicerrectora Académica", "Vicerrector de Investigación y RSU"]}
+              inView
+              className="inline-block align-bottom font-semibold text-white"
+            >
+              <RotatingText />
+            </RotatingTextContainer>{" "}
+            para transformar la UNC con innovación, transparencia y participación estudiantil.
+          </div>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
-            <a
-              href="#propuesta"
-              className="inline-flex h-11 items-center gap-2 rounded-xl border border-primary/30 bg-primary/20 px-6 text-sm font-medium text-white backdrop-blur-sm shadow-lg shadow-primary/20 transition-all hover:bg-primary/30 hover:shadow-primary/30"
+            <RippleButton
+              asChild
+              variant="ghost"
+              style={{ "--ripple-button-ripple-color": "rgba(255,255,255,0.5)" } as React.CSSProperties}
             >
-              Conoce la propuesta
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href="#contacto"
-              className="inline-flex h-11 items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-6 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20"
+              <a
+                href="#propuesta"
+                className="inline-flex h-11 items-center gap-2 rounded-xl border border-primary/30 bg-primary/20 px-6 text-sm font-medium text-white backdrop-blur-sm shadow-lg shadow-primary/20 transition-all hover:bg-primary/30 hover:shadow-primary/30"
+              >
+                Conoce la propuesta
+                <ArrowRight className="h-4 w-4" />
+                <RippleButtonRipples />
+              </a>
+            </RippleButton>
+            <RippleButton
+              asChild
+              variant="ghost"
+              style={{ "--ripple-button-ripple-color": "rgba(255,255,255,0.5)" } as React.CSSProperties}
             >
-              Únete al movimiento
-            </a>
+              <a
+                href="#contacto"
+                className="inline-flex h-11 items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-6 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20"
+              >
+                Únete al movimiento
+                <RippleButtonRipples />
+              </a>
+            </RippleButton>
           </div>
         </div>
       </div>

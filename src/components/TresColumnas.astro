@@ -1,0 +1,32 @@
+---
+const columnas = [
+  {
+    title: "DOLOR FIT BOR",
+    desc: "eiusmod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."
+  },
+  {
+    title: "PERMOS DOLOROS",
+    desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad"
+  },
+  {
+    title: "GOREMINOT BIRJU",
+    desc: "Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit."
+  }
+];
+---
+
+<section class="border-t border-border/40">
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <div class="grid gap-8 sm:grid-cols-3">
+      {columnas.map((col) => (
+        <div class="text-center">
+          <h3 class="font-heading text-lg font-semibold">{col.title}</h3>
+          <div class="mx-auto mt-4 h-32 rounded-xl bg-muted/50" />
+          <p class="mt-4 text-sm leading-relaxed text-muted-foreground">
+            {col.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

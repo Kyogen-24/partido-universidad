@@ -6,7 +6,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import type { Representative } from "@/data/representatives";
-import { GraduationCap, Check, Award } from "lucide-react";
+import { GraduationCap, Check, Award } from "@/lib/icons";
 
 interface Props {
   representative: Representative | null;

@@ -1,6 +1,9 @@
 ---
 import "../styles/global.css";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "@/lib/icons";
+import { StarsBackground } from "@/components/ui/stars-background";
+import { MouseGlow } from "@/components/animations/Interactive";
+import { BlueFire } from "@/components/animations/BlueFire";
 ---
 
 <!doctype html>
@@ -13,45 +16,52 @@ import { Menu, X } from "lucide-react";
     <title>Eres UNC — Partido Universitario</title>
     <meta name="description" content="Construyamos juntos la universidad que queremos. Elecciones UNC 2026-2031." />
   </head>
-  <body class="relative min-h-screen bg-background text-foreground antialiased">
-    <img
-      class="pointer-events-none fixed inset-0 -z-10 h-full w-full object-cover opacity-50"
-      src="/bg-pattern.png"
-      alt=""
-      aria-hidden="true"
-    />
+  <body class="relative min-h-screen text-foreground antialiased">
+    <div class="fixed inset-0 -z-10">
+      <StarsBackground
+        client:load
+        starColor="#4285F4"
+        className="!bg-white"
+      />
+    </div>
+    <MouseGlow client:load />
+    <BlueFire client:load />
     <header class="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/90 backdrop-blur-md">
       <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="/" class="flex items-center gap-2.5 font-heading text-lg font-semibold tracking-tight">
+        <a href="/" class="flex items-center gap-2.5">
           <img src="/images/LOGO_UNC.png" alt="UNC" class="h-10 w-auto" />
           <span class="h-6 w-px bg-border" />
           <img src="/logo.png" alt="Eres UNC" class="h-10 w-10" />
         </a>
-        <nav class="hidden items-center gap-6 md:flex">
-          <a href="#equipo" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Equipo</a>
-          <a href="#propuesta" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Propuesta</a>
-          <a href="#calendario" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Calendario</a>
-          <a href="#testimonios" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Testimonios</a>
-          <a href="#contacto" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Contacto</a>
-          <a href="#contacto" class="inline-flex h-9 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground shadow-md shadow-primary/20 transition-all hover:bg-primary/80 hover:shadow-primary/30">
-            Sumate
-          </a>
+
+        <nav class="hidden items-center gap-6 lg:flex">
+          <a href="#nosotros" class="text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:text-eres-amber">Nosotros</a>
+          <a href="#propuesta" class="text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:text-eres-amber">Propuestas</a>
+          <a href="#candidatos" class="text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:text-eres-amber">Candidatos</a>
+          <a href="#compromisos" class="rounded-lg bg-eres-blue px-4 py-2 text-sm font-bold uppercase text-white transition-all hover:bg-eres-blue/90">Plan de Gobierno</a>
         </nav>
-        <button id="menu-toggle" class="flex items-center justify-center md:hidden" aria-label="Menú">
+
+        <div class="hidden items-center gap-2 lg:flex">
+          <Phone class="h-4 w-4 text-eres-green" />
+          <span class="text-sm font-bold text-foreground">999-456-009</span>
+        </div>
+
+        <button id="menu-toggle" class="flex items-center justify-center lg:hidden" aria-label="Menú">
           <Menu class="h-6 w-6" id="menu-icon-open" />
-          <X class="h-6 w-6 hidden" id="menu-icon-close" />
+          <X class="hidden h-6 w-6" id="menu-icon-close" />
         </button>
       </div>
-      <div id="mobile-menu" class="hidden border-t border-border/40 bg-background/95 backdrop-blur-md md:hidden">
+
+      <div id="mobile-menu" class="hidden border-t border-border/40 bg-background/95 backdrop-blur-md lg:hidden">
         <nav class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6 lg:px-8">
-          <a href="#equipo" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Equipo</a>
-          <a href="#propuesta" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Propuesta</a>
-          <a href="#calendario" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Calendario</a>
-          <a href="#testimonios" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Testimonios</a>
-          <a href="#contacto" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Contacto</a>
-          <a href="#contacto" class="mt-2 inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground shadow-md shadow-primary/20 transition-all hover:bg-primary/80 hover:shadow-primary/30">
-            Sumate
-          </a>
+          <a href="#nosotros" class="rounded-lg px-3 py-2.5 text-sm font-semibold uppercase text-foreground transition-colors hover:bg-muted">Nosotros</a>
+          <a href="#propuesta" class="rounded-lg px-3 py-2.5 text-sm font-semibold uppercase text-foreground transition-colors hover:bg-muted">Propuestas</a>
+          <a href="#candidatos" class="rounded-lg px-3 py-2.5 text-sm font-semibold uppercase text-foreground transition-colors hover:bg-muted">Candidatos</a>
+          <a href="#compromisos" class="rounded-lg px-3 py-2.5 text-sm font-semibold uppercase text-foreground transition-colors hover:bg-muted">Plan de Gobierno</a>
+          <div class="mt-2 flex items-center gap-2 px-3">
+            <Phone class="h-4 w-4 text-eres-green" />
+            <span class="text-sm font-bold text-foreground">999-456-009</span>
+          </div>
         </nav>
       </div>
     </header>
@@ -63,15 +73,15 @@ import { Menu, X } from "lucide-react";
     <footer class="border-t border-border/40 bg-muted/30">
       <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
-          <div class="flex items-center gap-2.5 text-sm text-muted-foreground">
+          <div class="flex items-center gap-2.5">
             <img src="/images/LOGO_UNC.png" alt="UNC" class="h-8 w-auto" />
             <span class="h-5 w-px bg-border" />
-            <img src="/logo.png" alt="Eres UNC" class="h-8 w-auto" />
+            <img src="/logo.png" alt="Eres UNC" class="h-8 w-8" />
           </div>
           <nav class="flex flex-col items-center gap-3 text-sm text-muted-foreground sm:flex-row sm:gap-6">
-            <a href="#propuesta" class="transition-colors hover:text-foreground">Propuesta</a>
-            <a href="#equipo" class="transition-colors hover:text-foreground">Equipo</a>
-            <a href="#calendario" class="transition-colors hover:text-foreground">Calendario</a>
+            <a href="#nosotros" class="transition-colors hover:text-foreground">Nosotros</a>
+            <a href="#propuesta" class="transition-colors hover:text-foreground">Propuestas</a>
+            <a href="#candidatos" class="transition-colors hover:text-foreground">Candidatos</a>
             <a href="#contacto" class="transition-colors hover:text-foreground">Contacto</a>
           </nav>
           <p class="text-xs text-muted-foreground">

@@ -1,0 +1,30 @@
+---
+import { representatives } from "@/data/representatives";
+---
+
+<section id="candidatos" class="py-16 bg-muted/30">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+      {representatives.map((rep) => (
+        <div class="group text-center">
+          <div class="relative mx-auto mb-4 h-48 w-48 overflow-hidden rounded-full border-4 border-eres-blue shadow-lg transition-transform group-hover:scale-105 md:h-56 md:w-56">
+            <img
+              src={rep.photo}
+              alt={rep.name}
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <p class="mb-1 text-sm font-bold uppercase tracking-wide text-eres-blue">
+            {rep.position}
+          </p>
+          <h3 class="mb-1 font-heading text-lg font-bold text-foreground">
+            {rep.name}
+          </h3>
+          <p class="text-sm text-muted-foreground">
+            {rep.career}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

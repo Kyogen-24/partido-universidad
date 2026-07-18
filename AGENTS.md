@@ -32,7 +32,9 @@ src/
 │   └── ui/               # shadcn primitives (button, card, dialog)
 ├── data/representatives.ts
 ├── layouts/BaseLayout.astro
-├── lib/utils.ts          # shadcn `cn()` helper
+├── lib/
+│   ├── utils.ts          # shadcn `cn()` helper
+│   └── icons/index.ts    # Lucide icon barrel re-exports
 └── styles/global.css     # Tailwind + shadcn theme vars
 ```
 
@@ -40,6 +42,7 @@ src/
 
 - **Path alias**: `@/*` → `./src/*` (tsconfig paths)
 - **React islands**: use `client:load` (hero, form) or `client:visible` (carousels) — do not use `client:only` unless SSR is intentionally skipped
+- **Icons**: import from `@/lib/icons` (centralized Lucide barrel re-exports), not directly from `lucide-react`
 - **shadcn**: add components via `npx shadcn add <name>`; style is `base-nova`, no RSC
 - **Language**: all user-facing text is Spanish
 - **Theme**: light/dark via `.dark` class on `<html>`; CSS vars in `global.css`

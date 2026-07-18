@@ -1,14 +1,22 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@fontsource-variable/outfit";
+@import "@fontsource-variable/open-sans";
+@import "@fontsource-variable/open-sans/wght-italic.css";
+@import "@fontsource-variable/fredoka";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
     --breakpoint-xs: 480px;
-    --font-heading: var(--font-sans);
-    --font-sans: 'Outfit Variable', sans-serif;
+    /* Arial Rounded MT Bold is a licensed system font with no web-embeddable files;
+       it renders where installed (mostly macOS) and falls back to the bundled rounded Fredoka elsewhere. */
+    --font-heading: 'Arial Rounded MT Bold', 'Arial Rounded MT', 'Fredoka Variable', ui-rounded, Arial, sans-serif;
+    --font-sans: 'Open Sans Variable', 'Open Sans', Arial, sans-serif;
+    --color-eres-amber: #FBBC05;
+    --color-eres-red: #EA4335;
+    --color-eres-green: #34A853;
+    --color-eres-blue: #4285F4;
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -123,9 +131,148 @@
     @apply border-border outline-ring/50;
     }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-transparent text-foreground;
     }
   html {
-    @apply font-sans;
+    @apply font-sans bg-transparent;
     }
 }
+
+/* ===================== BLUE FIRE BACKGROUND ===================== */
+@keyframes fire-lick {
+  0%, 100% { transform: translateY(0) scaleX(1); opacity: 0.6; }
+  25% { transform: translateY(-8px) scaleX(1.05); opacity: 0.8; }
+  50% { transform: translateY(-4px) scaleX(0.95); opacity: 0.5; }
+  75% { transform: translateY(-12px) scaleX(1.08); opacity: 0.7; }
+}
+
+@keyframes fire-lick-2 {
+  0%, 100% { transform: translateY(0) scaleX(1); opacity: 0.4; }
+  33% { transform: translateY(-10px) scaleX(0.9); opacity: 0.6; }
+  66% { transform: translateY(-5px) scaleX(1.1); opacity: 0.3; }
+}
+
+@keyframes fire-lick-3 {
+  0%, 100% { transform: translateY(0) scaleX(1); opacity: 0.5; }
+  20% { transform: translateY(-15px) scaleX(0.85); opacity: 0.7; }
+  60% { transform: translateY(-3px) scaleX(1.15); opacity: 0.4; }
+  80% { transform: translateY(-10px) scaleX(1.02); opacity: 0.6; }
+}
+
+@keyframes fire-move {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(20px); }
+  50% { transform: translateX(-15px); }
+  75% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes fire-glow {
+  0%, 100% { opacity: 0.3; filter: blur(80px); }
+  50% { opacity: 0.6; filter: blur(60px); }
+}
+
+.blue-fire {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 300px;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.blue-fire::before,
+.blue-fire::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 200%;
+  height: 100%;
+  border-radius: 50% 50% 0 0;
+  transform: translateX(-50%);
+}
+
+.blue-fire::before {
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(26, 107, 196, 0.35) 0%, rgba(45, 144, 112, 0.12) 40%, transparent 70%);
+  animation: fire-glow 3s ease-in-out infinite;
+}
+
+.blue-fire::after {
+  background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(45, 144, 112, 0.12) 0%, rgba(42, 138, 158, 0.08) 30%, transparent 65%);
+  animation: fire-glow 4s ease-in-out infinite 1s;
+}
+
+.fire-tongue {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50% 50% 20% 20%;
+  filter: blur(30px);
+}
+
+.fire-tongue:nth-child(1) {
+  left: 10%; width: 120px; height: 180px;
+  background: linear-gradient(to top, rgba(26, 107, 196, 0.25), rgba(45, 144, 112, 0.08), transparent);
+  animation: fire-lick 2.5s ease-in-out infinite, fire-move 8s ease-in-out infinite;
+}
+
+.fire-tongue:nth-child(2) {
+  left: 25%; width: 100px; height: 140px;
+  background: linear-gradient(to top, rgba(45, 144, 112, 0.18), rgba(42, 138, 158, 0.06), transparent);
+  animation: fire-lick-2 3s ease-in-out infinite 0.5s, fire-move 10s ease-in-out infinite 1s;
+}
+
+.fire-tongue:nth-child(3) {
+  left: 40%; width: 150px; height: 220px;
+  background: linear-gradient(to top, rgba(26, 107, 196, 0.3), rgba(45, 144, 112, 0.1), transparent);
+  animation: fire-lick-3 2.8s ease-in-out infinite 0.2s, fire-move 7s ease-in-out infinite 2s;
+}
+
+.fire-tongue:nth-child(4) {
+  left: 55%; width: 90px; height: 130px;
+  background: linear-gradient(to top, rgba(45, 144, 112, 0.12), rgba(42, 138, 158, 0.05), transparent);
+  animation: fire-lick 3.2s ease-in-out infinite 1s, fire-move 9s ease-in-out infinite 0.5s;
+}
+
+.fire-tongue:nth-child(5) {
+  left: 68%; width: 130px; height: 190px;
+  background: linear-gradient(to top, rgba(26, 107, 196, 0.2), rgba(45, 144, 112, 0.08), transparent);
+  animation: fire-lick-2 2.6s ease-in-out infinite 0.8s, fire-move 11s ease-in-out infinite 3s;
+}
+
+.fire-tongue:nth-child(6) {
+  left: 82%; width: 110px; height: 160px;
+  background: linear-gradient(to top, rgba(45, 144, 112, 0.15), rgba(26, 107, 196, 0.06), transparent);
+  animation: fire-lick-3 3.5s ease-in-out infinite 1.5s, fire-move 7.5s ease-in-out infinite 1.5s;
+}
+
+@keyframes spark-rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  100% { transform: translateY(-250px) scale(0); opacity: 0; }
+}
+
+@keyframes spark-drift {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(30px); }
+  100% { transform: translateX(-20px); }
+}
+
+.spark {
+  position: absolute;
+  bottom: 30px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(45, 144, 112, 0.6);
+  animation: spark-rise 4s ease-out infinite, spark-drift 6s ease-in-out infinite;
+  filter: blur(1px);
+}
+
+.spark:nth-child(7) { left: 15%; animation-delay: 0s, 0s; width: 2px; height: 2px; background: rgba(26, 107, 196, 0.5); }
+.spark:nth-child(8) { left: 35%; animation-delay: 1s, 0.5s; width: 4px; height: 4px; }
+.spark:nth-child(9) { left: 50%; animation-delay: 2s, 1s; width: 2px; height: 2px; background: rgba(42, 138, 158, 0.6); }
+.spark:nth-child(10) { left: 65%; animation-delay: 0.5s, 1.5s; }
+.spark:nth-child(11) { left: 80%; animation-delay: 1.5s, 2s; width: 3px; height: 3px; background: rgba(26, 107, 196, 0.4); }
+.spark:nth-child(12) { left: 90%; animation-delay: 3s, 2.5s; width: 2px; height: 2px; }
