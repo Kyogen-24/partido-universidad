@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { Menu, X } from "lucide-react";
+import { MoreVertical, X } from "lucide-react";
 ---
 
 <!doctype html>
@@ -20,29 +20,30 @@ import { Menu, X } from "lucide-react";
       alt=""
       aria-hidden="true"
     />
-    <header class="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/90 backdrop-blur-md">
-      <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="/" class="flex items-center gap-2.5 font-heading text-lg font-semibold tracking-tight">
-          <img src="/images/LOGO_UNC.png" alt="UNC" class="h-10 w-auto" />
-          <span class="h-6 w-px bg-border" />
-          <img src="/logo.png" alt="Eres UNC" class="h-10 w-10" />
+    <!-- Navbar: transparent by default, reacts to scroll and background brightness -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+      <div class="mx-auto flex h-20 w-full items-center justify-between pl-2 pr-4 sm:pl-4 sm:pr-6 lg:pl-6 lg:pr-12">
+        <a href="/" class="flex items-center font-heading text-lg font-semibold tracking-tight">
+          <img src="/logo.svg" alt="Eres UNC" class="h-12 sm:h-14 w-auto transition-transform duration-300 hover:scale-105" />
         </a>
-        <nav class="hidden items-center gap-6 md:flex">
-          <a href="#equipo" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Equipo</a>
-          <a href="#propuesta" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Propuesta</a>
-          <a href="#calendario" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Calendario</a>
-          <a href="#testimonios" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Testimonios</a>
-          <a href="#contacto" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Contacto</a>
-          <a href="#contacto" class="inline-flex h-9 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground shadow-md shadow-primary/20 transition-all hover:bg-primary/80 hover:shadow-primary/30">
-            Sumate
-          </a>
+        <nav id="nav-links" class="hidden items-center gap-6 md:flex">
+          <a href="#equipo" class="nav-link text-sm font-medium transition-colors duration-300">Equipo</a>
+          <a href="#propuesta" class="nav-link text-sm font-medium transition-colors duration-300">Propuesta</a>
+          <a href="#calendario" class="nav-link text-sm font-medium transition-colors duration-300">Calendario</a>
+          <a href="#testimonios" class="nav-link text-sm font-medium transition-colors duration-300">Testimonios</a>
+          <a href="#contacto" class="nav-link text-sm font-medium transition-colors duration-300">Contacto</a>
         </nav>
-        <button id="menu-toggle" class="flex items-center justify-center md:hidden" aria-label="Menú">
-          <Menu class="h-6 w-6" id="menu-icon-open" />
-          <X class="h-6 w-6 hidden" id="menu-icon-close" />
-        </button>
+        <div class="flex items-center gap-3 ml-auto md:ml-0">
+          <a id="join-button" href="#contacto" class="inline-flex h-9 items-center gap-2 rounded-lg bg-white/20 hover:bg-white/30 border border-white/35 text-white backdrop-blur-sm px-3 sm:px-4 text-xs sm:text-sm font-semibold transition-all shadow-sm">
+            ¿Ya eres UNC?
+          </a>
+          <button id="menu-toggle" class="flex items-center justify-center md:hidden p-1.5" aria-label="Menú">
+            <span id="menu-icon-open" class="inline-flex"><MoreVertical className="h-6 w-6" /></span>
+            <span id="menu-icon-close" class="hidden"><X className="h-6 w-6" /></span>
+          </button>
+        </div>
       </div>
-      <div id="mobile-menu" class="hidden border-t border-border/40 bg-background/95 backdrop-blur-md md:hidden">
+      <div id="mobile-menu" class="hidden border-t border-border/10 border-b border-border/15 bg-background/80 backdrop-blur-lg shadow-lg md:hidden">
         <nav class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6 lg:px-8">
           <a href="#equipo" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Equipo</a>
           <a href="#propuesta" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Propuesta</a>
@@ -50,13 +51,13 @@ import { Menu, X } from "lucide-react";
           <a href="#testimonios" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Testimonios</a>
           <a href="#contacto" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Contacto</a>
           <a href="#contacto" class="mt-2 inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground shadow-md shadow-primary/20 transition-all hover:bg-primary/80 hover:shadow-primary/30">
-            Sumate
+            ¿Ya eres UNC?
           </a>
         </nav>
       </div>
     </header>
 
-    <main class="min-h-screen pt-16">
+    <main class="min-h-screen">
       <slot />
     </main>
 
@@ -66,7 +67,7 @@ import { Menu, X } from "lucide-react";
           <div class="flex items-center gap-2.5 text-sm text-muted-foreground">
             <img src="/images/LOGO_UNC.png" alt="UNC" class="h-8 w-auto" />
             <span class="h-5 w-px bg-border" />
-            <img src="/logo.png" alt="Eres UNC" class="h-8 w-auto" />
+            <img src="/logo.svg" alt="Eres UNC" class="h-8 w-auto" />
           </div>
           <nav class="flex flex-col items-center gap-3 text-sm text-muted-foreground sm:flex-row sm:gap-6">
             <a href="#propuesta" class="transition-colors hover:text-foreground">Propuesta</a>
@@ -82,13 +83,13 @@ import { Menu, X } from "lucide-react";
     </footer>
 
     <script>
+      // ── Mobile menu toggle ─────────────────────────────────────
       const toggle = document.getElementById("menu-toggle")!;
       const menu = document.getElementById("mobile-menu")!;
       const iconOpen = document.getElementById("menu-icon-open")!;
       const iconClose = document.getElementById("menu-icon-close")!;
 
       toggle.addEventListener("click", () => {
-        const isOpen = !menu.classList.contains("hidden");
         menu.classList.toggle("hidden");
         iconOpen.classList.toggle("hidden");
         iconClose.classList.toggle("hidden");
@@ -101,6 +102,112 @@ import { Menu, X } from "lucide-react";
           iconClose.classList.add("hidden");
         });
       });
+
+      // ── Transparent & reactive navbar ─────────────────────────
+      const navbar = document.getElementById("navbar")!;
+      const navLinks = document.querySelectorAll<HTMLElement>(".nav-link");
+      const menuToggleBtn = document.getElementById("menu-toggle")!;
+      const joinBtn = document.getElementById("join-button")!;
+
+      let isDark = false;
+      let isScrolled = false;
+
+      function applyNavStyle() {
+        if (isScrolled) {
+          // scrolled: frosted glass, use theme foreground
+          navbar.style.background = "";
+          navbar.style.backdropFilter = "";
+          navbar.classList.add(
+            "bg-background/90",
+            "backdrop-blur-md"
+          );
+          navLinks.forEach((l) => {
+            l.style.color = "";
+            l.classList.add("text-foreground");
+            l.classList.remove("text-white", "drop-shadow-sm");
+          });
+          menuToggleBtn.style.color = "";
+          
+          // scrolled style for join button: light primary background, dark text
+          joinBtn.className = "inline-flex h-9 items-center gap-2 rounded-lg bg-primary/15 hover:bg-primary/25 border border-primary/25 text-primary px-3 sm:px-4 text-xs sm:text-sm font-semibold transition-all shadow-sm";
+        } else {
+          // at top: fully transparent, adapt text to background
+          navbar.classList.remove(
+            "border-b",
+            "border-white/10",
+            "bg-background/90",
+            "backdrop-blur-md"
+          );
+          if (isDark) {
+            navLinks.forEach((l) => {
+              l.classList.remove("text-foreground");
+              l.classList.add("text-white", "drop-shadow-sm");
+            });
+            menuToggleBtn.style.color = "white";
+            
+            // transparent & dark bg style for join button: translucent white
+            joinBtn.className = "inline-flex h-9 items-center gap-2 rounded-lg bg-white/20 hover:bg-white/30 border border-white/35 text-white backdrop-blur-sm px-3 sm:px-4 text-xs sm:text-sm font-semibold transition-all shadow-sm";
+          } else {
+            navLinks.forEach((l) => {
+              l.classList.remove("text-white", "drop-shadow-sm");
+              l.classList.add("text-foreground");
+            });
+            menuToggleBtn.style.color = "";
+            
+            // transparent & light bg style for join button: subtle translucent dark
+            joinBtn.className = "inline-flex h-9 items-center gap-2 rounded-lg bg-black/5 hover:bg-black/10 border border-black/15 text-foreground px-3 sm:px-4 text-xs sm:text-sm font-semibold transition-all shadow-sm";
+          }
+        }
+      }
+
+      // Detect brightness of the pixel strip directly behind the navbar
+      function sampleBackgroundBrightness() {
+        // We look at the element at the center of the page, just below the navbar
+        const sampleY = navbar.offsetHeight + 2;
+        const sampleX = Math.round(window.innerWidth / 2);
+        const el = document.elementFromPoint(sampleX, sampleY) as HTMLElement | null;
+        if (!el) return;
+
+        // Walk up to find a meaningful background-color
+        let bg = "";
+        let node: HTMLElement | null = el;
+        while (node && node !== document.body.parentElement) {
+          const style = window.getComputedStyle(node);
+          const c = style.backgroundColor;
+          if (c && c !== "rgba(0, 0, 0, 0)" && c !== "transparent") {
+            bg = c;
+            break;
+          }
+          node = node.parentElement;
+        }
+
+        if (!bg) {
+          // fallback: use body background
+          bg = window.getComputedStyle(document.body).backgroundColor;
+        }
+
+        // Parse rgb/rgba and compute relative luminance
+        const match = bg.match(/\d+\.?\d*/g);
+        if (!match || match.length < 3) return;
+        const [r, g, b] = match.map(Number);
+        // sRGB luminance
+        const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        isDark = lum < 0.5;
+        applyNavStyle();
+      }
+
+      // Scroll listener
+      window.addEventListener("scroll", () => {
+        isScrolled = window.scrollY > 10;
+        applyNavStyle();
+        if (!isScrolled) sampleBackgroundBrightness();
+      }, { passive: true });
+
+      // Initial sample
+      sampleBackgroundBrightness();
+
+      // Re-sample on resize
+      window.addEventListener("resize", sampleBackgroundBrightness, { passive: true });
     </script>
   </body>
 </html>

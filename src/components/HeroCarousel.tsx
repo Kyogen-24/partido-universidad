@@ -1,7 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
-const images = ["/fondo1.jpg", "/fondo2.jpg", "/fondo3.jpg", "/fondo.jpg"];
+const slides = [
+  { src: "/fondo1.jpg", isPanoramic: false },
+  { src: "/fondo2.jpg", isPanoramic: true },
+  { src: "/fondo3.jpg", isPanoramic: false },
+  { src: "/fondo.jpg", isPanoramic: false },
+];
 
 const AUTOPLAY_INTERVAL = 4000;
 
@@ -11,7 +16,7 @@ export default function HeroCarousel() {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const goTo = useCallback((index: number) => {
-    setCurrentIndex((index + images.length) % images.length);
+    setCurrentIndex((index + slides.length) % slides.length);
   }, []);
 
   const goNext = useCallback(() => goTo(currentIndex + 1), [currentIndex, goTo]);
@@ -30,84 +35,100 @@ export default function HeroCarousel() {
 
   return (
     <section
-      className="relative isolate overflow-hidden"
+      className="relative isolate overflow-hidden min-h-[55vh] sm:min-h-[90vh] flex flex-col justify-between w-full"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Slides */}
-      <div className="absolute inset-0 -z-20">
-        {images.map((src, i) => (
+      <div className="absolute inset-0 -z-20 bg-slate-950">
+        {slides.map((slide, i) => (
           <div
-            key={src}
+            key={slide.src}
             className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
             style={{ opacity: i === currentIndex ? 1 : 0 }}
           >
-            <div
-              className="h-full w-full bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: `url('${src}')` }}
-            />
+            {slide.isPanoramic ? (
+              /* Cover image focused on the upper 20% (candidates' faces) to avoid cropping them */
+              <div
+                className="h-full w-full bg-cover bg-no-repeat"
+                style={{
+                  backgroundImage: `url('${slide.src}')`,
+                  backgroundPosition: "center 20%",
+                }}
+              />
+            ) : (
+              <div
+                className="h-full w-full bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url('${slide.src}')` }}
+              />
+            )}
           </div>
         ))}
       </div>
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 -z-10 bg-black/55" />
+      <div className="absolute inset-0 -z-10 bg-black/35" />
 
-      {/* Bottom controls */}
-      <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 items-center gap-3">
-        <button
-          onClick={goPrev}
-          className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white/60 backdrop-blur-sm transition-all hover:bg-white/30 hover:text-white/80"
-          aria-label="Anterior"
-        >
-          <ChevronLeft className="h-4 w-4" />
-        </button>
-        {images.map((_, i) => (
+      {/* Top Content: Title (just below navbar) */}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-16 sm:pt-28 sm:px-6 lg:px-8 w-full text-center">
+        <h1 className="font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl drop-shadow-md">
+          <span className="text-primary">ERES</span> la mejora continua
+        </h1>
+      </div>
+
+      {/* Bottom Content: Description and Buttons (just above dots) */}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8 w-full text-center mt-auto">
+        <p className="max-w-xl mx-auto text-sm text-white sm:text-white/90 sm:text-base drop-shadow-md font-medium leading-relaxed">
+          Transformando la UNC con innovación, transparencia y participación estudiantil.
+        </p>
+        <div className="mt-5 flex flex-row justify-center items-center gap-3">
+          <a
+            href="#propuesta"
+            className="inline-flex h-9 items-center justify-center rounded-lg bg-primary px-5 text-xs font-semibold text-white shadow-md shadow-primary/20 transition-all hover:bg-primary/80 hover:shadow-primary/30"
+          >
+            Propuesta
+          </a>
+          <a
+            href="#equipo"
+            className="inline-flex h-9 items-center justify-center rounded-lg bg-white/15 hover:bg-white/25 px-5 text-xs font-semibold text-white border border-white/25 backdrop-blur-xs transition-all"
+          >
+            Equipo
+          </a>
+        </div>
+      </div>
+
+      {/* Left Arrow (absolute left, no bg) */}
+      <button
+        onClick={goPrev}
+        className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-20 text-white/50 hover:text-white transition-all duration-300 p-2 cursor-pointer"
+        aria-label="Anterior"
+      >
+        <ChevronLeft className="h-8 w-8 sm:h-10 sm:w-10" />
+      </button>
+
+      {/* Right Arrow (absolute right, no bg) */}
+      <button
+        onClick={goNext}
+        className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-20 text-white/50 hover:text-white transition-all duration-300 p-2 cursor-pointer"
+        aria-label="Siguiente"
+      >
+        <ChevronRight className="h-8 w-8 sm:h-10 sm:w-10" />
+      </button>
+
+      {/* Bottom controls: Dots only */}
+      <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2">
+        {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
             className={`h-1.5 rounded-full transition-all duration-300 ${
               i === currentIndex
                 ? "w-6 bg-white/80"
-                : "w-1.5 bg-white/40 hover:bg-white/60"
+                : "w-1.5 bg-white/45 hover:bg-white/70"
             }`}
             aria-label={`Imagen ${i + 1}`}
           />
         ))}
-        <button
-          onClick={goNext}
-          className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white/60 backdrop-blur-sm transition-all hover:bg-white/30 hover:text-white/80"
-          aria-label="Siguiente"
-        >
-          <ChevronRight className="h-4 w-4" />
-        </button>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-40 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
-          <h1 className="font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            <span className="text-primary">ERES</span> la mejora continua
-          </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-sm text-white/70 sm:text-base">
-            Transformando la UNC con innovación, transparencia y participación estudiantil.
-          </p>
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
-            <a
-              href="#propuesta"
-              className="inline-flex h-11 items-center gap-2 rounded-xl border border-primary/30 bg-primary/20 px-6 text-sm font-medium text-white backdrop-blur-sm shadow-lg shadow-primary/20 transition-all hover:bg-primary/30 hover:shadow-primary/30"
-            >
-              Conoce la propuesta
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href="#contacto"
-              className="inline-flex h-11 items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-6 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20"
-            >
-              Únete al movimiento
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );

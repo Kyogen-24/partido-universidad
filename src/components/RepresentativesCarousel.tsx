@@ -11,7 +11,6 @@ export default function RepresentativesCarousel() {
   const [isHovered, setIsHovered] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedRep, setSelectedRep] = useState<typeof representatives[number] | null>(null);
-  const [isCompact, setIsCompact] = useState(false); // pantallas angostas
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const goTo = useCallback((index: number) => {
@@ -20,16 +19,6 @@ export default function RepresentativesCarousel() {
 
   const goNext = useCallback(() => goTo(currentIndex + 1), [currentIndex, goTo]);
   const goPrev = useCallback(() => goTo(currentIndex - 1), [currentIndex, goTo]);
-
-  // Detecta pantallas angostas para reducir el desplazamiento lateral
-  // y evitar overflow horizontal en móviles pequeños.
-  useEffect(() => {
-    const mql = window.matchMedia("(max-width: 480px)");
-    const update = () => setIsCompact(mql.matches);
-    update();
-    mql.addEventListener("change", update);
-    return () => mql.removeEventListener("change", update);
-  }, []);
 
   useEffect(() => {
     if (isPaused || isHovered) {
@@ -57,10 +46,9 @@ export default function RepresentativesCarousel() {
     const offset = ((index - currentIndex) % 3 + 3) % 3;
     const isCenter = offset === 0;
     const isRight = offset === 1;
-    const sideOffset = isCompact ? "42%" : "55%";
 
     return {
-      transform: `translateY(-50%) translateX(${isCenter ? "0" : isRight ? sideOffset : `-${sideOffset}`}) scale(${isCenter ? 1 : 0.8})`,
+      transform: `translateY(-50%) translateX(${isCenter ? "0" : isRight ? "var(--side-offset)" : "calc(-1 * var(--side-offset))"}) scale(${isCenter ? 1 : 0.8})`,
       transformOrigin: "center",
       opacity: isCenter ? 1 : 0.5,
       zIndex: isCenter ? 30 : 20,
@@ -84,7 +72,8 @@ export default function RepresentativesCarousel() {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div className="relative mx-auto h-[420px] max-w-[810px] xs:h-[440px] sm:h-[540px] sm:max-w-[900px] lg:h-[580px] lg:max-w-[990px]">
+          {/* Responsive offset variable: larger separation on wider screens */}
+          <div className="relative mx-auto h-[420px] max-w-[810px] xs:h-[440px] sm:h-[540px] sm:max-w-[900px] lg:h-[580px] lg:max-w-[990px] xl:max-w-[1200px] [--side-offset:42%] sm:[--side-offset:60%] md:[--side-offset:80%] lg:[--side-offset:105%] xl:[--side-offset:130%]">
             {representatives.map((rep, i) => {
               const styles = getCardStyles(i);
               const isCenter = ((i - currentIndex) % 3 + 3) % 3 === 0;
