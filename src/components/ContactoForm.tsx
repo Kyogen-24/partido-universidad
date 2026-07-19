@@ -89,7 +89,7 @@ export default function ContactoForm() {
               <p className="font-heading text-sm font-semibold">Seguinos en redes</p>
               <div className="mt-4 flex gap-3">
                 <a
-                  href="#"
+                  href="https://www.instagram.com/eres.unc.cajamarca/"
                   className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all hover:bg-muted hover:text-foreground"
                   aria-label="Instagram"
                 >
@@ -100,14 +100,14 @@ export default function ContactoForm() {
                   </svg>
                 </a>
                 <a
-                  href="#"
+                  href="https://www.tiktok.com/@eres.unc.cajamarca"
                   className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all hover:bg-muted hover:text-foreground"
                   aria-label="TikTok"
                 >
                   <Music2 className="h-4 w-4" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.facebook.com/eres.unc.cajamarca"
                   className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all hover:bg-muted hover:text-foreground"
                   aria-label="Facebook"
                 >

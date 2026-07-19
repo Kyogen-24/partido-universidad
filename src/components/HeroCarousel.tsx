@@ -71,16 +71,12 @@ export default function HeroCarousel() {
 
 
 
-      {/* Top Content: Title (just below navbar) */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-24 sm:pt-32 sm:px-6 lg:px-8 w-full text-center">
-        <h1 className="font-heading tracking-tight drop-shadow-lg text-xl sm:text-2xl lg:text-3xl leading-tight">
+      {/* Bottom Content: Title + Buttons */}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-20 sm:pb-24 sm:px-6 lg:px-8 w-full text-center mt-auto">
+        <h1 className="font-heading tracking-tight drop-shadow-lg text-3xl sm:text-4xl lg:text-5xl leading-tight font-bold mb-6">
           <span className="text-primary">ERES</span>{" "}
           <span className="text-white">la mejora continua</span>
         </h1>
-      </div>
-
-      {/* Bottom Content: Buttons only */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-20 sm:pb-24 sm:px-6 lg:px-8 w-full text-center mt-auto">
         <div className="flex flex-row justify-center items-center gap-3">
           <a
             href="#propuesta"

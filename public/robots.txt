@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://partido-universidad.vercel.app/sitemap.xml

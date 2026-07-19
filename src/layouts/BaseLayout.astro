@@ -1,6 +1,27 @@
 ---
 import "../styles/global.css";
 import { MoreVertical, X } from "lucide-react";
+import NavJoinButton from "@/components/NavJoinButton";
+
+const pageTitle = "Eres UNC — Elecciones UNC 2026-2031 | Cajamarca";
+const pageDescription =
+  "Movimiento académico ERES UNC para las elecciones 2026 de la Universidad Nacional de Cajamarca. Conoce nuestra propuesta, equipo y plan de gobierno 2026-2031.";
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL("/images/LOGO_UNC.png", Astro.site);
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Eres UNC",
+  alternateName: "Movimiento Académico ERES UNC",
+  url: Astro.site?.toString(),
+  logo: ogImageUrl.toString(),
+  sameAs: [
+    "https://www.facebook.com/eres.unc.cajamarca",
+    "https://www.instagram.com/eres.unc.cajamarca/",
+    "https://www.tiktok.com/@eres.unc.cajamarca",
+  ],
+};
 ---
 
 <!doctype html>
@@ -10,8 +31,26 @@ import { MoreVertical, X } from "lucide-react";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Eres UNC — Partido Universitario</title>
-    <meta name="description" content="Construyamos juntos la universidad que queremos. Elecciones UNC 2026-2031." />
+    <link rel="canonical" href={canonicalUrl} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Eres UNC" />
+    <meta property="og:locale" content="es_PE" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={ogImageUrl} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
   </head>
   <body class="relative min-h-screen bg-background text-foreground antialiased">
     <img
@@ -22,9 +61,9 @@ import { MoreVertical, X } from "lucide-react";
     />
     <!-- Navbar: transparent by default, reacts to scroll and background brightness -->
     <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
-      <div class="mx-auto flex h-20 w-full items-center justify-between pl-2 pr-4 sm:pl-4 sm:pr-6 lg:pl-6 lg:pr-12">
+      <div class="mx-auto flex h-[4.5rem] w-full items-center justify-between pl-2 pr-4 sm:pl-4 sm:pr-6 lg:pl-6 lg:pr-12">
         <a href="/" class="flex items-center font-heading text-lg font-semibold tracking-tight">
-          <img src="/logo.svg" alt="Eres UNC" class="h-12 sm:h-14 w-auto transition-transform duration-300 hover:scale-105" />
+          <img src="/logo.svg" alt="Eres UNC" class="h-11 sm:h-13 w-auto transition-transform duration-300 hover:scale-105" />
         </a>
         <nav id="nav-links" class="hidden items-center gap-6 md:flex">
           <a href="#equipo" class="nav-link text-sm font-medium transition-colors duration-300">Equipo</a>
@@ -34,9 +73,7 @@ import { MoreVertical, X } from "lucide-react";
           <a href="#contacto" class="nav-link text-sm font-medium transition-colors duration-300">Contacto</a>
         </nav>
         <div class="flex items-center gap-3 ml-auto md:ml-0">
-          <a id="join-button" href="#contacto" class="inline-flex h-9 items-center gap-2 rounded-lg bg-white/20 hover:bg-white/30 border border-white/35 text-white backdrop-blur-sm px-3 sm:px-4 text-xs sm:text-sm font-semibold transition-all shadow-sm">
-            ¿Ya eres UNC?
-          </a>
+          <NavJoinButton client:load />
           <button id="menu-toggle" class="flex items-center justify-center md:hidden p-1.5" aria-label="Menú">
             <span id="menu-icon-open" class="inline-flex"><MoreVertical className="h-6 w-6" /></span>
             <span id="menu-icon-close" class="hidden"><X className="h-6 w-6" /></span>
@@ -50,9 +87,7 @@ import { MoreVertical, X } from "lucide-react";
           <a href="#calendario" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Calendario</a>
           <a href="#testimonios" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Testimonios</a>
           <a href="#contacto" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Contacto</a>
-          <a href="#contacto" class="mt-2 inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground shadow-md shadow-primary/20 transition-all hover:bg-primary/80 hover:shadow-primary/30">
-            ¿Ya eres UNC?
-          </a>
+          <NavJoinButton variant="mobile" client:load />
         </nav>
       </div>
     </header>
@@ -61,21 +96,21 @@ import { MoreVertical, X } from "lucide-react";
       <slot />
     </main>
 
-    <footer class="border-t border-border/40 bg-muted/30">
+    <footer class="border-t border-white/10 bg-neutral-900">
       <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
-          <div class="flex items-center gap-2.5 text-sm text-muted-foreground">
+          <div class="flex items-center gap-2.5 text-sm text-white/60">
             <img src="/images/LOGO_UNC.png" alt="UNC" class="h-8 w-auto" />
-            <span class="h-5 w-px bg-border" />
+            <span class="h-5 w-px bg-white/15" />
             <img src="/logo.svg" alt="Eres UNC" class="h-8 w-auto" />
           </div>
-          <nav class="flex flex-col items-center gap-3 text-sm text-muted-foreground sm:flex-row sm:gap-6">
-            <a href="#propuesta" class="transition-colors hover:text-foreground">Propuesta</a>
-            <a href="#equipo" class="transition-colors hover:text-foreground">Equipo</a>
-            <a href="#calendario" class="transition-colors hover:text-foreground">Calendario</a>
-            <a href="#contacto" class="transition-colors hover:text-foreground">Contacto</a>
+          <nav class="flex flex-col items-center gap-3 text-sm text-white/60 sm:flex-row sm:gap-6">
+            <a href="#propuesta" class="transition-colors hover:text-white">Propuesta</a>
+            <a href="#equipo" class="transition-colors hover:text-white">Equipo</a>
+            <a href="#calendario" class="transition-colors hover:text-white">Calendario</a>
+            <a href="#contacto" class="transition-colors hover:text-white">Contacto</a>
           </nav>
-          <p class="text-xs text-muted-foreground">
+          <p class="text-xs text-white/45">
             &copy; {new Date().getFullYear()} Eres UNC. Todos los derechos reservados.
           </p>
         </div>
@@ -107,7 +142,6 @@ import { MoreVertical, X } from "lucide-react";
       const navbar = document.getElementById("navbar")!;
       const navLinks = document.querySelectorAll<HTMLElement>(".nav-link");
       const menuToggleBtn = document.getElementById("menu-toggle")!;
-      const joinBtn = document.getElementById("join-button")!;
 
       let isDark = false;
       let isScrolled = false;
@@ -127,9 +161,8 @@ import { MoreVertical, X } from "lucide-react";
             l.classList.remove("text-white", "drop-shadow-sm");
           });
           menuToggleBtn.style.color = "";
-          
-          // scrolled style for join button: light primary background, dark text
-          joinBtn.className = "inline-flex h-9 items-center gap-2 rounded-lg bg-primary/15 hover:bg-primary/25 border border-primary/25 text-primary px-3 sm:px-4 text-xs sm:text-sm font-semibold transition-all shadow-sm";
+          document.body.classList.add("nav-scrolled");
+          document.body.classList.remove("nav-transparent-dark", "nav-transparent-light");
         } else {
           // at top: fully transparent, adapt text to background
           navbar.classList.remove(
@@ -138,24 +171,23 @@ import { MoreVertical, X } from "lucide-react";
             "bg-background/90",
             "backdrop-blur-md"
           );
+          document.body.classList.remove("nav-scrolled");
           if (isDark) {
             navLinks.forEach((l) => {
               l.classList.remove("text-foreground");
               l.classList.add("text-white", "drop-shadow-sm");
             });
             menuToggleBtn.style.color = "white";
-            
-            // transparent & dark bg style for join button: translucent white
-            joinBtn.className = "inline-flex h-9 items-center gap-2 rounded-lg bg-white/20 hover:bg-white/30 border border-white/35 text-white backdrop-blur-sm px-3 sm:px-4 text-xs sm:text-sm font-semibold transition-all shadow-sm";
+            document.body.classList.add("nav-transparent-dark");
+            document.body.classList.remove("nav-transparent-light");
           } else {
             navLinks.forEach((l) => {
               l.classList.remove("text-white", "drop-shadow-sm");
               l.classList.add("text-foreground");
             });
             menuToggleBtn.style.color = "";
-            
-            // transparent & light bg style for join button: subtle translucent dark
-            joinBtn.className = "inline-flex h-9 items-center gap-2 rounded-lg bg-black/5 hover:bg-black/10 border border-black/15 text-foreground px-3 sm:px-4 text-xs sm:text-sm font-semibold transition-all shadow-sm";
+            document.body.classList.add("nav-transparent-light");
+            document.body.classList.remove("nav-transparent-dark");
           }
         }
       }
