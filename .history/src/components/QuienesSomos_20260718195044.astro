@@ -1,0 +1,79 @@
+---
+import { ArrowRight, Sparkles, ShieldCheck, Flame, HeartHandshake } from "lucide-react";
+
+const pilares = [
+  { letter: "E", word: "Experiencia", desc: "Años de trayectoria al servicio de la comunidad universitaria", Icon: Sparkles },
+  { letter: "R", word: "Responsabilidad", desc: "Gestión transparente y compromiso con cada decisión", Icon: ShieldCheck },
+  { letter: "E", word: "Esfuerzo", desc: "Trabajo constante para alcanzar metas que benefician a todos", Icon: Flame },
+  { letter: "S", word: "Servicio", desc: "El estudiante y la universidad siempre en primer lugar", Icon: HeartHandshake },
+];
+---
+
+<section id="quienes-somos" class="relative overflow-hidden bg-white">
+  <!-- Video pequeño centrado borroso -->
+  <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      class="h-[50vh] w-[50vw] max-w-2xl rounded-3xl object-cover opacity-100"
+    >
+      <source src="/yupiVid.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-6xl px-6 py-32 sm:px-8 lg:px-12">
+
+    <!-- ─── Header centrado ─── -->
+    <div class="mx-auto max-w-2xl text-center animate-fade-in-up">
+      <h2 class="font-heading text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+        Somos el cambio que la{" "}
+        <span class="animate-gradient-text">UNC</span>
+        {" "}necesita
+      </h2>
+      <p class="mt-6 text-lg leading-relaxed text-muted-foreground/50 max-w-lg mx-auto">
+        Unimos a docentes, estudiantes y colaboradores con una visión clara:
+        una universidad más <span class="text-foreground font-medium">innovadora</span>,
+        <span class="text-foreground font-medium"> inclusiva</span> y
+        <span class="text-foreground font-medium"> competitiva</span>.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="#propuesta"
+          class="group inline-flex items-center gap-2.5 rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
+        >
+          Conoce nuestra propuesta
+          <ArrowRight class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+        </a>
+        <a
+          href="#equipo"
+          class="inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/50 backdrop-blur-sm px-8 py-3.5 text-sm font-semibold text-foreground transition-all duration-300 hover:bg-accent/50 hover:border-border hover:-translate-y-0.5"
+        >
+          Conoce al equipo
+        </a>
+      </div>
+    </div>
+
+    <!-- ─── Pilares ERES ─── -->
+    <div class="mt-20 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-4">
+      {pilares.map((p, i) => (
+        <div
+          class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/60 bg-white/50 p-4 sm:p-6 backdrop-blur-xl transition-all duration-500 hover:bg-white/70 hover:shadow-[0_8px_40px_-12px] hover:shadow-primary/15 hover:-translate-y-1 dark:border-white/[0.08] dark:bg-white/[0.03] dark:hover:bg-white/[0.06] animate-fade-in-up"
+          style={`animation-delay: ${300 + i * 80}ms`}
+        >
+          <p.Icon class="absolute -right-3 -bottom-3 h-24 w-24 sm:h-28 sm:w-28 text-primary/[0.06] transition-all duration-700 group-hover:text-primary/[0.12] group-hover:scale-110 dark:text-white/[0.04] dark:group-hover:text-white/[0.07]" />
+          <div class="relative">
+            <p class="mb-1.5 text-4xl sm:text-5xl font-black tracking-tighter text-foreground/[0.07] transition-colors duration-500 group-hover:text-primary/15 dark:text-white/[0.06] dark:group-hover:text-primary/20">
+              {p.letter}
+            </p>
+            <h3 class="text-sm sm:text-base font-semibold text-foreground">{p.word}</h3>
+            <p class="mt-1 text-[11px] sm:text-[13px] leading-relaxed text-muted-foreground/70">{p.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
