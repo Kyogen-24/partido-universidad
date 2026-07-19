@@ -12,6 +12,7 @@ const CYCLE_INTERVAL = 3000;
 const ANIMATION_DURATION = 600;
 const CHARACTER_SET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
 const TEXT = "¿ya ERES UNC?";
+const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/BX0OWcAWv0r0rX4nOtDW4s?s=qs&p=i&ilr=1";
 
 function ScrambleText({ className }: { className?: string }) {
   const [displayText, setDisplayText] = useState<string[]>(() => TEXT.split(""));
@@ -93,7 +94,9 @@ export default function NavJoinButton({ variant = "desktop" }: NavJoinButtonProp
   if (variant === "mobile") {
     return (
       <a
-        href="#contacto"
+        href={WHATSAPP_GROUP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         className="mt-2 inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground shadow-md shadow-primary/20 transition-all hover:bg-primary/80 hover:shadow-primary/30"
       >
         <ScrambleText className="text-sm font-medium text-primary-foreground" />
@@ -104,7 +107,9 @@ export default function NavJoinButton({ variant = "desktop" }: NavJoinButtonProp
   return (
     <a
       id="join-button"
-      href="#contacto"
+      href={WHATSAPP_GROUP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
       className="inline-flex h-9 items-center gap-2 rounded-lg px-3 sm:px-4 text-xs sm:text-sm font-semibold transition-all shadow-sm"
     >
       <ScrambleText className="text-xs sm:text-sm font-semibold" />

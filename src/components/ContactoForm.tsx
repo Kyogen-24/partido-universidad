@@ -1,6 +1,8 @@
 import { useState, type FormEvent } from "react";
 import { Send, Mail, Music2 } from "lucide-react";
 
+const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/BX0OWcAWv0r0rX4nOtDW4s?s=qs&p=i&ilr=1";
+
 export default function ContactoForm() {
   const [submitted, setSubmitted] = useState(false);
 
@@ -125,13 +127,20 @@ export default function ContactoForm() {
               </div>
             </div>
             <div>
-              <p className="font-heading text-sm font-semibold">Contacto directo</p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                contacto@eresunc.edu
-              </p>
-              <p className="text-sm text-muted-foreground">
-                +54 351 555-0100
-              </p>
+              <p className="font-heading text-sm font-semibold">Únete a nuestro grupo de WhatsApp</p>
+              <a
+                href={WHATSAPP_GROUP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-block rounded-2xl border border-border bg-background p-2 transition-all hover:border-primary/50"
+                aria-label="Abrir grupo de WhatsApp"
+              >
+                <img
+                  src="/QR.jpg"
+                  alt="Código QR del grupo de WhatsApp de Eres UNC"
+                  className="h-40 w-40 rounded-xl object-contain"
+                />
+              </a>
             </div>
           </div>
         </div>
