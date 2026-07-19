@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+/** @jsxRuntime classic */
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import FacebookEmbed from "@/components/ui/FacebookEmbed";
 import InstagramEmbed from "@/components/ui/InstagramEmbed";
