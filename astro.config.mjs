@@ -5,7 +5,7 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://partido-universidad.vercel.app',
+  site: 'https://www.eresunc.online',
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],

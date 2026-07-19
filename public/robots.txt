@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://partido-universidad.vercel.app/sitemap.xml
+Sitemap: https://www.eresunc.online/sitemap.xml

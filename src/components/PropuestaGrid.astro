@@ -1,51 +1,44 @@
 ---
-import { ShieldCheck, ScrollText, Brain, Laptop, Globe, HeartHandshake } from "lucide-react";
+import { FlipCard } from "@/components/animate-ui/components/community/flip-card";
 
 const ejes = [
-  { title: "Gobernanza moderna", desc: "Gestión ordenada, transparente y basada en buenas prácticas institucionales.", Icon: ShieldCheck },
-  { title: "Calidad académica", desc: "Acreditación de programas, actualización curricular y formación docente continua.", Icon: ScrollText },
-  { title: "Bienestar estudiantil", desc: "Tutoría académica, becas equitativas, salud mental y comedor universitario.", Icon: Brain },
-  { title: "Transformación digital", desc: "Modernización tecnológica y digitalización de procesos de servicio al estudiante.", Icon: Laptop },
-  { title: "Investigación e innovación", desc: "Fondos concursables, laboratorios modernos y vinculación con el sector productivo.", Icon: Globe },
-  { title: "Responsabilidad social", desc: "RSU articulada con docencia e investigación para impactar en Cajamarca.", Icon: HeartHandshake },
+  { title: "Gobernanza moderna",        desc: "Gestión ordenada, transparente y basada en buenas prácticas institucionales.",                                    img: "/propuestas/gobernanza.jpg" },
+  { title: "Calidad académica",         desc: "Acreditación de programas, actualización curricular y formación docente continua.",                              img: "/propuestas/calidad.jpg" },
+  { title: "Bienestar estudiantil",     desc: "Tutoría académica, becas equitativas, salud mental y comedor universitario.",                                    img: "/propuestas/bienestar.jpg" },
+  { title: "Transformación digital",    desc: "Modernización tecnológica y digitalización de procesos de servicio al estudiante.",                              img: "/propuestas/digital.jpg" },
+  { title: "Investigación e innovación",desc: "Fondos concursables, laboratorios modernos y vinculación con el sector productivo.",                             img: "/propuestas/investigacion.jpg" },
+  { title: "Responsabilidad social",    desc: "RSU articulada con docencia e investigación para impactar en Cajamarca.",                                        img: "/propuestas/rsu.jpg" },
 ];
-
 ---
 
 <section id="propuesta" class="border-t border-border/40 bg-background">
   <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
 
     <!-- Grid principal -->
-    <div class="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-8">
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-12">
 
-      <!-- Columna izquierda: encabezado + lista de ejes (2 cols en sm+) -->
+      <!-- Columna izquierda: encabezado + FlipCards -->
       <div class="lg:col-span-2">
         <!-- Encabezado -->
-        <div class="mb-14">
+        <div class="mb-10">
           <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Plan de Gobierno 2026–2031</p>
           <h2 class="font-heading text-3xl font-bold tracking-tight sm:text-4xl max-w-xl">
             Nuestra propuesta de mejora continua
           </h2>
         </div>
-        <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+
+        <!-- Grid de FlipCards -->
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
           {ejes.map((eje) => (
-            <div class="flex items-start gap-4 group">
-              <div class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-primary/20 bg-primary/8 text-primary transition-colors group-hover:bg-primary/15">
-                <eje.Icon className="h-4 w-4" />
-              </div>
-              <div>
-                <h3 class="font-heading text-sm font-semibold">{eje.title}</h3>
-                <p class="mt-1 text-xs leading-relaxed text-muted-foreground">{eje.desc}</p>
-              </div>
-            </div>
+            <FlipCard data={eje} client:visible />
           ))}
         </div>
       </div>
 
       <!-- Columna derecha: previsualización PDF + descarga -->
-      <div class="flex flex-col justify-start gap-4">
+      <div class="flex flex-col justify-center items-center gap-4">
         <!-- Preview del PDF -->
-        <div class="mx-auto w-[70%] overflow-hidden rounded-2xl border border-border/40 shadow-lg bg-muted/30 aspect-[15/16] relative">
+        <div class="w-[90%] overflow-hidden rounded-2xl border border-border/40 shadow-lg bg-muted/30 aspect-[15/16] relative">
           <iframe
             src="/plan-trabajo.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=0"
             class="h-full w-full"
@@ -56,7 +49,7 @@ const ejes = [
         <a
           href="/plan-trabajo.pdf"
           download
-          class="inline-flex h-10 w-full items-center justify-center gap-2 rounded-xl border border-primary/30 bg-primary/8 px-5 text-sm font-semibold text-primary transition-all hover:bg-primary/15 hover:border-primary/50"
+          class="inline-flex h-10 w-[90%] items-center justify-center gap-2 rounded-xl border border-primary/30 bg-primary/8 px-5 text-sm font-semibold text-primary transition-all hover:bg-primary/15 hover:border-primary/50"
         >
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
