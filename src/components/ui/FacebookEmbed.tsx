@@ -10,7 +10,7 @@ export default function FacebookEmbed({ url, className }: FacebookEmbedProps) {
 
   return (
     <div
-      className={`flex aspect-[4/5] w-full items-center justify-center overflow-hidden bg-black ${className ?? ""}`}
+      className={`flex aspect-[4/5] w-full items-center justify-center overflow-hidden rounded-b-xl bg-slate-50 ${className ?? ""}`}
     >
       <div className="relative aspect-[9/16] h-full">
         <iframe
