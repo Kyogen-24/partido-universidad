@@ -14,7 +14,7 @@ export default function InstagramEmbed({ url, className }: InstagramEmbedProps) 
     return (
       <div
         className={cn(
-          "flex aspect-[4/5] w-full flex-col items-center justify-center gap-2 bg-muted p-4 text-center",
+          "flex aspect-[4/5] w-full flex-col items-center justify-center gap-2 rounded-b-xl bg-gradient-to-b from-[#833ab4]/10 via-[#fd1d1d]/10 to-[#fcb045]/10 p-4 text-center",
           className
         )}
       >
@@ -35,7 +35,7 @@ export default function InstagramEmbed({ url, className }: InstagramEmbedProps) 
   const embedUrl = `https://www.instagram.com/${type}/${postId}/embed/captioned/`;
 
   return (
-    <div className={cn("relative aspect-[4/5] w-full overflow-hidden bg-white", className)}>
+    <div className={cn("relative aspect-[4/5] w-full overflow-hidden rounded-b-xl bg-slate-50", className)}>
       <iframe
         src={embedUrl}
         className="absolute inset-0 h-full w-full border-0"
