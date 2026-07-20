@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   { src: "/fondo1.jpg", isPanoramic: false },
@@ -69,28 +69,27 @@ export default function HeroCarousel() {
       {/* Dark overlay */}
       <div className="absolute inset-0 -z-10 bg-black/35" />
 
-
-
-      {/* Top Content: Title (just below navbar) */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-24 sm:pt-32 sm:px-6 lg:px-8 w-full text-center">
-        <h1 className="font-heading tracking-tight drop-shadow-lg text-xl sm:text-2xl lg:text-3xl leading-tight">
-          <span className="text-primary">ERES</span>{" "}
+      {/* Bottom Content: Title + Buttons */}
+      <div className="relative z-10 mx-auto mt-auto w-full max-w-7xl px-4 pb-20 text-center sm:px-6 sm:pb-24 lg:px-8">
+        <h1 className="font-heading text-3xl font-bold leading-tight tracking-tight drop-shadow-lg sm:text-4xl lg:text-5xl">
+          <span
+            className="font-bold text-green-400"
+            style={{ WebkitTextStroke: "0.6px white" }}
+          >
+            ERES
+          </span>{" "}
           <span className="text-white">la mejora continua</span>
         </h1>
-      </div>
-
-      {/* Bottom Content: Buttons only */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-20 sm:pb-24 sm:px-6 lg:px-8 w-full text-center mt-auto">
-        <div className="flex flex-row justify-center items-center gap-3">
+        <div className="flex flex-row items-center justify-center gap-3">
           <a
             href="#propuesta"
-            className="inline-flex h-9 items-center justify-center rounded-lg bg-white/15 hover:bg-white/25 px-5 text-xs font-semibold text-white border border-white/25 backdrop-blur-xs transition-all"
+            className="inline-flex h-9 items-center justify-center rounded-lg border border-white/25 bg-white/15 px-5 text-xs font-semibold text-white backdrop-blur-xs transition-all hover:bg-white/25"
           >
             Propuesta
           </a>
           <a
             href="#equipo"
-            className="inline-flex h-9 items-center justify-center rounded-lg bg-white/15 hover:bg-white/25 px-5 text-xs font-semibold text-white border border-white/25 backdrop-blur-xs transition-all"
+            className="inline-flex h-9 items-center justify-center rounded-lg border border-white/25 bg-white/15 px-5 text-xs font-semibold text-white backdrop-blur-xs transition-all hover:bg-white/25"
           >
             Equipo
           </a>

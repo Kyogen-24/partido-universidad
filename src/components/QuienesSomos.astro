@@ -1,80 +1,74 @@
 ---
-import { Sparkles, ShieldCheck, Flame, HeartHandshake, Shield, Scale, BookOpen, Users } from "lucide-react";
+import { ArrowRight, Flame, HeartHandshake, ShieldCheck, Sparkles } from "lucide-react";
 
-const acronimo = [
-  { label: "Experiencia", color: "text-blue-600 dark:text-blue-400", Icon: Sparkles },
-  { label: "Responsabilidad", color: "text-teal-600 dark:text-teal-400", Icon: ShieldCheck },
-  { label: "Esfuerzo", color: "text-emerald-600 dark:text-emerald-400", Icon: Flame },
-  { label: "Servicio", color: "text-green-600 dark:text-green-400", Icon: HeartHandshake },
-];
-
-const valores = [
-  { title: "Autonomía universitaria", desc: "Democracia institucional y respeto al Estatuto de la UNC.", Icon: Shield },
-  { title: "Ética e integridad", desc: "Transparencia y meritocracia en cada decisión.", Icon: Scale },
-  { title: "Libertad de cátedra", desc: "Pensamiento crítico y respeto a la pluralidad.", Icon: BookOpen },
-  { title: "Compromiso social", desc: "Vinculación con los problemas de Cajamarca y la región.", Icon: Users },
+const pilares = [
+  { letter: "E", word: "Experiencia", desc: "Años de trayectoria al servicio de la familia universitaria", Icon: Sparkles },
+  { letter: "R", word: "Responsabilidad", desc: "Gestión transparente y compromiso con cada decisión", Icon: ShieldCheck },
+  { letter: "E", word: "Esfuerzo", desc: "Trabajo constante para alcanzar metas que benefician a todos", Icon: Flame },
+  { letter: "S", word: "Servicio", desc: "Estudiante, docente y administrativo siempre en primer lugar", Icon: HeartHandshake },
 ];
 ---
 
-<section id="quienes-somos" class="border-t border-border/40">
-  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+<section id="quienes-somos" class="relative overflow-hidden bg-white text-slate-900">
+  <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none sm:items-center sm:justify-center">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      class="-mt-[18vh] h-[35vh] w-[70vw] max-w-2xl rounded-2xl opacity-40 sm:mt-0 sm:h-[50vh] sm:w-[50vw] sm:rounded-3xl sm:opacity-50"
+    >
+      <source src="/yupiVid.mp4" type="video/mp4" />
+    </video>
+  </div>
 
-    <!-- Encabezado -->
-    <div class="mb-14 max-w-xl">
-      <h2 class="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-        Somos ERES UNC
+  <div class="relative z-10 mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-32 lg:px-12">
+    <div class="mx-auto max-w-2xl text-center animate-fade-in-up">
+      <h2 class="font-heading text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+        Somos el cambio que la{" "}
+        <span class="animate-gradient-text">UNC</span>
+        {" "}necesita
       </h2>
+      <p class="mx-auto mt-4 max-w-lg text-base font-bold leading-relaxed text-slate-700 sm:mt-6 sm:text-lg">
+        Unimos a docentes, estudiantes, administrativos y egresados con una visión clara:
+        una universidad más <span class="font-medium text-slate-900">innovadora</span>,
+        <span class="font-medium text-slate-900"> inclusiva</span> y
+        <span class="font-medium text-slate-900"> competitiva</span>.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-10 sm:gap-4">
+        <a
+          href="#propuesta"
+          class="group inline-flex items-center gap-2.5 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/30 sm:px-8 sm:py-3.5"
+        >
+          Conoce nuestra propuesta
+          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+        </a>
+        <a
+          href="#equipo"
+          class="inline-flex items-center gap-2 rounded-full border border-slate-300/60 bg-white/60 px-6 py-3 text-sm font-semibold text-slate-900 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-400/70 hover:bg-white/80 sm:px-8 sm:py-3.5"
+        >
+          Conoce al equipo
+        </a>
+      </div>
     </div>
 
-    <!-- 3 columnas -->
-    <div class="grid grid-cols-1 gap-10 sm:grid-cols-3">
-
-      <!-- Columna 1: resumen -->
-      <div>
-        <p class="text-sm leading-relaxed text-muted-foreground">
-        Un movimiento académico comprometido con una universidad innovadora, inclusiva, 
-        autónoma y competitiva. Unimos a docentes, estudiantes y colaboradores 
-        para transformar el futuro, situando al estudiante en el centro de cada decisión.
-        </p>
-      </div>
-
-      <!-- Columna 2: acrónimo ERES -->
-      <div>
-        <h3 class="mb-5 font-heading text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-          El acrónimo ERES
-        </h3>
-        <div class="space-y-5">
-          {acronimo.map((a) => (
-            <div class="group flex items-center gap-3.5">
-              <a.Icon className={`h-5 w-5 shrink-0 ${a.color} transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12`} />
-              <span class="text-sm font-semibold text-foreground">
-                <span class={`text-base font-extrabold tracking-wide ${a.color}`}>{a.label.charAt(0)}</span>{a.label.slice(1)}
-              </span>
-            </div>
-          ))}
+    <div class="mt-20 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-4">
+      {pilares.map((p, i) => (
+        <div
+          class="group relative overflow-hidden rounded-2xl border border-white/60 bg-white/50 p-4 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:bg-white/70 hover:shadow-[0_8px_40px_-12px] hover:shadow-primary/15 animate-fade-in-up sm:rounded-3xl sm:p-6"
+          style={`animation-delay: ${300 + i * 80}ms`}
+        >
+          <p.Icon className="absolute -right-3 -bottom-3 h-24 w-24 text-primary/[0.06] transition-all duration-700 group-hover:scale-110 group-hover:text-primary/[0.12] sm:h-28 sm:w-28" />
+          <div class="relative">
+            <p class="mb-1.5 text-4xl font-black tracking-tighter text-slate-900 transition-colors duration-500 group-hover:text-primary/15 sm:text-5xl">
+              {p.letter}
+            </p>
+            <h3 class="text-sm font-semibold text-slate-900 sm:text-base">{p.word}</h3>
+            <p class="mt-1 text-[11px] leading-relaxed text-slate-600 sm:text-[13px]">{p.desc}</p>
+          </div>
         </div>
-      </div>
-
-      <!-- Columna 3: valores -->
-      <div>
-        <h3 class="mb-5 font-heading text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-          Nuestros valores
-        </h3>
-        <div class="space-y-4">
-          {valores.map((v) => (
-            <div class="group flex items-start gap-3">
-              <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary/15">
-                <v.Icon className="h-4 w-4" />
-              </div>
-              <div>
-                <p class="text-sm font-semibold">{v.title}</p>
-                <p class="text-xs leading-relaxed text-muted-foreground">{v.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
+      ))}
     </div>
   </div>
 </section>

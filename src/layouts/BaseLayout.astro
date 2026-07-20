@@ -1,6 +1,27 @@
 ---
 import "../styles/global.css";
 import { MoreVertical, X } from "lucide-react";
+import ThemeToggler from "@/components/ThemeToggler";
+
+const pageTitle = "Eres UNC — Elecciones UNC 2026-2031 | Cajamarca";
+const pageDescription =
+  "Movimiento académico ERES UNC para las elecciones 2026 de la Universidad Nacional de Cajamarca. Conoce nuestra propuesta, equipo y plan de gobierno 2026-2031.";
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url;
+const ogImageUrl = Astro.site ? new URL("/images/LOGO_UNC.png", Astro.site) : new URL("/images/LOGO_UNC.png", Astro.url);
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Eres UNC",
+  alternateName: "Movimiento Académico ERES UNC",
+  url: Astro.site?.toString(),
+  logo: ogImageUrl.toString(),
+  sameAs: [
+    "https://www.facebook.com/eres.unc.cajamarca",
+    "https://www.instagram.com/eres.unc.cajamarca/",
+    "https://www.tiktok.com/@eres.unc.cajamarca",
+  ],
+};
 ---
 
 <!doctype html>
@@ -10,8 +31,17 @@ import { MoreVertical, X } from "lucide-react";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Eres UNC — Partido Universitario</title>
-    <meta name="description" content="Construyamos juntos la universidad que queremos. Elecciones UNC 2026-2031." />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonicalUrl.toString()} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonicalUrl.toString()} />
+    <meta property="og:image" content={ogImageUrl.toString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
   </head>
   <body class="relative min-h-screen bg-background text-foreground antialiased">
     <img
@@ -34,6 +64,7 @@ import { MoreVertical, X } from "lucide-react";
           <a href="#contacto" class="nav-link text-sm font-medium transition-colors duration-300">Contacto</a>
         </nav>
         <div class="flex items-center gap-3 ml-auto md:ml-0">
+          <ThemeToggler client:load />
           <a id="join-button" href="#contacto" class="inline-flex h-9 items-center gap-2 rounded-lg bg-white/20 hover:bg-white/30 border border-white/35 text-white backdrop-blur-sm px-3 sm:px-4 text-xs sm:text-sm font-semibold transition-all shadow-sm">
             ¿Ya eres UNC?
           </a>

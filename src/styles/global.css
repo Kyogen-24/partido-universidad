@@ -129,3 +129,94 @@
     @apply font-sans;
     }
 }
+
+@layer utilities {
+  /* ── Entradas ── */
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Loop continuo ── */
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.65; transform: scale(1.04); }
+  }
+
+  /* ── Texto gradiente animado ── */
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  .animate-gradient-text {
+    background: linear-gradient(
+      135deg,
+      oklch(0.62 0.14 250),
+      oklch(0.52 0.16 145),
+      oklch(0.62 0.14 250),
+      oklch(0.52 0.16 145)
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  /* ── Utilidades base ── */
+  .animate-glow-pulse { animation: glow-pulse 4s ease-in-out infinite; }
+  .animate-fade-in-up { animation: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+  /* ── Delays ── */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+
+  /* ── Highlight text ── */
+  .highlight-text {
+    color: var(--foreground);
+    font-weight: 500;
+    background-image: linear-gradient(
+      90deg,
+      oklch(0.62 0.14 250 / 0.3),
+      oklch(0.52 0.16 145 / 0.3)
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 2px;
+    background-position: 0 100%;
+    padding-bottom: 1px;
+    transition: background-size 0.3s ease;
+  }
+  .highlight-text:hover {
+    background-size: 100% 100%;
+    color: white;
+  }
+
+  /* ── Glare card ── */
+  .glare-card {
+    --glare-x: 50%;
+    --glare-y: 50%;
+    --glare-opacity: 0;
+  }
+  .glare-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      600px circle at var(--glare-x) var(--glare-y),
+      rgba(255, 255, 255, 0.15),
+      transparent 40%
+    );
+    opacity: var(--glare-opacity);
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .glare-card:hover::before {
+    opacity: 1;
+  }
+}
+}

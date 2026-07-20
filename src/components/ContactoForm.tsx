@@ -17,7 +17,7 @@ export default function ContactoForm() {
             Contacto
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Escribinos, seguinos en redes o unite a la conversación.
+            Escríbenos, síguenos en redes o únete a la conversación.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export default function ContactoForm() {
                     required
                     rows={4}
                     className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none transition-all focus:border-primary/50 focus:ring-2 focus:ring-primary/20 resize-none"
-                    placeholder="Contanos tu idea, duda o propuesta..."
+                    placeholder="Cuéntanos tu idea, duda o propuesta..."
                   />
                 </div>
                 <button
@@ -86,7 +86,7 @@ export default function ContactoForm() {
 
           <div className="flex flex-col justify-center space-y-6">
             <div>
-              <p className="font-heading text-sm font-semibold">Seguinos en redes</p>
+              <p className="font-heading text-sm font-semibold">Síguenos en redes</p>
               <div className="mt-4 flex gap-3">
                 <a
                   href="#"
