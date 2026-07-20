@@ -42,10 +42,12 @@ export default function RepresentativeModal({
           </div>
         </DialogHeader>
         <div className="space-y-4">
+          {/* career oculto temporalmente — restaurar cuando se decida
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Award className="h-4 w-4" />
             <span>{representative.career}</span>
           </div>
+          */}
           <p className="text-sm leading-relaxed text-muted-foreground">
             {representative.fullBio}
           </p>

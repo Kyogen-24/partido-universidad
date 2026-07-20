@@ -2,10 +2,8 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 const slides = [
-  { src: "/fondo1.jpg", isPanoramic: false },
-  { src: "/fondo2.jpg", isPanoramic: true },
-  { src: "/fondo3.jpg", isPanoramic: false },
-  { src: "/fondo.jpg", isPanoramic: false },
+  { src: "/fondo2.webp", isPanoramic: true },
+  { src: "/fondo.webp", isPanoramic: false },
 ];
 
 const AUTOPLAY_INTERVAL = 4000;

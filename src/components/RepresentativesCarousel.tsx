@@ -100,9 +100,11 @@ export default function RepresentativesCarousel() {
                       <h3 className="mt-2 font-heading text-base font-semibold">
                         {rep.shortName}
                       </h3>
+                      {/* career oculto temporalmente — restaurar cuando se decida
                       <p className="mt-1 text-xs text-muted-foreground/60">
                         {rep.career}
                       </p>
+                      */}
                       {isCenter && (
                         <div className="mt-3 flex items-center gap-1.5 text-xs font-medium text-primary transition-opacity">
                           <span>Ver perfil</span>

@@ -58,3 +58,5 @@ src/
 ## Notes
 
 - `AGENTS.md` mirrors this file's content for non-Claude agent tooling — keep both in sync when editing either.
+- Google Tag Manager (`GTM-NMWCVPKL`) is wired directly into `BaseLayout.astro` (inline `<script>` in `<head>` + `<noscript>` iframe right after `<body>`) — not env-configured, so changing the container ID means editing the layout directly.
+- `astro.config.mjs` sets `site: 'https://www.eresunc.online'`, which feeds the sitemap/canonical URLs; `public/robots.txt` and `public/sitemap.xml` reference the same domain.

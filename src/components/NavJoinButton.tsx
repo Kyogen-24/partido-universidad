@@ -11,7 +11,7 @@ interface NavJoinButtonProps {
 const CYCLE_INTERVAL = 3000;
 const ANIMATION_DURATION = 600;
 const CHARACTER_SET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
-const TEXT = "¿ya ERES UNC?";
+const TEXT = "Y tú, ¿ya ERES UNC? ";
 const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/BX0OWcAWv0r0rX4nOtDW4s?s=qs&p=i&ilr=1";
 
 function ScrambleText({ className }: { className?: string }) {

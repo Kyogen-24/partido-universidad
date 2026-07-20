@@ -7,7 +7,7 @@ const pageTitle = "Eres UNC — Elecciones UNC 2026-2031 | Cajamarca";
 const pageDescription =
   "Movimiento académico ERES UNC para las elecciones 2026 de la Universidad Nacional de Cajamarca. Conoce nuestra propuesta, equipo y plan de gobierno 2026-2031.";
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
-const ogImageUrl = new URL("/images/LOGO_UNC.png", Astro.site);
+const ogImageUrl = new URL("/images/LOGO_UNC.webp", Astro.site);
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -37,7 +37,7 @@ const organizationSchema = {
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalUrl} />
     <title>{pageTitle}</title>
@@ -68,21 +68,20 @@ const organizationSchema = {
 
     <img
       class="pointer-events-none fixed inset-0 -z-10 h-full w-full object-cover opacity-50"
-      src="/bg-pattern.png"
+      src="/bg-pattern.webp"
       alt=""
       aria-hidden="true"
     />
     <!-- Navbar: transparent by default, reacts to scroll and background brightness -->
     <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
-      <div class="mx-auto flex h-[4.5rem] w-full items-center justify-between pl-2 pr-4 sm:pl-4 sm:pr-6 lg:pl-6 lg:pr-12">
+      <div class="relative mx-auto flex h-[4.5rem] w-full items-center justify-between pl-5 pr-4 sm:pl-7 sm:pr-6 lg:pl-12 lg:pr-12">
         <a href="/" class="flex items-center font-heading text-lg font-semibold tracking-tight">
           <img src="/logo.svg" alt="Eres UNC" class="h-11 sm:h-13 w-auto transition-transform duration-300 hover:scale-105" />
         </a>
-        <nav id="nav-links" class="hidden items-center gap-6 md:flex">
+        <nav id="nav-links" class="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-6 md:flex">
           <a href="#equipo" class="nav-link text-sm font-medium transition-colors duration-300">Equipo</a>
           <a href="#propuesta" class="nav-link text-sm font-medium transition-colors duration-300">Propuesta</a>
           <a href="#calendario" class="nav-link text-sm font-medium transition-colors duration-300">Calendario</a>
-          <a href="#testimonios" class="nav-link text-sm font-medium transition-colors duration-300">Testimonios</a>
           <a href="#contacto" class="nav-link text-sm font-medium transition-colors duration-300">Contacto</a>
         </nav>
         <div class="flex items-center gap-3 ml-auto md:ml-0">
@@ -98,7 +97,6 @@ const organizationSchema = {
           <a href="#equipo" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Equipo</a>
           <a href="#propuesta" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Propuesta</a>
           <a href="#calendario" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Calendario</a>
-          <a href="#testimonios" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Testimonios</a>
           <a href="#contacto" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Contacto</a>
           <NavJoinButton variant="mobile" client:load />
         </nav>
@@ -113,7 +111,7 @@ const organizationSchema = {
       <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
           <div class="flex items-center gap-2.5 text-sm text-white/60">
-            <img src="/images/LOGO_UNC.png" alt="UNC" class="h-8 w-auto" />
+            <img src="/images/LOGO_UNC.webp" alt="UNC" class="h-8 w-auto" />
             <span class="h-5 w-px bg-white/15" />
             <img src="/logo.svg" alt="Eres UNC" class="h-8 w-auto" />
           </div>
