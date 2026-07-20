@@ -14,8 +14,9 @@ export default function ContactoForm() {
         </div>
 
         <div className="mx-auto mt-12 grid max-w-3xl items-start gap-8 md:grid-cols-2">
-          <div className="order-2 flex flex-col items-center text-center md:order-1 md:items-start md:text-left">
+          <div className="order-2 flex flex-col items-center text-center md:order-1">
             <p className="font-heading text-sm font-semibold">Únete a nuestro grupo de WhatsApp</p>
+            <p className="mt-1 text-xs text-muted-foreground">haz click para ser parte de ERES UNC</p>
             <a
               href={WHATSAPP_GROUP_URL}
               target="_blank"

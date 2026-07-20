@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import type { Representative } from "@/data/representatives";
 import { GraduationCap, Check, Award } from "lucide-react";
+import LinkButton from "./LinkButton";
 
 interface Props {
   representative: Representative | null;
@@ -41,6 +42,13 @@ export default function RepresentativeModal({
             </div>
           </div>
         </DialogHeader>
+        {representative.links.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {representative.links.map((link) => (
+              <LinkButton key={link.url} link={link} />
+            ))}
+          </div>
+        )}
         <div className="space-y-4">
           {/* career oculto temporalmente — restaurar cuando se decida
           <div className="flex items-center gap-2 text-sm text-muted-foreground">

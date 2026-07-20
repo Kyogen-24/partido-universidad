@@ -63,7 +63,7 @@ export default function RepresentativesCarousel() {
             La fórmula del cambio
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Estudiantes y docentes comprometidos con la transformación universitaria. Haz clic en cada perfil para conocer sus propuestas.
+           Estudiantes, docentes, administrativos y egresados comprometidos con la transformación universitaria. Haz clic en cada perfil para conocer sus propuestas.
           </p>
         </div>
 
