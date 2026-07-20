@@ -1,3 +1,17 @@
+export type RepresentativeLinkType =
+  | "linkedin"
+  | "orcid"
+  | "scopus"
+  | "ctivitae"
+  | "renacyt"
+  | "website";
+
+export interface RepresentativeLink {
+  type: RepresentativeLinkType;
+  label: string;
+  url: string;
+}
+
 export interface Representative {
   id: number;
   name: string;
@@ -9,6 +23,7 @@ export interface Representative {
   bio: string;
   fullBio: string;
   proposals: string[];
+  links: RepresentativeLink[];
 }
 
 export const representatives: Representative[] = [
@@ -27,6 +42,23 @@ export const representatives: Representative[] = [
       "Modernizar la infraestructura tecnológica y acelerar la transformación digital",
       "Impulsar la acreditación de los programas de estudio",
     ],
+    links: [
+      {
+        type: "linkedin",
+        label: "LinkedIn",
+        url: "https://www.linkedin.com/in/caparicioa/",
+      },
+      {
+        type: "orcid",
+        label: "ORCID",
+        url: "https://orcid.org/0000-0001-7007-808X",
+      },
+      {
+        type: "ctivitae",
+        label: "CTI Vitae",
+        url: "https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=22124",
+      },
+    ],
   },
   {
     id: 2,
@@ -43,6 +75,28 @@ export const representatives: Representative[] = [
       "Impulsar la evaluación por competencias y la innovación pedagógica",
       "Actualizar permanentemente los planes de estudio y sílabos",
     ],
+    links: [
+      {
+        type: "scopus",
+        label: "Scopus",
+        url: "https://www.scopus.com/authid/detail.uri?authorId=58287101200",
+      },
+      {
+        type: "orcid",
+        label: "ORCID",
+        url: "https://orcid.org/0000-0002-0670-1284",
+      },
+      {
+        type: "ctivitae",
+        label: "CTI Vitae",
+        url: "https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=67249",
+      },
+      {
+        type: "renacyt",
+        label: "RENACYT",
+        url: "https://servicio-renacyt.concytec.gob.pe/ficha-renacyt/?idInvestigador=67249",
+      },
+    ],
   },
   {
     id: 3,
@@ -58,6 +112,23 @@ export const representatives: Representative[] = [
       "Incrementar la producción científica y aprovechar fondos concursables",
       "Reorganizar el Vicerrectorado con direcciones especializadas en investigación, innovación y emprendimiento",
       "Vincular la investigación y la RSU con los desafíos prioritarios de Cajamarca",
+    ],
+    links: [
+      {
+        type: "scopus",
+        label: "Scopus",
+        url: "https://www.scopus.com/authid/detail.uri?authorId=7102416527",
+      },
+      {
+        type: "ctivitae",
+        label: "CTI Vitae",
+        url: "https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=489",
+      },
+      {
+        type: "renacyt",
+        label: "RENACYT",
+        url: "https://servicio-renacyt.concytec.gob.pe/ficha-renacyt/?idInvestigador=489",
+      },
     ],
   },
 ];
