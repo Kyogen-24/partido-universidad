@@ -1,5 +1,6 @@
 ---
-import { ArrowRight, Flame, HeartHandshake, ShieldCheck, Sparkles } from "lucide-react";
+// ─── Culpa de Godoy ───
+import { ArrowRight, Sparkles, ShieldCheck, Flame, HeartHandshake } from "lucide-react";
 
 const pilares = [
   { letter: "E", word: "Experiencia", desc: "Años de trayectoria al servicio de la familia universitaria", Icon: Sparkles },
@@ -10,6 +11,7 @@ const pilares = [
 ---
 
 <section id="quienes-somos" class="relative overflow-hidden bg-white text-slate-900">
+  <!-- Video pequeño centrado borroso -->
   <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none sm:items-center sm:justify-center">
     <video
       autoplay
@@ -19,11 +21,13 @@ const pilares = [
       preload="metadata"
       class="-mt-[18vh] h-[35vh] w-[70vw] max-w-2xl rounded-2xl opacity-40 sm:mt-0 sm:h-[50vh] sm:w-[50vw] sm:rounded-3xl sm:opacity-50"
     >
-      <source src="/yupi.mp4" type="video/mp4" />
+      <source src="/yupiVid.mp4" type="video/mp4" />
     </video>
   </div>
 
   <div class="relative z-10 mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-32 lg:px-12">
+
+    <!-- ─── Header centrado ─── -->
     <div class="mx-auto max-w-2xl text-center animate-fade-in-up">
       <h2 class="font-heading text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
         Somos el cambio que la{" "}
@@ -53,22 +57,24 @@ const pilares = [
       </div>
     </div>
 
+    <!-- ─── Pilares ERES ─── -->
     <div class="mt-20 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-4">
       {pilares.map((p, i) => (
         <div
-          class="group relative overflow-hidden rounded-2xl border border-white/60 bg-white/50 p-4 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:bg-white/70 hover:shadow-[0_8px_40px_-12px] hover:shadow-primary/15 animate-fade-in-up sm:rounded-3xl sm:p-6"
+          class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/60 bg-white/50 p-4 sm:p-6 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:bg-white/70 hover:shadow-[0_8px_40px_-12px] hover:shadow-primary/15 animate-fade-in-up"
           style={`animation-delay: ${300 + i * 80}ms`}
         >
-          <p.Icon className="absolute -right-3 -bottom-3 h-24 w-24 text-primary/[0.06] transition-all duration-700 group-hover:scale-110 group-hover:text-primary/[0.12] sm:h-28 sm:w-28" />
+          <p.Icon className="absolute -right-3 -bottom-3 h-24 w-24 sm:h-28 sm:w-28 text-primary/[0.06] transition-all duration-700 group-hover:scale-110 group-hover:text-primary/[0.12]" />
           <div class="relative">
-            <p class="mb-1.5 text-4xl font-black tracking-tighter text-slate-900 transition-colors duration-500 group-hover:text-primary/15 sm:text-5xl">
+            <p class="mb-1.5 text-4xl sm:text-5xl font-black tracking-tighter text-slate-900 transition-colors duration-500 group-hover:text-primary/15">
               {p.letter}
             </p>
-            <h3 class="text-sm font-semibold text-slate-900 sm:text-base">{p.word}</h3>
-            <p class="mt-1 text-[11px] leading-relaxed text-slate-600 sm:text-[13px]">{p.desc}</p>
+            <h3 class="text-sm sm:text-base font-semibold text-slate-900">{p.word}</h3>
+            <p class="mt-1 text-[11px] sm:text-[13px] leading-relaxed text-slate-600">{p.desc}</p>
           </div>
         </div>
       ))}
     </div>
+
   </div>
 </section>

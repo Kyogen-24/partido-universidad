@@ -1,0 +1,131 @@
+---
+// Sección Noticias — placeholders para futura integración con Facebook/Instagram
+// Las tarjetas serán reemplazadas por publicaciones reales vía API o embed
+
+const posts = [
+  { id: 1, label: "Facebook", date: "Próximamente" },
+  { id: 2, label: "Instagram", date: "Próximamente" },
+  { id: 3, label: "Facebook", date: "Próximamente" },
+  { id: 4, label: "Instagram", date: "Próximamente" },
+  { id: 5, label: "Facebook", date: "Próximamente" },
+];
+---
+
+<section id="noticias" class="relative border-t border-border/40 overflow-hidden">
+
+  <!-- Imagen de fondo con filtro de opacidad estilo hero -->
+  <div class="absolute inset-0 -z-10">
+    <img
+      src="/images/LOGO_UNC.png"
+      alt=""
+      aria-hidden="true"
+      class="h-full w-full object-contain object-center opacity-20"
+    />
+    <!-- Overlay oscuro similar al hero (bg-black/35) -->
+    <div class="absolute inset-0 bg-black/55"></div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+
+    <!-- Encabezado -->
+    <div class="mb-10 flex items-end justify-between">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-widest text-white/60 mb-2">Redes sociales</p>
+        <h2 class="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          Últimas noticias
+        </h2>
+      </div>
+      <div class="hidden sm:flex items-center gap-2">
+        <a
+          href="https://www.facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex h-9 items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-4 text-xs font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20"
+        >
+          Facebook
+        </a>
+        <a
+          href="https://www.instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex h-9 items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-4 text-xs font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20"
+        >
+          Instagram
+        </a>
+      </div>
+    </div>
+
+    <!-- Carrusel de tarjetas placeholder -->
+    <div class="relative">
+      <!-- Track con scroll horizontal en móvil, grid en desktop -->
+      <div class="flex gap-4 overflow-x-auto pb-4 sm:grid sm:grid-cols-3 sm:overflow-visible sm:pb-0 lg:grid-cols-5 scrollbar-hide">
+
+        {posts.map((post) => (
+          <div class="group relative flex w-[260px] sm:w-auto shrink-0 flex-col overflow-hidden rounded-2xl border border-white/15 bg-white/10 backdrop-blur-sm transition-all hover:bg-white/15 hover:scale-[1.02] cursor-pointer">
+
+            <!-- Área de imagen placeholder -->
+            <div class="aspect-square w-full bg-white/10 flex items-center justify-center relative overflow-hidden">
+              <!-- Icono de red social placeholder -->
+              <div class="flex flex-col items-center gap-2 text-white/40">
+                {post.label === "Facebook" ? (
+                  <svg class="h-10 w-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                ) : (
+                  <svg class="h-10 w-10" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                  </svg>
+                )}
+                <span class="text-xs font-medium text-white/50">{post.label}</span>
+              </div>
+
+              <!-- Badge "Próximamente" -->
+              <div class="absolute top-3 left-3">
+                <span class="inline-block rounded-full border border-white/20 bg-white/15 px-2 py-0.5 text-[10px] font-medium text-white/70 backdrop-blur-sm">
+                  Próximamente
+                </span>
+              </div>
+            </div>
+
+            <!-- Pie de tarjeta -->
+            <div class="p-4">
+              <div class="h-2.5 w-3/4 rounded-full bg-white/15 mb-2"></div>
+              <div class="h-2 w-full rounded-full bg-white/10 mb-1.5"></div>
+              <div class="h-2 w-5/6 rounded-full bg-white/10"></div>
+              <div class="mt-4 h-2 w-1/3 rounded-full bg-white/20"></div>
+            </div>
+          </div>
+        ))}
+
+      </div>
+
+      <!-- Indicador de scroll en móvil -->
+      <div class="mt-4 flex justify-center gap-1.5 sm:hidden">
+        {posts.map((_, i) => (
+          <div class={`h-1 rounded-full transition-all ${i === 0 ? "w-5 bg-white/70" : "w-1.5 bg-white/25"}`}></div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Links móvil -->
+    <div class="mt-8 flex items-center justify-center gap-3 sm:hidden">
+      <a
+        href="https://www.facebook.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex h-9 items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-4 text-xs font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20"
+      >
+        Facebook
+      </a>
+      <a
+        href="https://www.instagram.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex h-9 items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-4 text-xs font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20"
+      >
+        Instagram
+      </a>
+    </div>
+
+  </div>
+</section>
