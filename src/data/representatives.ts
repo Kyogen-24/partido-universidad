@@ -125,6 +125,11 @@ export const representatives: Representative[] = [
         label: "CTI Vitae",
         url: "https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=489",
       },
+       {
+        type: "orcid",
+        label: "ORCID",
+        url: " https://orcid.org/0000-0001-8846-777X",
+      },
       {
         type: "renacyt",
         label: "RENACYT",
