@@ -73,7 +73,7 @@ export default function RepresentativesCarousel() {
           onMouseLeave={() => setIsHovered(false)}
         >
           {/* Responsive offset variable: larger separation on wider screens */}
-          <div className="relative mx-auto h-[420px] max-w-[810px] xs:h-[440px] sm:h-[540px] sm:max-w-[900px] lg:h-[580px] lg:max-w-[990px] xl:max-w-[1200px] [--side-offset:42%] sm:[--side-offset:60%] md:[--side-offset:80%] lg:[--side-offset:105%] xl:[--side-offset:130%]">
+          <div className="relative mx-auto h-[420px] max-w-[810px] xs:h-[440px] sm:h-[540px] sm:max-w-[900px] lg:h-[580px] lg:max-w-[990px] xl:max-w-[1200px] [--side-offset:42%] sm:[--side-offset:62%] md:[--side-offset:75%] lg:[--side-offset:78%] xl:[--side-offset:82%]">
             {representatives.map((rep, i) => {
               const styles = getCardStyles(i);
               const isCenter = ((i - currentIndex) % 3 + 3) % 3 === 0;
@@ -82,33 +82,31 @@ export default function RepresentativesCarousel() {
                 <button
                   key={rep.id}
                   onClick={() => (isCenter ? openModal(rep) : goTo(i))}
-                  className="absolute top-1/2 left-1/2 -ml-[89px] w-[178px] cursor-pointer text-left focus-visible:outline-none transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] sm:-ml-[117px] sm:w-[234px] md:-ml-[130px] md:w-[261px] lg:-ml-[144px] lg:w-[288px] xl:-ml-[157px] xl:w-[315px]"
+                  className="absolute top-1/2 left-1/2 -ml-[95px] w-[190px] cursor-pointer text-left focus-visible:outline-none transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] sm:-ml-[130px] sm:w-[260px] md:-ml-[140px] md:w-[280px] lg:-ml-[155px] lg:w-[310px] xl:-ml-[170px] xl:w-[340px]"
                   style={styles}
                 >
-                  <div className="group overflow-hidden rounded-2xl border border-border/40 bg-card shadow-lg transition-shadow duration-500 hover:shadow-xl hover:shadow-primary/5">
-                    <div className="aspect-[3/4] overflow-hidden bg-muted">
+                  <div className={`group relative flex flex-col overflow-hidden rounded-[20px] border bg-card transition-all duration-500 ${isCenter ? "border-primary shadow-xl shadow-primary/10 ring-1 ring-primary/20" : "border-border/40 shadow-md"}`}>
+                    <div className="relative aspect-square overflow-hidden bg-muted">
                       <img
                         src={rep.photo}
                         alt={rep.name}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <div className="p-4">
-                      <span className="inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-[10px] font-medium text-primary">
-                        {rep.badge}
-                      </span>
-                      <h3 className="mt-2 font-heading text-base font-semibold">
-                        {rep.shortName}
-                      </h3>
-                      <p className="mt-1 text-xs text-muted-foreground/60">
-                        {rep.career}
-                      </p>
-                      {isCenter && (
-                        <div className="mt-3 flex items-center gap-1.5 text-xs font-medium text-primary transition-opacity">
-                          <span>Ver perfil</span>
-                          <ChevronRight className="h-3.5 w-3.5" />
+                    <div className="p-3 sm:p-5 flex-1 flex flex-col justify-between min-h-[90px] sm:min-h-[130px]">
+                      <div>
+                        <span className="block text-[9px] sm:text-[10px] font-bold text-primary uppercase tracking-wider mb-0.5 sm:mb-1">
+                          {rep.badge}
+                        </span>
+                        <h3 className="font-heading text-sm sm:text-base font-bold text-foreground sm:text-lg">
+                          {rep.shortName}
+                        </h3>
+                      </div>
+                      <div className="mt-3 sm:mt-4">
+                        <div className="inline-block rounded-lg border border-primary/60 px-3 py-1 sm:px-4 sm:py-1.5 text-[11px] sm:text-xs font-semibold text-primary transition-colors group-hover:bg-primary/5">
+                          Ver perfil
                         </div>
-                      )}
+                      </div>
                     </div>
                   </div>
                 </button>
