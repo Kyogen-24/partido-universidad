@@ -129,7 +129,7 @@ const eventsSchema = eventos.map((evento) => ({
             <Calendar class="h-4 w-4" />
             {group.month}
           </h3>
-          <ol class="relative border-s border-border pl-4 sm:pl-0">
+          <ol class="relative border-s border-border pl-0">
             {group.items.map((evento, idx) => {
               const isEleccion = evento.type === "eleccion";
               const isLastOverall = groupIdx === groups.length - 1 && idx === group.items.length - 1;
