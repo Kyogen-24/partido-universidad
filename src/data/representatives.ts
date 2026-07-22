@@ -35,12 +35,18 @@ export const representatives: Representative[] = [
     photo: "/images/representantes/Carlos_Enrique_Aparicio_Arteaga.webp",
     badge: "Candidato a Rector",
     career: "Ingeniería de Sistemas",
-    bio: "Ingeniero de Sistemas con más de 30 años de experiencia en tecnología y gestión académica, Decano de la Facultad de Ingeniería de la UNC.",
-    fullBio: "Ingeniero de Sistemas y Profesor Principal, con más de tres décadas liderando proyectos de tecnología, calidad académica y transformación digital en la Universidad Nacional de Cajamarca. Cuenta con certificaciones internacionales como PMP, PRINCE2, ITIL y credenciales Scrum, lo que respalda una gestión ordenada, transparente y basada en buenas prácticas.",
+    bio: "Doctor en Ingeniería de Sistemas, con más de 30 años de experiencia en tecnología, gestión académica y educación superior. Exdecano de la Facultad de Ingeniería de la UNC.",
+    fullBio: "Profesional y académico con más de 30 años de experiencia en Ingeniería de Sistemas, Tecnologías de la Información y Educación Superior. Es Doctor en Ingeniería de Sistemas, Maestro en Ciencias de la Educación Superior e Ingeniero de Computación y Sistemas. Cuenta con especializaciones en Gestión Pública, Gerencia Empresarial con Tecnologías de la Información y Data Science. Su compromiso con la calidad educativa se refleja en su labor como Evaluador Internacional de ICACIT y Evaluador Externo de SINEACE con fines de acreditación. Cuenta con la certificación PMP® en gestión de proyectos, certificaciones ágiles (CSM®, CSPO®, CSD® y A-CSD®), ITIL® para gestión de servicios de TI y es Google for Education Certified Trainer, consolidándose como un referente en innovación educativa. En la Universidad Nacional de Cajamarca ha ejercido un liderazgo destacado como Decano de la Facultad de Ingeniería, director de la Escuela Profesional de Ingeniería de Sistemas, director del Departamento Académico de Sistemas, Estadística e Informática y director de la Oficina General de Sistemas Informáticos. Asimismo, ha integrado la Asamblea Universitaria y el Consejo de Facultad, impulsando la transformación digital, la modernización institucional y la mejora de la gestión académica y administrativa. Ha integrado en dos oportunidades el Comité de Ética del Colegio de Ingenieros del Perú y ha recibido reconocimientos de dicha institución por su ética y contribución al desarrollo de la ingeniería peruana, así como del IEEE Education Society Perú Chapter por su destacada contribución académica y compromiso con la educación en ingeniería.",
     proposals: [
-      "Fortalecer la gobernanza institucional con sistemas integrados de planeamiento y calidad",
-      "Modernizar la infraestructura tecnológica y acelerar la transformación digital",
-      "Impulsar la acreditación de los programas de estudio",
+      "Modernización y simplificación de los procesos académicos y administrativos.",
+      "Digitalización integral de los trámites universitarios.",
+      "Descentralización de los servicios académicos y administrativos en las filiales.",
+      "Implementación de pagos en plataformas digitales para tasas y derechos universitarios.",
+      "Emisión del certificado de estudios 100 % digital, seguro y verificable.",
+      "Gestión de mayores recursos para el equipamiento de laboratorios e infraestructura universitaria.",
+      "Gestión para el financiamiento de proyectos estratégicos y el pago de la deuda social por homologación.",
+      "Impulso a concursos públicos transparentes para el nombramiento y contratación de docentes.",
+      "Fortalecimiento de la carrera docente mediante el apoyo a los procesos de ratificación, promoción y ascenso.",
     ],
     links: [
       {
@@ -69,11 +75,12 @@ export const representatives: Representative[] = [
     badge: "Candidata a Vicerrectora Académica",
     career: "Educación Superior",
     bio: "Académica con trayectoria en gestión de programas de educación superior, comprometida con la calidad de la enseñanza y la mejora del servicio al estudiante.",
-    fullBio: "Doctora en Administración, Magíster en Ciencias con mención en Contabilidad y Gerencia, Contadora Pública e Investigadora RENACYT Nivel VI, con más de 30 años de servicio en la Universidad Nacional de Cajamarca formando profesionales, impulsando la investigación y fortaleciendo la gestión académica. Ha ejercido importantes cargos de liderazgo, entre ellos Directora de la Escuela Profesional de Contabilidad, Coordinadora Administrativa y Académica de la Dirección de Admisión, Coordinadora del Centro de Investigación y Extensión, Secretaria Académica Sustituta e integrante de la Asamblea Universitaria y del Consejo de Facultad. Su trayectoria incluye la participación en la actualización curricular con enfoque por competencias, la asesoría y jurado de tesis de pregrado y posgrado, producción científica con publicaciones en revistas nacionales e internacionales, y experiencia en procesos de aseguramiento de la calidad y fortalecimiento institucional. Es además Vice Decana del Colegio de Contadores Públicos de Cajamarca, con experiencia en gestión financiera y administración pública.",
+    fullBio: "Doctora en Administración, Magíster en Ciencias con mención en Contabilidad y Gerencia, Contadora Pública e Investigadora RENACYT Nivel VI, con más de 30 años de servicio en la Universidad Nacional de Cajamarca formando profesionales, impulsando la investigación y fortaleciendo la gestión académica. Ha ejercido importantes cargos de liderazgo, entre ellos directora de la Escuela Profesional de Contabilidad, coordinadora administrativa y académica de la Dirección de Admisión, coordinadora del Centro de Investigación y Extensión, secretaria académica sustituta e integrante de la Asamblea Universitaria y del Consejo de Facultad. Su trayectoria incluye la participación en la actualización curricular con enfoque por competencias, la asesoría y el jurado de tesis de pregrado y posgrado, producción científica con publicaciones en revistas nacionales e internacionales, y experiencia en procesos de aseguramiento de la calidad y fortalecimiento institucional. Es además vice decana del Colegio de Contadores Públicos de Cajamarca, con experiencia en gestión financiera y administración pública.",
     proposals: [
-      "Fortalecer la tutoría y consejería académica para el desempeño estudiantil",
-      "Impulsar la evaluación por competencias y la innovación pedagógica",
-      "Actualizar permanentemente los planes de estudio y sílabos",
+      "Fortalecer la calidad académica, mediante la actualización permanente de los planes de estudio, el aseguramiento de la calidad y la acreditación de los programas.",
+      "Modernizar la enseñanza universitaria, incorporando metodologías activas, transformación digital e inteligencia artificial como apoyo al aprendizaje y a la gestión académica.",
+      "Impulsar el desarrollo integral del estudiante, fortaleciendo la tutoría académica, los sistemas de alerta temprana, la inclusión y el bienestar universitario para favorecer la permanencia y la titulación oportuna.",
+      "Fortalecer el desarrollo docente y la internacionalización, promoviendo la capacitación permanente, la innovación educativa, la movilidad académica y la vinculación con el entorno para una formación profesional de excelencia.",
     ],
     links: [
       {
@@ -107,7 +114,7 @@ export const representatives: Representative[] = [
     badge: "Candidato a Vicerrector de Investigación y RSU",
     career: "Inmunología",
     bio: "Inmunólogo, Profesor Principal y Docente Investigador RENACYT, con trayectoria en investigación científica y responsabilidad social universitaria.",
-    fullBio: "Profesor Principal de Inmunología Veterinaria en la UNC, PhD por la Universidad de Liverpool. Investigador RENACYT nivel Distinguido. Director del “Centro de Investigación en Medicina Tropical: Fascioliasis” de la UNC. Su trayectoria abarca la investigación en fascioliasis humana y animal, inmunología, parasitología, diagnóstico, epidemiología y resistencia antihelmíntica, con proyectos nacionales e internacionales y trabajo en equipos multidisciplinarios. Es revisor par de revistas científicas internacionales, su producción científica incluye 50 publicaciones, con un índice h de 17 y 909 citas, indicadores que reflejan la continuidad, visibilidad e impacto de sus aportes científicos. Esta trayectoria sustenta una propuesta orientada a fortalecer la investigación, la innovación tecnológica, el emprendimiento y la responsabilidad social universitaria como funciones estratégicas para el desarrollo de la UNC y de la región Cajamarca.",
+    fullBio: "Profesor principal de Inmunología Veterinaria en la UNC, PhD por la Universidad de Liverpool. Investigador RENACYT nivel Distinguido. Director del “Centro de Investigación en Medicina Tropical: Fascioliasis” de la UNC. Su trayectoria abarca la investigación en fascioliasis humana y animal, inmunología, parasitología, diagnóstico, epidemiología y resistencia antihelmíntica, con proyectos nacionales e internacionales y trabajo en equipos multidisciplinarios. Es revisor par de revistas científicas internacionales; su producción científica incluye 50 publicaciones, con un índice h de 17 y 909 citas, indicadores que reflejan la continuidad, visibilidad e impacto de sus aportes científicos. Esta trayectoria sustenta una propuesta orientada a fortalecer la investigación, la innovación tecnológica, el emprendimiento y la responsabilidad social universitaria como funciones estratégicas para el desarrollo de la UNC y de la región Cajamarca.",
     proposals: [
       "Reorganizar el Vicerrectorado mediante direcciones especializadas en investigación, innovación tecnológica, emprendimiento y centros productivos",
       "Implementar un Sistema Integrado de Gestión de la Investigación que facilite la planificación, el seguimiento y la evaluación de la actividad científica",
