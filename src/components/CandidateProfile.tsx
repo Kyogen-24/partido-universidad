@@ -59,8 +59,8 @@ export default function CandidateProfile({ representative }: Props) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
         >
-          <h2 className="text-2xl font-semibold tracking-tight">Biografía</h2>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+        <h2 className="text-2xl font-semibold tracking-tight whitespace-pre-line">Biografía</h2>
+          <p className="whitespace-pre-line mx-auto max-w-2xl">
             {representative.fullBio}
           </p>
         </motion.div>
