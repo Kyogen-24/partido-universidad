@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 
 /* ── Types ─────────────────────────────────────────────── */
@@ -13,47 +11,36 @@ const CATEGORIES: Category[] = [
   {
     label: 'Encuentros',
     images: [
-      '/comunidad/encuentros1.jpg',
-      '/comunidad/encuentros2.jpg',
-      '/comunidad/encuentros3.jpg',
+      '/galeria/Encuentros/e1.webp',
+      '/galeria/Encuentros/e2.webp',
+      '/galeria/Encuentros/e3.webp',
     ],
     fallbackGradient: 'linear-gradient(135deg,#10b981,#0f766e)',
   },
   {
-    label: 'Actividades',
-    images: [
-      '/comunidad/actividades1.jpg',
-      '/comunidad/actividades2.jpg',
-      '/comunidad/actividades3.jpg',
-    ],
-    fallbackGradient: 'linear-gradient(135deg,#3b82f6,#1d4ed8)',
-  },
-  {
-    label: 'Charlas',
-    images: [
-      '/comunidad/charlas1.jpg',
-      '/comunidad/charlas2.jpg',
-      '/comunidad/charlas3.jpg',
-    ],
-    fallbackGradient: 'linear-gradient(135deg,#8b5cf6,#6d28d9)',
-  },
-  {
     label: 'Reuniones',
     images: [
-      '/comunidad/reuniones1.jpg',
-      '/comunidad/reuniones2.jpg',
-      '/comunidad/reuniones3.jpg',
+      '/galeria/Reuniones/r1.webp',
+      '/galeria/Reuniones/r2.webp',
     ],
     fallbackGradient: 'linear-gradient(135deg,#60a5fa,#4f46e5)',
   },
   {
-    label: 'Visitas',
+    label: 'Charlas',
     images: [
-      '/comunidad/visitas1.jpg',
-      '/comunidad/visitas2.jpg',
-      '/comunidad/visitas3.jpg',
+      '/galeria/Charlas/c1.webp',
+      '/galeria/Charlas/c4.webp',
     ],
-    fallbackGradient: 'linear-gradient(135deg,#2dd4bf,#0891b2)',
+    fallbackGradient: 'linear-gradient(135deg,#8b5cf6,#6d28d9)',
+  },
+  {
+    label: 'Actividades',
+    images: [
+      '/galeria/Actividades/a1.webp',
+      '/galeria/Actividades/a2.webp',
+      '/galeria/Actividades/a3.webp',
+    ],
+    fallbackGradient: 'linear-gradient(135deg,#3b82f6,#1d4ed8)',
   },
 ];
 
@@ -66,7 +53,6 @@ interface CardProps {
 
 function ComunidadCard({ category, interval = 3500, className = '' }: CardProps) {
   const [current, setCurrent] = React.useState(0);
-  const [next, setNext]       = React.useState(1);
   const [fading, setFading]   = React.useState(false);
   const [loaded, setLoaded]   = React.useState<boolean[]>(() =>
     category.images.map(() => false)
@@ -76,8 +62,8 @@ function ComunidadCard({ category, interval = 3500, className = '' }: CardProps)
   React.useEffect(() => {
     category.images.forEach((src, i) => {
       const img = new Image();
-      img.onload  = () => setLoaded(prev => { const n = [...prev]; n[i] = true; return n; });
-      img.onerror = () => setLoaded(prev => { const n = [...prev]; n[i] = false; return n; });
+      img.onload  = () => setLoaded((prev: boolean[]) => { const n = [...prev]; n[i] = true; return n; });
+      img.onerror = () => setLoaded((prev: boolean[]) => { const n = [...prev]; n[i] = false; return n; });
       img.src = src;
     });
   }, [category.images]);
@@ -88,35 +74,55 @@ function ComunidadCard({ category, interval = 3500, className = '' }: CardProps)
     const timer = setInterval(() => {
       setFading(true);
       setTimeout(() => {
-        setCurrent(prev => (prev + 1) % category.images.length);
-        setNext(prev => (prev + 1) % category.images.length);
+        setCurrent((prev: number) => (prev + 1) % category.images.length);
         setFading(false);
-      }, 600);
-    }, interval);
+      }, 700);
+    }, 5000);
     return () => clearInterval(timer);
-  }, [category.images.length, interval]);
+  }, [category.images.length]);
 
-  const anyLoaded = loaded.some(Boolean);
+  const prev =
+    (current - 1 + category.images.length) % category.images.length;
 
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl group cursor-pointer ${className}`}
-      style={{ background: category.fallbackGradient }}
+      className={`relative overflow-hidden rounded-xl group cursor-pointer ${className}`}
+      style={{ background: '#ffffff' }}
     >
-      {/* Current image */}
-      {category.images.map((src, i) => (
-        <img
-          key={src}
-          src={src}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
-          style={{
-            opacity: loaded[i] && i === current ? (fading ? 0 : 1) : 0,
-            zIndex: i === current ? 1 : 0,
-          }}
-        />
-      ))}
+      {/* Cross-fade: previous image stays visible while the new one fades in on top */}
+      {category.images.map((src, i) => {
+        const isLoaded = loaded[i];
+        // i === current → incoming (fades in from 0 to 1, scales from 0.96 to 1)
+        // i === prev   → outgoing (fades from 1 to 0, scales from 1 to 1.08)
+        // anything else → hidden, scale 0.96 (off-stage)
+        let opacity: number;
+        let scale: number;
+        if (i === current) {
+          opacity = fading ? 0 : 1;
+          scale = fading ? 0.96 : 1;
+        } else if (i === prev) {
+          opacity = fading ? 0 : 1;
+          scale = fading ? 1.08 : 1;
+        } else {
+          opacity = 0;
+          scale = 0.96;
+        }
+        return (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{
+              opacity: isLoaded ? opacity : 0,
+              transform: `scale(${scale})`,
+              transition: 'opacity 900ms ease-in-out, transform 1400ms ease-out',
+              zIndex: i === current ? 2 : i === prev ? 1 : 0,
+            }}
+          />
+        );
+      })}
 
       {/* Dark overlay gradient */}
       <div
@@ -158,18 +164,14 @@ function ComunidadCard({ category, interval = 3500, className = '' }: CardProps)
 
 /* ── Main Section ───────────────────────────────────────── */
 export function ComunidadGrid() {
-  const [enc, act, char, reu, vis] = CATEGORIES;
+  const [enc, reu, char, act] = CATEGORIES;
   // Stagger intervals so all cards aren't in sync
   return (
-    <section className="py-16 sm:py-24" style={{ backgroundColor: '#F3F9FF' }}>
+    <section className="py-16 sm:py-24 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="mb-10 sm:mb-14">
-          <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-2 flex items-center gap-2">
-            <span className="inline-block h-px w-6 bg-emerald-500" />
-            Nuestra comunidad
-          </p>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
             Vivimos la{' '}
             <span className="text-emerald-600 dark:text-emerald-400">universidad</span>
@@ -180,46 +182,33 @@ export function ComunidadGrid() {
         </div>
 
         {/* Bento Grid */}
-        <div
-          className="grid gap-3 sm:gap-4"
-          style={{
-            gridTemplateColumns: '1fr 1fr 1.4fr',
-            gridTemplateRows: '240px 200px 140px',
-          }}
-        >
-          {/* Encuentros: col 1, rows 1–2 */}
+        <div className="grid grid-cols-2 gap-1 sm:gap-2 lg:[grid-template-columns:1fr_1fr_1.4fr] lg:[grid-template-rows:240px_200px]">
+          {/* Encuentros: col 1, rows 1-2 */}
           <ComunidadCard
             category={enc}
             interval={3800}
-            className="[grid-column:1] [grid-row:1/3]"
+            className="row-span-2 h-[280px] sm:h-[280px] lg:[grid-column:1] lg:[grid-row:1/3] lg:h-auto"
           />
 
-          {/* Actividades: col 2, row 1 */}
+          {/* Reuniones: col 2, row 1 */}
           <ComunidadCard
-            category={act}
+            category={reu}
             interval={4200}
-            className="[grid-column:2] [grid-row:1]"
+            className="h-[138px] sm:h-[138px] lg:[grid-column:2] lg:[grid-row:1] lg:h-auto"
           />
 
           {/* Charlas: col 2, row 2 */}
           <ComunidadCard
             category={char}
             interval={3500}
-            className="[grid-column:2] [grid-row:2]"
+            className="h-[138px] sm:h-[138px] lg:[grid-column:2] lg:[grid-row:2] lg:h-auto"
           />
 
-          {/* Reuniones: col 3, rows 1–2 */}
+          {/* Actividades: full width bottom */}
           <ComunidadCard
-            category={reu}
+            category={act}
             interval={4600}
-            className="[grid-column:3] [grid-row:1/3]"
-          />
-
-          {/* Visitas: cols 1–2, row 3 */}
-          <ComunidadCard
-            category={vis}
-            interval={3200}
-            className="[grid-column:1/3] [grid-row:3]"
+            className="col-span-2 h-[200px] sm:h-[200px] lg:[grid-column:3] lg:[grid-row:1/3] lg:col-span-1 lg:h-auto"
           />
         </div>
 

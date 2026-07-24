@@ -42,7 +42,7 @@ function Card({ rep, bgColor, onClick }: { rep: typeof representatives[number]; 
 
           {/* CTA */}
           <span className="inline-flex items-center gap-1 mt-1 text-xs font-semibold text-[#4B6A9B] group-hover:gap-2 transition-all duration-300">
-            Ver perfil
+                        Ver propuestas
             <ArrowUpRight className="w-3.5 h-3.5" />
           </span>
         </div>
@@ -103,18 +103,20 @@ export default function RepresentativesCarousel() {
   };
 
   return (
-    <section id="equipo" className="border-t border-border/40 bg-[#F3F9FF]">
+    <section id="equipo" className="border-t border-border/40 bg-white">
       <div className="mx-auto max-w-7xl px-4 pt-10 pb-4 sm:pt-14 sm:pb-6 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-5xl">
             La fórmula del cambio
           </h2>
-          <p className="mt-4 text-muted-foreground text-sm sm:text-base">
-            Estudiantes, docentes, administrativos y egresados comprometidos con la transformación universitaria.
-            Haz clic en cada perfil para conocer sus propuestas.
+          <p className="mt-4 text-muted-foreground text-sm sm:text-2sm">
+            Comprometidos con la transformación universitaria.
           </p>
+          <h1 className="mt-4 text-muted-mt-0.5 text-sm font-semibold text-[#4B6A9B]">
+            Haz clic en cada perfil para conocer sus propuestas.
+          </h1>
         </div>
 
         {/* Desktop: Grid */}
@@ -135,7 +137,7 @@ export default function RepresentativesCarousel() {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div className="relative mx-auto h-[460px] max-w-[900px] sm:h-[500px] sm:max-w-[980px] [--side-offset:35%] sm:[--side-offset:50%] md:[--side-offset:65%]">
+          <div className="relative mx-auto h-[480px] max-w-[420px] sm:h-[520px] sm:max-w-[720px] md:h-[560px] md:max-w-[900px] [--side-offset:20%] sm:[--side-offset:35%] md:[--side-offset:55%]">
             {representatives.map((rep, i) => {
               const styles = getCardStyles(i);
               const offset = ((i - currentIndex) % 3 + 3) % 3;
@@ -146,12 +148,12 @@ export default function RepresentativesCarousel() {
                 <button
                   key={rep.id}
                   onClick={() => (isCenter ? openModal(rep) : goTo(i))}
-                  className="absolute top-1/2 left-1/2 -ml-[130px] w-[260px] cursor-pointer text-left focus-visible:outline-none transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] sm:-ml-[155px] sm:w-[310px] md:-ml-[170px] md:w-[340px]"
+                  className="absolute top-1/2 left-1/2 -ml-[130px] w-[260px] sm:-ml-[140px] sm:w-[280px] md:-ml-[170px] md:w-[340px] cursor-pointer text-left focus-visible:outline-none transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
                   style={styles}
                 >
                   <div className="overflow-hidden rounded-3xl bg-white border-6 border-white shadow-lg transition-shadow duration-500 hover:shadow-xl flex flex-col">
                     {/* Photo area */}
-                    <div className={`relative overflow-hidden ${bgColor} h-[330px] sm:h-[385px] md:h-[418px]`}>
+                    <div className={`relative overflow-hidden ${bgColor} h-[280px] sm:h-[320px] md:h-[380px]`}>
                       <img
                         src={rep.photo}
                         alt={rep.name}
@@ -160,16 +162,16 @@ export default function RepresentativesCarousel() {
                     </div>
 
                     {/* Text body */}
-                    <div className="p-4 flex flex-col gap-1.5 bg-white">
-          <span className="inline-block px-3 py-1 text-xs font-semibold tracking-wide text-[#4B6A9B] bg-[#E8EFF9] rounded-full">
+                    <div className="px-4 pt-2 pb-3 flex flex-col gap-1.5 bg-white text-left">
+                      <span className="self-stretch inline-flex items-center px-4 py-2.5 text-sm font-semibold uppercase tracking-wider text-[#4B6A9B] bg-[#E8EFF9] rounded-l-none rounded-r-full">
                         {rep.badge}
                       </span>
-                      <h3 className="font-heading text-sm font-bold text-slate-900 leading-snug sm:text-base">
+                      <h3 className="text-base font-bold text-slate-900 leading-snug sm:text-lg">
                         {rep.shortName}
                       </h3>
-                      <span className="inline-flex items-center gap-1 mt-1 text-xs font-semibold text-[#4B6A9B]">
-                        Ver perfil
-                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      <span className="inline-flex items-center gap-1 mt-0.5 text-sm font-semibold text-[#4B6A9B]">
+                        Ver propuestas
+                        <ArrowUpRight className="w-4 h-4" />
                       </span>
                     </div>
                   </div>
@@ -214,11 +216,11 @@ export default function RepresentativesCarousel() {
         </div>
 
         {/* Mascot */}
-        <div className="hidden lg:flex justify-end mt-6 pointer-events-none select-none">
+        <div className="flex justify-center mt-8 sm:mt-10 pointer-events-none select-none">
           <img
             src="/yupi-pixel1-sin fondo.png"
             alt="Mascota Yupi"
-            className="h-20 lg:h-24 w-auto object-contain"
+            className="h-32 sm:h-40 lg:h-48 w-auto object-contain"
           />
         </div>
       </div>

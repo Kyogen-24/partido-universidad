@@ -6,7 +6,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import type { Representative } from "@/data/representatives";
-import { GraduationCap, Check, Award } from "lucide-react";
+import { GraduationCap, Check, ChevronRight } from "lucide-react";
 import LinkButton from "./LinkButton";
 
 interface Props {
@@ -50,15 +50,6 @@ export default function RepresentativeModal({
           </div>
         )}
         <div className="space-y-4">
-          {/* career oculto temporalmente — restaurar cuando se decida
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Award className="h-4 w-4" />
-            <span>{representative.career}</span>
-          </div>
-          */}
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            {representative.fullBio}
-          </p>
           <div className="space-y-2">
             <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
               Propuestas principales
@@ -75,6 +66,13 @@ export default function RepresentativeModal({
               ))}
             </ul>
           </div>
+          <a
+            href={`/candidato/${representative.slug}`}
+            className="flex items-center justify-center gap-2 w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Ver perfil completo
+            <ChevronRight className="h-4 w-4" />
+          </a>
         </div>
       </DialogContent>
     </Dialog>

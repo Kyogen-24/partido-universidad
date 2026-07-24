@@ -7,20 +7,14 @@ export default function ContactoForm() {
   return (
     <section
       id="contacto"
-      style={{ background: "linear-gradient(135deg, #F7FCFF 0%, #F7FFF9 100%)" }}
+      style={{ background: "#F3F9FF" }}
     >
       {/* ── Bloque WhatsApp Hero ── */}
       <div className="mx-auto max-w-7xl px-4 pt-16 pb-12 sm:px-6 sm:pt-20 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-6 lg:gap-8 items-center">
 
           {/* Izquierda: texto + botón */}
           <div>
-            {/* Label */}
-            <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-emerald-600 mb-5">
-              <span className="inline-block h-px w-6 bg-emerald-500" />
-              Súmate al cambio
-            </p>
-
             {/* Heading */}
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-slate-800">
               ¿Y tú, ya{" "}
@@ -38,7 +32,7 @@ export default function ContactoForm() {
               href={WHATSAPP_GROUP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-7 py-3.5 text-sm sm:text-base shadow-lg shadow-emerald-500/30 transition-all hover:shadow-emerald-500/40 hover:-translate-y-0.5"
+              className="mt-8 inline-flex items-center gap-2.5 rounded-full border-2 border-emerald-500 bg-white text-emerald-600 font-semibold px-7 py-3.5 text-sm sm:text-base transition-all hover:bg-emerald-50 hover:-translate-y-0.5"
             >
               <FaWhatsapp className="h-5 w-5" />
               Unirme al grupo oficial de WhatsApp
@@ -54,7 +48,7 @@ export default function ContactoForm() {
             </div>
 
             {/* QR Card */}
-            <div className="relative z-0 rounded-3xl bg-white shadow-xl border border-slate-100/80 p-5 w-64">
+            <div className="relative z-0 rounded-3xl bg-white shadow-xl border border-slate-100/80 p-6 w-80">
               <a
                 href={WHATSAPP_GROUP_URL}
                 target="_blank"
@@ -64,7 +58,7 @@ export default function ContactoForm() {
                 <img
                   src="/QR.webp"
                   alt="Código QR del grupo de WhatsApp de Eres UNC"
-                  className="h-52 w-52 rounded-2xl object-contain"
+                  className="h-64 w-64 rounded-2xl object-contain"
                 />
               </a>
               <p className="mt-3 text-center text-sm font-semibold text-slate-800">
@@ -79,7 +73,7 @@ export default function ContactoForm() {
             <img
               src="/yupi-pixel1-sin fondo.png"
               alt="Mascota Yupi de Eres UNC"
-              className="absolute -bottom-6 -right-2 lg:right-2 h-36 w-auto drop-shadow-lg z-10 pointer-events-none"
+              className="absolute -bottom-6 -right-2 sm:-right-6 lg:-right-12 h-32 sm:h-40 w-auto drop-shadow-lg z-10 pointer-events-none"
             />
           </div>
 

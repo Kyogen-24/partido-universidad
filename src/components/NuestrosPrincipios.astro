@@ -1,112 +1,71 @@
 ---
-const valores = [
-  {
-    letter: "E",
-    title: "Excelencia",
-    desc: "La mejora continua orienta cada decisión.",
-    num: "#1",
-  },
-  {
-    letter: "R",
-    title: "Responsabilidad",
-    desc: "Actuamos con transparencia y rendición de cuentas.",
-    num: "#2",
-  },
-  {
-    letter: "E",
-    title: "Equidad",
-    desc: "Impulsamos oportunidades para toda la comunidad.",
-    num: "#3",
-  },
-  {
-    letter: "S",
-    title: "Servicio",
-    desc: "Ponemos a las personas y a la UNC en el centro.",
-    num: "#4",
-  },
+import { ArrowRight, Sparkles, ShieldCheck, Flame, HeartHandshake } from "lucide-react";
+
+const pilares = [
+  { letter: "E", word: "Experiencia", desc: "Años de trayectoria al servicio de la familia universitaria", Icon: Sparkles },
+  { letter: "R", word: "Responsabilidad", desc: "Gestión transparente y compromiso con cada decisión", Icon: ShieldCheck },
+  { letter: "E", word: "Esfuerzo", desc: "Trabajo constante para alcanzar metas que benefician a todos", Icon: Flame },
+  { letter: "S", word: "Servicio", desc: "Estudiante, docente y administrativo siempre en primer lugar", Icon: HeartHandshake },
 ];
 ---
 
-<section id="nuestros-principios" class="relative overflow-hidden bg-gradient-to-br from-[#f0faf4] to-[#e8f5ec] dark:from-emerald-950/20 dark:to-emerald-950/10 py-16 sm:py-24 lg:py-28">
-  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section id="nuestros-principios" class="relative overflow-hidden bg-white">
+  <!-- Video detrás del header -->
+  <div class="absolute top-0 left-0 right-0 z-0 pointer-events-none flex justify-center pt-12 sm:pt-20 overflow-visible">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      class="h-[35vh] sm:h-[45vh] w-auto aspect-square max-w-none rounded-2xl sm:rounded-3xl opacity-40 sm:opacity-50 object-contain"
+    >
+      <source src="/yupiVid.webm" type="video/webm" />
+      <source src="/yupiVid.mp4" type="video/mp4" />
+    </video>
+  </div>
 
-    <!-- Left: Header + Mascot -->
-    <div class="mb-12 lg:mb-0 lg:absolute lg:top-16 lg:left-8 lg:w-[340px] xl:left-16 xl:w-[380px]">
-      <!-- Section label -->
-      <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-widest mb-4">
-        <span class="w-8 h-[2px] bg-emerald-500 rounded-full inline-block"></span>
-        NUESTRA FORMA DE HACER
-      </div>
+  <div class="relative z-10 mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-32 lg:px-12">
 
-      <!-- Heading -->
-      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight mb-4">
-        El acrónimo<br />
-        <span class="text-emerald-600 dark:text-emerald-400 font-bold">ERES.</span>
+    <!-- ─── Header centrado ─── -->
+    <div class="mx-auto max-w-2xl text-center animate-fade-in-up">
+      <h2 class="font-heading text-2xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+        <span
+          style="text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0 0 8px rgba(255,255,255,0.5);"
+        >
+          El acrónimo{" "}
+        </span>
+        <span class="animate-gradient-text">ERES</span>
       </h2>
-
-      <!-- Description -->
-      <p class="text-slate-500 dark:text-slate-400 text-sm sm:text-base leading-relaxed max-w-sm mb-10 lg:mb-0">
-        Cuatro principios que le dan sentido a la manera en que queremos construir una mejor UNC.
+      <p
+        style="text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0 0 8px rgba(255,255,255,0.6);"
+        class="mt-4 text-base font-normal leading-relaxed max-w-lg mx-auto sm:mt-6 sm:text-lg"
+      >
+        Cada letra de nuestro nombre refleja un compromiso real con la{" "}
+        <span class="text-foreground font-bold">Universidad Nacional de Cajamarca</span>.
       </p>
-
-      <!-- Mascot -->
-      <div class="hidden lg:flex items-center gap-3 mt-8 pointer-events-none select-none">
-        <img
-          src="/yupi-pixel1-sin fondo.png"
-          alt="Mascota Yupi"
-          class="h-16 sm:h-20 lg:h-24 w-auto object-contain"
-        />
-        <div class="text-[11px] sm:text-xs font-mono text-emerald-700/80 dark:text-emerald-400/80 leading-snug">
-          <p>Aprender.</p>
-          <p>Mejorar.</p>
-          <p>Avanzar.</p>
-        </div>
-      </div>
     </div>
 
-    <!-- Right: ERES list -->
-    <div class="lg:ml-[420px] xl:ml-[480px]">
-      <div class="flex flex-col">
-        {valores.map((v, i) => (
-          <div class="group flex items-start gap-6 sm:gap-8 py-7 sm:py-8 border-t border-emerald-200/60 dark:border-emerald-800/40">
-            <!-- Letter -->
-            <span class="text-5xl sm:text-6xl lg:text-7xl font-black text-emerald-600 dark:text-emerald-400 leading-none shrink-0 select-none">
-              {v.letter}
+    <!-- ─── Pilares ERES ─── -->
+    <div class="mt-20 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-4">
+      {pilares.map((p, i) => (
+        <div
+          class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/60 bg-white/50 p-4 sm:p-6 backdrop-blur-xl transition-all duration-500 hover:bg-white/70 hover:shadow-[0_8px_40px_-12px] hover:shadow-primary/15 hover:-translate-y-1 dark:border-white/[0.08] dark:bg-white/[0.03] dark:hover:bg-white/[0.06] animate-fade-in-up"
+          style={`animation-delay: ${300 + i * 80}ms`}
+        >
+          <p.Icon className="absolute -right-3 -bottom-3 h-24 w-24 sm:h-28 sm:w-28 text-primary/[0.06] transition-all duration-700 group-hover:text-primary/[0.12] group-hover:scale-110 dark:text-white/[0.04] dark:group-hover:text-white/[0.07]" />
+          <div class="relative">
+            <span
+              style="text-shadow: -1.5px -1.5px 0 #fff, 1.5px -1.5px 0 #fff, -1.5px 1.5px 0 #fff, 1.5px 1.5px 0 #fff, 0 0 12px rgba(255,255,255,0.6);"
+              class="mb-1.5 block text-4xl sm:text-5xl font-black tracking-tighter text-foreground/[1] transition-colors duration-500 group-hover:text-primary/15 dark:text-white/[0.06] dark:group-hover:text-primary/20"
+            >
+              {p.letter}
             </span>
-
-            <!-- Text -->
-            <div class="flex-1 min-w-0">
-              <h3 class="font-heading font-bold text-foreground text-lg sm:text-xl mb-1">
-                {v.title}
-              </h3>
-              <p class="text-slate-500 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
-                {v.desc}
-              </p>
-            </div>
-
-            <!-- Number -->
-            <span class="text-xs text-slate-400 dark:text-slate-500 font-mono shrink-0 pt-1">
-              {v.num}
-            </span>
+            <h3 class="text-sm sm:text-base font-semibold text-foreground">{p.word}</h3>
+            <p class="mt-1 text-[11px] sm:text-[13px] leading-relaxed text-muted-foreground/70">{p.desc}</p>
           </div>
-        ))}
-        <!-- Bottom border for last item -->
-        <div class="border-t border-emerald-200/60 dark:border-emerald-800/40"></div>
-      </div>
-    </div>
-
-    <!-- Mascot (mobile/tablet) -->
-    <div class="lg:hidden flex items-center gap-3 mt-10 pointer-events-none select-none">
-      <img
-        src="/yupi-pixel1-sin fondo.png"
-        alt="Mascota Yupi"
-        class="h-16 w-auto object-contain"
-      />
-      <div class="text-[11px] font-mono text-emerald-700/80 dark:text-emerald-400/80 leading-snug">
-        <p>Aprender.</p>
-        <p>Mejorar.</p>
-        <p>Avanzar.</p>
-      </div>
+        </div>
+      ))}
     </div>
 
   </div>

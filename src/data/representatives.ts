@@ -14,15 +14,16 @@ export interface RepresentativeLink {
 
 export interface Representative {
   id: number;
+  slug: string;
   name: string;
   shortName: string;
   position: string;
   photo: string;
   badge: string;
   career: string;
-  faculty: string;
-  focus: string;
-  tagline: string;
+  faculty?: string;
+  focus?: string;
+  tagline?: string;
   bio: string;
   fullBio: string;
   proposals: string[];
@@ -32,6 +33,7 @@ export interface Representative {
 export const representatives: Representative[] = [
   {
     id: 1,
+    slug: "dr-carlos-aparicio",
     name: "Dr. Carlos Enrique Aparicio Arteaga",
     shortName: "Dr. Carlos Aparicio",
     position: "Rector",
@@ -74,6 +76,7 @@ export const representatives: Representative[] = [
   },
   {
     id: 2,
+    slug: "maria-leon",
     name: "Dra. María Esther León Morales",
     shortName: "Dra. María León",
     position: "Vicerrectora Académica",
@@ -86,10 +89,10 @@ export const representatives: Representative[] = [
     bio: "Académica con trayectoria en gestión de programas de educación superior, comprometida con la calidad de la enseñanza y la mejora del servicio al estudiante.",
     fullBio: "Doctora en Administración por la Universidad Nacional Federico Villarreal, Magíster en Ciencias con mención en Contabilidad y Gerencia por la Universidad Nacional de Cajamarca y Contadora Pública con más de 30 años de trayectoria académica y profesional en el ámbito de la contabilidad, gestión universitaria e investigación. Investigadora RENACYT Nivel VI (Código P0067249), con especialización en Comercio Exterior y destacada formación académica, habiendo obtenido el segundo puesto en sus estudios de pregrado. En la Universidad Nacional de Cajamarca ha desempeñado importantes cargos de gestión académica, entre ellos Directora de la Escuela Profesional de Contabilidad de la sede Cajamarca y Filial Chota, Coordinadora del Centro de Investigación y Extensión y Secretaria Académica Sustituta de la Facultad de Ciencias Económicas, Contables y Administrativas. Asimismo, fue miembro de la Asamblea Universitaria y del Consejo de Facultad. Cuenta además con experiencia en el sector financiero como Jefe de Captación de Recursos en el Banco Industrial del Perú y ha representado a la universidad ante el Comité Ejecutivo Regional de Exportaciones – CERX Cajamarca. En el ámbito gremial, se desempeñó como Vice Decana del Colegio de Contadores Públicos de Cajamarca durante el período 2020–2021 y como Directora Tesorera en el período 2004–2005.",
     proposals: [
-      "Fortalecer la calidad académica , mediante la actualización permanente de los planes de estudio, el aseguramiento de la calidad y la acreditación de los programas.",
-      "Modernizar la enseñanza universitari a, incorporando metodologías activas, transformación digital e inteligencia artificial como apoyo al aprendizaje y a la gestión académica.",
-      "Impulsar el desarrollo integral del estudiant e, fortaleciendo la tutoría académica, los sistemas de alerta temprana, la inclusión y el bienestar universitario para favorecer la permanencia y la titulación oportuna.",
-      "Fortalecer el desarrollo docente y la internacionalización , promoviendo la capacitación permanente, la innovación educativa, la movilidad académica y la vinculación con el entorno para una formación profesional de excelencia."
+      "Fortalecer la calidad académica, mediante la actualización permanente de los planes de estudio, el aseguramiento de la calidad y la acreditación de los programas.",
+      "Modernizar la enseñanza universitaria, incorporando metodologías activas, transformación digital e inteligencia artificial como apoyo al aprendizaje y a la gestión académica.",
+      "Impulsar el desarrollo integral del estudiante, fortaleciendo la tutoría académica, los sistemas de alerta temprana, la inclusión y el bienestar universitario para favorecer la permanencia y la titulación oportuna.",
+      "Fortalecer el desarrollo docente y la internacionalización, promoviendo la capacitación permanente, la innovación educativa, la movilidad académica y la vinculación con el entorno para una formación profesional de excelencia.",
     ],
     links: [
       {
@@ -116,6 +119,7 @@ export const representatives: Representative[] = [
   },
   {
     id: 3,
+    slug: "pedro-ortiz",
     name: "Dr. Pedro Luis Ortiz Oblitas",
     shortName: "Dr. Pedro Ortiz",
     position: "Vicerrector de Investigación y RSU",

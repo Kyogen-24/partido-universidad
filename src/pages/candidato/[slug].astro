@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CandidateProfile from "../../components/CandidateProfile";
+import { representatives } from "../../data/representatives";
+
+export function getStaticPaths() {
+  return representatives.map((rep) => ({
+    params: { slug: rep.slug },
+    props: { representative: rep },
+  }));
+}
+
+const { representative } = Astro.props;
+const pageTitle = `${representative.name} — Perfil | Eres UNC`;
+const pageDescription = `${representative.badge}. ${representative.bio}`;
+---
+
+<BaseLayout>
+  <div class="pt-[4.5rem]">
+    <CandidateProfile representative={representative} client:load />
+  </div>
+</BaseLayout>
