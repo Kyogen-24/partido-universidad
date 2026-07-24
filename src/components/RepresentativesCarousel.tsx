@@ -6,9 +6,9 @@ import RepresentativeModal from "./RepresentativeModal";
 const AUTOPLAY_INTERVAL = 5000;
 
 const cardColors = [
-  "bg-gradient-to-b from-blue-100 to-blue-50",
-  "bg-gradient-to-b from-purple-100 to-purple-50",
-  "bg-gradient-to-b from-emerald-100 to-emerald-50",
+  "bg-white",
+  "bg-white",
+  "bg-white",
 ];
 
 function Card({ rep, bgColor, onClick }: { rep: typeof representatives[number]; bgColor: string; onClick: () => void }) {
@@ -20,7 +20,7 @@ function Card({ rep, bgColor, onClick }: { rep: typeof representatives[number]; 
       <div className="overflow-hidden rounded-3xl bg-white border-6 border-white shadow-lg transition-shadow duration-500 hover:shadow-xl flex flex-col">
 
         {/* Photo area */}
-        <div className={`relative overflow-hidden ${bgColor} h-[240px] sm:h-[290px] md:h-[310px] lg:h-[300px]`}>
+        <div className={`relative overflow-hidden ${bgColor} h-[330px] sm:h-[385px] md:h-[418px] lg:h-[407px]`}>
           <img
             src={rep.photo}
             alt={rep.name}
@@ -31,23 +31,18 @@ function Card({ rep, bgColor, onClick }: { rep: typeof representatives[number]; 
         {/* Text body */}
         <div className="p-4 flex flex-col gap-1.5 bg-white">
           {/* Badge */}
-          <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600 leading-tight">
+          <span className="inline-block px-3 py-1 text-xs font-semibold tracking-wide text-[#4B6A9B] bg-[#E8EFF9] rounded-full">
             {rep.badge}
-          </p>
+          </span>
 
           {/* Name */}
-          <h3 className="font-heading text-sm font-bold text-slate-800 leading-snug sm:text-base">
+          <h3 className="font-heading text-sm font-bold text-slate-900 leading-snug sm:text-base">
             {rep.shortName}
           </h3>
 
-          {/* Tagline */}
-          <p className="text-sm text-slate-500 leading-relaxed whitespace-pre-line">
-            {rep.tagline}
-          </p>
-
           {/* CTA */}
-          <span className="inline-flex items-center gap-1 mt-1 text-xs font-semibold text-emerald-600 group-hover:gap-2 transition-all duration-300">
-            Conocer trayectoria
+          <span className="inline-flex items-center gap-1 mt-1 text-xs font-semibold text-[#4B6A9B] group-hover:gap-2 transition-all duration-300">
+            Ver perfil
             <ArrowUpRight className="w-3.5 h-3.5" />
           </span>
         </div>
@@ -123,7 +118,7 @@ export default function RepresentativesCarousel() {
         </div>
 
         {/* Desktop: Grid */}
-        <div className="hidden lg:grid lg:grid-cols-3 gap-6 mt-12">
+        <div className="hidden lg:grid lg:grid-cols-3 gap-8 mt-12">
           {representatives.map((rep, i) => (
             <Card
               key={rep.id}
@@ -156,7 +151,7 @@ export default function RepresentativesCarousel() {
                 >
                   <div className="overflow-hidden rounded-3xl bg-white border-6 border-white shadow-lg transition-shadow duration-500 hover:shadow-xl flex flex-col">
                     {/* Photo area */}
-                    <div className={`relative overflow-hidden ${bgColor} h-[240px] sm:h-[290px] md:h-[310px]`}>
+                    <div className={`relative overflow-hidden ${bgColor} h-[330px] sm:h-[385px] md:h-[418px]`}>
                       <img
                         src={rep.photo}
                         alt={rep.name}
@@ -166,17 +161,14 @@ export default function RepresentativesCarousel() {
 
                     {/* Text body */}
                     <div className="p-4 flex flex-col gap-1.5 bg-white">
-          <p className="text-xs font-semibold uppercase tracking-widest text-emerald-600 leading-tight">
+          <span className="inline-block px-3 py-1 text-xs font-semibold tracking-wide text-[#4B6A9B] bg-[#E8EFF9] rounded-full">
                         {rep.badge}
-                      </p>
-                      <h3 className="font-heading text-sm font-bold text-slate-800 leading-snug sm:text-base">
+                      </span>
+                      <h3 className="font-heading text-sm font-bold text-slate-900 leading-snug sm:text-base">
                         {rep.shortName}
                       </h3>
-          <p className="text-sm text-slate-500 leading-relaxed whitespace-pre-line">
-                        {rep.tagline}
-                      </p>
-                      <span className="inline-flex items-center gap-1 mt-1 text-xs font-semibold text-emerald-600">
-                        Conocer trayectoria
+                      <span className="inline-flex items-center gap-1 mt-1 text-xs font-semibold text-[#4B6A9B]">
+                        Ver perfil
                         <ArrowUpRight className="w-3.5 h-3.5" />
                       </span>
                     </div>
