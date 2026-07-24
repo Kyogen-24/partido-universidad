@@ -23,4 +23,9 @@ export {
   ExternalLink,
   Play,
   Pause,
+  SlidersHorizontal,
+  Sparkles,
+  TrendingUp,
+  Zap,
+  Target,
 } from "lucide-react";

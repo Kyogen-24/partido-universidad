@@ -1,63 +1,79 @@
 ---
 import { FlipCard } from "@/components/animate-ui/components/community/flip-card";
 
-const ejes = [
-  { title: "Gobernanza moderna",        desc: "Gestión ordenada, transparente y basada en buenas prácticas institucionales.",                                    img: "/propuestas/gobernanza.webp" },
-  { title: "Calidad académica",         desc: "Acreditación de programas, actualización curricular y formación docente continua.",                              img: "/propuestas/calidad.webp" },
-  { title: "Bienestar estudiantil",     desc: "Tutoría académica, becas equitativas, salud mental y comedor universitario.",                                    img: "/propuestas/bienestar.jpg" },
-  { title: "Transformación digital",    desc: "Modernización tecnológica y digitalización de procesos de servicio al estudiante.",                              img: "/propuestas/digital.jpg" },
-  { title: "Investigación e innovación",desc: "Fondos concursables, laboratorios modernos y vinculación con el sector productivo.",                             img: "/propuestas/investigacion.webp" },
-  { title: "Responsabilidad social",    desc: "RSU articulada con docencia e investigación para impactar en Cajamarca.",                                        img: "/propuestas/rsu.jpg" },
+const propuestas = [
+  {
+    title: "Gestión Institucional",
+    summary: "Transparencia, planeamiento estratégico y rendición de cuentas.",
+    desc: "Promovemos una administración abierta, ética y eficiente con rendición de cuentas pública, optimización de recursos y participación activa de la comunidad académica.",
+    img: "/propuestas/gobernanza.webp",
+  },
+  {
+    title: "Calidad Académica",
+    summary: "Programas acreditados, formación actualizada y desarrollo docente.",
+    desc: "Impulsamos la acreditación de todas las carreras profesionales, la actualización constante de mallas curriculares y el fortalecimiento continuo del desempeño docente.",
+    img: "/propuestas/calidad.webp",
+  },
+  {
+    title: "Investigación e Innovación",
+    summary: "Más investigación, internacionalización e innovación aplicada.",
+    desc: "Fomentamos la publicación científica, financiamiento de proyectos de investigación, patentes y convenios internacionales para docentes y estudiantes.",
+    img: "/propuestas/investigacion.webp",
+  },
+  {
+    title: "Transformación Digital",
+    summary: "Trámites digitales, plataformas integradas y servicios en línea.",
+    desc: "Digitalización al 100% de trámites académicos y administrativos, plataformas virtuales integradas y servicios en línea eficientes para toda la comunidad.",
+    img: "/fondo3.webp",
+  },
+  {
+    title: "Bienestar Universitario",
+    summary: "Salud mental, tutorías, inclusión y comedor universitario.",
+    desc: "Servicios integrales de salud física y mental, tutorías académicas personalizadas, programas de inclusión equitativa y mejoras sustanciales en el comedor universitario.",
+    img: "/fondo.webp",
+  },
+  {
+    title: "Infraestructura",
+    summary: "Laboratorios modernos, conectividad y espacios funcionales.",
+    desc: "Modernización de laboratorios, equipamiento tecnológico de vanguardia, conectividad de alta velocidad y mantenimiento continuo de los espacios universitarios.",
+    img: "/fondo1.webp",
+  },
 ];
 ---
 
-<section id="propuesta" class="border-t border-border/40 bg-background">
-  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-
-    <!-- Grid principal -->
-    <div class="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-12">
-
-      <!-- Columna izquierda: encabezado + FlipCards -->
-      <div class="lg:col-span-2">
-        <!-- Encabezado -->
-        <div class="mb-10">
-          <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">Plan de Gobierno 2026–2031</p>
-          <h2 class="font-heading text-3xl font-bold tracking-tight sm:text-4xl max-w-xl">
-            Nuestra propuesta de mejora continua
-          </h2>
-        </div>
-
-        <!-- Grid de FlipCards -->
-        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
-          {ejes.map((eje) => (
-            <FlipCard data={eje} client:visible />
-          ))}
-        </div>
-      </div>
-
-      <!-- Columna derecha: previsualización PDF + descarga -->
-      <div class="flex flex-col justify-center items-center gap-4">
-        <!-- Preview del PDF -->
-        <div class="w-[90%] overflow-hidden rounded-2xl border border-border/40 shadow-lg bg-muted/30 aspect-[15/16] relative">
-          <iframe
-            src="/plan-trabajo.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=0"
-            class="h-full w-full"
-            title="Plan de Trabajo 2026–2031"
-          ></iframe>
-        </div>
-        <!-- Botón de descarga -->
-        <a
-          href="/plan-trabajo.pdf"
-          download
-          class="inline-flex h-10 w-[90%] items-center justify-center gap-2 rounded-xl border border-primary/30 bg-primary/8 px-5 text-sm font-semibold text-primary transition-all hover:bg-primary/15 hover:border-primary/50"
-        >
-          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-          </svg>
-          Descargar Plan de Trabajo
-        </a>
-      </div>
-
+<section id="propuesta" class="relative overflow-hidden bg-background py-16 sm:py-24 lg:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header (Centered) -->
+    <div class="mx-auto max-w-3xl text-center mb-12 sm:mb-16">
+      <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
+        Propuestas para <span class="text-emerald-600 dark:text-emerald-400">transformar <br class="hidden sm:inline" /> la UNC</span>
+      </h2>
+      <p class="mt-4 text-slate-500 dark:text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+        Nuestro compromiso se traduce en acciones concretas para fortalecer la universidad y mejorar la experiencia de toda la comunidad universitaria.
+      </p>
     </div>
+
+    <!-- Proposals Grid (3 columns) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {propuestas.map((p) => (
+        <FlipCard data={p} client:visible />
+      ))}
+    </div>
+
+    <!-- Bottom Button -->
+    <div class="mt-12 sm:mt-16 flex justify-center">
+      <a
+        href="/plan-trabajo.pdf"
+        target="_blank"
+        download
+        class="inline-flex items-center gap-2 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-7 py-3.5 text-sm sm:text-base shadow-md shadow-emerald-600/20 transition-all hover:shadow-lg hover:shadow-emerald-600/30 hover:-translate-y-0.5"
+      >
+        <span>Ver Plan de Gestión Completo</span>
+        <span>→</span>
+      </a>
+    </div>
+
   </div>
 </section>
+
