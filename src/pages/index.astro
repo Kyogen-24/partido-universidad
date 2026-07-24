@@ -3,7 +3,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroCarousel from "../components/HeroCarousel";
 import RepresentativesCarousel from "../components/RepresentativesCarousel";
 import QuienesSomos from "../components/QuienesSomos.astro";
+import NuestrosPrincipios from "../components/NuestrosPrincipios.astro";
 import PropuestaGrid from "../components/PropuestaGrid.astro";
+import { ComunidadGrid } from "../components/ComunidadGrid";
 import NoticiasSection from "../components/NoticiasSection.astro";
 import EventosTimeline from "../components/EventosTimeline.astro";
 // import TestimoniosSection from "../components/TestimoniosSection.astro"; // oculto temporalmente
@@ -14,10 +16,12 @@ import ContactoForm from "../components/ContactoForm";
   <HeroCarousel client:load />
   <RepresentativesCarousel client:visible />
   <QuienesSomos />
+  <NuestrosPrincipios />
   <PropuestaGrid />
+  <ComunidadGrid client:visible />
+  <ContactoForm client:visible />
   <NoticiasSection />
   <EventosTimeline />
   <!-- <TestimoniosSection /> oculto temporalmente -->
-  <ContactoForm client:visible />
 </BaseLayout>
 

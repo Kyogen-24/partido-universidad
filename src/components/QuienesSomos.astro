@@ -1,82 +1,85 @@
 ---
-// ─── Culpa de Godoy ───
-import { ArrowRight, Sparkles, ShieldCheck, Flame, HeartHandshake } from "lucide-react";
-
-const pilares = [
-  { letter: "E", word: "Experiencia", desc: "Años de trayectoria al servicio de la familia universitaria", Icon: Sparkles },
-  { letter: "R", word: "Responsabilidad", desc: "Gestión transparente y compromiso con cada decisión", Icon: ShieldCheck },
-  { letter: "E", word: "Esfuerzo", desc: "Trabajo constante para alcanzar metas que benefician a todos", Icon: Flame },
-  { letter: "S", word: "Servicio", desc: "Estudiante, docente y administrativo siempre en primer lugar", Icon: HeartHandshake },
-];
+// Sección Quiénes Somos - ERES UNC
 ---
 
-<section id="quienes-somos" class="relative overflow-hidden bg-white">
-  <!-- Video pequeño centrado borroso -->
-  <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none sm:items-center sm:justify-center">
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="metadata"
-      class="-mt-[18vh] h-[35vh] w-[70vw] sm:mt-0 sm:h-[50vh] sm:w-[50vw] max-w-2xl rounded-2xl sm:rounded-3xl opacity-40 sm:opacity-50"
-    >
-      <source src="/yupiVid.webm" type="video/webm" />
-      <source src="/yupiVid.mp4" type="video/mp4" />
-    </video>
-  </div>
-
-  <div class="relative z-10 mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-32 lg:px-12">
-
-    <!-- ─── Header centrado ─── -->
-   <div class="mx-auto max-w-2xl text-center animate-fade-in-up">
-  <h2 class="font-heading text-2xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-    <span class="animate-gradient-text">ERES</span>{" "}
-    el cambio que la{" "}
-    <span class="animate-gradient-text">UNC</span>
-    {" "}necesita
-  </h2>
-    <p class="mt-4 text-base font-normal leading-relaxed max-w-lg mx-auto sm:mt-6 sm:text-lg">
-  Unimos a docentes, estudiantes, administrativos y egresados con una visión clara:
-  una universidad más <span class="text-foreground font-bold">innovadora</span>,
-  <span class="text-foreground font-bold">inclusiva</span> y
-  <span class="text-foreground font-bold"> competitiva</span>.
-</p>
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-10 sm:gap-4">
-        <a
-          href="#propuesta"
-          class="group inline-flex items-center gap-2.5 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 sm:px-8 sm:py-3.5"
-        >
-          Conoce nuestra propuesta
-          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-        </a>
-        <a
-          href="#equipo"
-          class="inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/50 backdrop-blur-sm px-6 py-3 text-sm font-semibold text-foreground transition-all duration-300 hover:bg-accent/50 hover:border-border hover:-translate-y-0.5 sm:px-8 sm:py-3.5"
-        >
-          Conoce al equipo
-        </a>
-      </div>
-    </div>
-
-    <!-- ─── Pilares ERES ─── -->
-    <div class="mt-20 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-4">
-      {pilares.map((p, i) => (
-        <div
-          class="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/60 bg-white/50 p-4 sm:p-6 backdrop-blur-xl transition-all duration-500 hover:bg-white/70 hover:shadow-[0_8px_40px_-12px] hover:shadow-primary/15 hover:-translate-y-1 dark:border-white/[0.08] dark:bg-white/[0.03] dark:hover:bg-white/[0.06] animate-fade-in-up"
-          style={`animation-delay: ${300 + i * 80}ms`}
-        >
-          <p.Icon className="absolute -right-3 -bottom-3 h-24 w-24 sm:h-28 sm:w-28 text-primary/[0.06] transition-all duration-700 group-hover:text-primary/[0.12] group-hover:scale-110 dark:text-white/[0.04] dark:group-hover:text-white/[0.07]" />
-          <div class="relative">
-            <p class="mb-1.5 text-4xl sm:text-5xl font-black tracking-tighter text-foreground/[1] transition-colors duration-500 group-hover:text-primary/15 dark:text-white/[0.06] dark:group-hover:text-primary/20">
-              {p.letter}
-            </p>
-            <h3 class="text-sm sm:text-base font-semibold text-foreground">{p.word}</h3>
-            <p class="mt-1 text-[11px] sm:text-[13px] leading-relaxed text-muted-foreground/70">{p.desc}</p>
+<section id="quienes-somos" class="relative overflow-hidden bg-[#F3F9FF] py-16 sm:py-24 lg:py-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
+      
+      <!-- Columna Izquierda: Tarjeta con imagen /fondo.webp -->
+      <div class="lg:col-span-5 flex justify-center w-full">
+        <div class="relative w-full max-w-md aspect-[4/3.5] sm:aspect-[4/3.5] lg:aspect-[4/4.2] rounded-[2rem] sm:rounded-[2.5rem] bg-gradient-to-br from-emerald-50/70 via-teal-50/50 to-sky-100/70 dark:from-emerald-950/20 dark:via-teal-950/20 dark:to-sky-900/20 p-2.5 sm:p-3.5 border border-emerald-200/60 dark:border-emerald-900/40 shadow-sm">
+          <div class="relative w-full h-full overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-black/10 dark:border-white/10 shadow-inner">
+            <img
+              src="/fondo.webp"
+              alt="ERES UNC"
+              class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+            />
           </div>
         </div>
-      ))}
-    </div>
+      </div>
 
+      <!-- Columna Derecha: Texto y Lista numerada -->
+      <div class="lg:col-span-7 flex flex-col justify-center space-y-6 sm:space-y-8">
+        
+        <!-- Header badge & Title -->
+        <div>
+          <!-- Badge -->
+          <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-widest mb-2">
+          </div>
+
+          <!-- Main Title -->
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+          <span class="animate-gradient-text">ERES</span>{" "}
+          el cambio que la{" "}
+          <span class="animate-gradient-text">UNC</span>
+          {" "}necesita
+          </h2>
+
+          <!-- Paragraph -->
+          <p class="mt-4 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+            Movimiento académico integrado por docentes, administrativos y egresados comprometidos con fortalecer la Universidad Nacional de Cajamarca mediante una gestión transparente, participativa y orientada a la mejora continua. Creemos en una universidad que escucha, transforma y genera oportunidades.
+          </p>
+        </div>
+
+        <!-- Numbered List Items -->
+        <div class="divide-y divide-slate-200/80 dark:divide-slate-800/80 border-t border-slate-200/80 dark:border-slate-800/80">
+          
+          <!-- 01 -->
+          <div class="py-4 sm:py-5 group">
+            <h3 class="font-bold text-foreground text-sm sm:text-base font-heading">
+              Nuestra visión
+            </h3>
+            <p class="mt-1 text-slate-500 dark:text-slate-400 text-xs sm:text-sm leading-normal">
+              Construir una universidad referente por su calidad, transparencia e innovación.
+            </p>
+          </div>
+
+          <!-- 02 -->
+          <div class="py-4 sm:py-5 group">
+            <h3 class="font-bold text-foreground text-sm sm:text-base font-heading">
+              Nuestra misión
+            </h3>
+            <p class="mt-1 text-slate-500 dark:text-slate-400 text-xs sm:text-sm leading-normal">
+              Impulsar una gestión responsable centrada en el desarrollo académico, institucional y humano.
+            </p>
+          </div>
+
+          <!-- 03 -->
+          <div class="py-4 sm:py-5 group">
+            <h3 class="font-bold text-foreground text-sm sm:text-base font-heading">
+              Nuestro compromiso
+            </h3>
+            <p class="mt-1 text-slate-500 dark:text-slate-400 text-xs sm:text-sm leading-normal">
+              Trabajar junto a estudiantes, docentes y administrativos para fortalecer la UNC.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
   </div>
 </section>
+

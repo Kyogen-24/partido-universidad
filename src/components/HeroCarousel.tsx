@@ -33,33 +33,30 @@ export default function HeroCarousel() {
 
   return (
     <section
-      className="relative isolate overflow-hidden min-h-[55vh] sm:min-h-[90vh] flex flex-col justify-between w-full"
+      className="relative isolate w-full min-h-[60vh] sm:min-h-[90vh] flex flex-col justify-between"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Slides */}
-      <div className="absolute inset-0 -z-20 bg-slate-950">
+      <div
+        className="absolute inset-0 -z-20"
+        style={{ background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #020617 100%)' }}
+      >
         {slides.map((slide, i) => (
           <div
             key={slide.src}
             className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
             style={{ opacity: i === currentIndex ? 1 : 0 }}
           >
-            {slide.isPanoramic ? (
-              /* Cover image focused on the upper 20% (candidates' faces) to avoid cropping them */
-              <div
-                className="h-full w-full bg-cover bg-no-repeat"
-                style={{
-                  backgroundImage: `url('${slide.src}')`,
-                  backgroundPosition: "center 20%",
-                }}
-              />
-            ) : (
-              <div
-                className="h-full w-full bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url('${slide.src}')` }}
-              />
-            )}
+            <img
+              src={slide.src}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-cover"
+              style={{
+                objectPosition: slide.isPanoramic ? "center 25%" : "center",
+              }}
+            />
           </div>
         ))}
       </div>
@@ -71,7 +68,7 @@ export default function HeroCarousel() {
 
       {/* Bottom Content: Title + Buttons */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 pb-20 sm:pb-24 sm:px-6 lg:px-8 w-full text-center mt-auto">
-        <h1 className="font-heading tracking-tight drop-shadow-lg text-3xl sm:text-4xl lg:text-5xl leading-tight font-bold mb-6">
+        <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight drop-shadow-lg leading-tight mb-6">
           <span className="text-primary">ERES</span>{" "}
           <span className="text-white">la mejora continua</span>
         </h1>
