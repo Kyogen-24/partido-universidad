@@ -73,7 +73,7 @@ export default function ContactoForm() {
             <img
               src="/yupi-pixel1-sin fondo.png"
               alt="Mascota Yupi de Eres UNC"
-              className="absolute -bottom-6 -right-2 sm:-right-6 lg:-right-12 h-32 sm:h-40 w-auto drop-shadow-lg z-10 pointer-events-none"
+              className="absolute -bottom-6 -right-10 lg:-right-25 h-44 w-auto drop-shadow-lg z-10 pointer-events-none"
             />
           </div>
 

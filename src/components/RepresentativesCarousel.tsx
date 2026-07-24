@@ -96,9 +96,9 @@ export default function RepresentativesCarousel() {
         isCenter ? "0" : isRight ? "var(--side-offset)" : "calc(-1 * var(--side-offset))"
       }) scale(${isCenter ? 1 : 0.82})`,
       transformOrigin: "center",
-      opacity: isCenter ? 1 : 0.55,
+      opacity: isCenter ? 1 : 0.75,
       zIndex: isCenter ? 30 : 20,
-      filter: isCenter ? "none" : "grayscale(40%)",
+      filter: isCenter ? "none" : "grayscale(20%)",
     };
   };
 
@@ -114,9 +114,9 @@ export default function RepresentativesCarousel() {
           <p className="mt-4 text-muted-foreground text-sm sm:text-2sm">
             Comprometidos con la transformación universitaria.
           </p>
-          <h1 className="mt-4 text-muted-mt-0.5 text-sm font-semibold text-[#4B6A9B]">
+          <p className="mt-0.5 text-sm font-semibold text-[#4B6A9B]">
             Haz clic en cada perfil para conocer sus propuestas.
-          </h1>
+          </p>
         </div>
 
         {/* Desktop: Grid */}
@@ -137,7 +137,7 @@ export default function RepresentativesCarousel() {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div className="relative mx-auto h-[480px] max-w-[420px] sm:h-[520px] sm:max-w-[720px] md:h-[560px] md:max-w-[900px] [--side-offset:20%] sm:[--side-offset:35%] md:[--side-offset:55%]">
+          <div className="relative mx-auto h-[380px] max-w-[95%] sm:h-[460px] sm:max-w-[90%] md:h-[540px] md:max-w-[80%] [--side-offset:30%] sm:[--side-offset:28%] md:[--side-offset:55%]">
             {representatives.map((rep, i) => {
               const styles = getCardStyles(i);
               const offset = ((i - currentIndex) % 3 + 3) % 3;
@@ -151,7 +151,7 @@ export default function RepresentativesCarousel() {
                   className="absolute top-1/2 left-1/2 -ml-[130px] w-[260px] sm:-ml-[140px] sm:w-[280px] md:-ml-[170px] md:w-[340px] cursor-pointer text-left focus-visible:outline-none transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
                   style={styles}
                 >
-                  <div className="overflow-hidden rounded-3xl bg-white border-6 border-white shadow-lg transition-shadow duration-500 hover:shadow-xl flex flex-col">
+                  <div className="overflow-hidden rounded-3xl bg-white border-6 border-white shadow-lg transition-shadow duration-500 hover:shadow-xl flex flex-col mx-auto w-full max-w-[250px]">
                     {/* Photo area */}
                     <div className={`relative overflow-hidden ${bgColor} h-[280px] sm:h-[320px] md:h-[380px]`}>
                       <img
