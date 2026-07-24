@@ -79,10 +79,10 @@ const organizationSchema = {
           <img src="/logo.svg" alt="Eres UNC" class="h-11 sm:h-13 w-auto transition-transform duration-300 hover:scale-105" />
         </a>
         <nav id="nav-links" class="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-6 md:flex">
-          <a href="#equipo" class="nav-link text-sm font-medium transition-colors duration-300">Equipo</a>
-          <a href="#propuesta" class="nav-link text-sm font-medium transition-colors duration-300">Propuesta</a>
-          <a href="#calendario" class="nav-link text-sm font-medium transition-colors duration-300">Calendario</a>
-          <a href="#contacto" class="nav-link text-sm font-medium transition-colors duration-300">Contacto</a>
+          <a href="/#equipo" class="nav-link text-sm font-medium transition-colors duration-300">Equipo</a>
+          <a href="/#propuesta" class="nav-link text-sm font-medium transition-colors duration-300">Propuesta</a>
+          <a href="/#calendario" class="nav-link text-sm font-medium transition-colors duration-300">Calendario</a>
+          <a href="/#contacto" class="nav-link text-sm font-medium transition-colors duration-300">Contacto</a>
         </nav>
         <div class="flex items-center gap-3 ml-auto md:ml-0">
           <NavJoinButton client:load />
@@ -94,10 +94,10 @@ const organizationSchema = {
       </div>
       <div id="mobile-menu" class="hidden border-t border-border/10 border-b border-border/15 bg-background/80 backdrop-blur-lg shadow-lg md:hidden">
         <nav class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6 lg:px-8">
-          <a href="#equipo" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Equipo</a>
-          <a href="#propuesta" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Propuesta</a>
-          <a href="#calendario" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Calendario</a>
-          <a href="#contacto" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Contacto</a>
+          <a href="/#equipo" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Equipo</a>
+          <a href="/#propuesta" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Propuesta</a>
+          <a href="/#calendario" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Calendario</a>
+          <a href="/#contacto" class="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">Contacto</a>
           <NavJoinButton variant="mobile" client:load />
         </nav>
       </div>
@@ -116,10 +116,10 @@ const organizationSchema = {
             <img src="/logo.svg" alt="Eres UNC" class="h-8 w-auto" />
           </div>
           <nav class="flex flex-col items-center gap-3 text-sm text-white/60 sm:flex-row sm:gap-6">
-            <a href="#propuesta" class="transition-colors hover:text-white">Propuesta</a>
-            <a href="#equipo" class="transition-colors hover:text-white">Equipo</a>
-            <a href="#calendario" class="transition-colors hover:text-white">Calendario</a>
-            <a href="#contacto" class="transition-colors hover:text-white">Contacto</a>
+            <a href="/#propuesta" class="transition-colors hover:text-white">Propuesta</a>
+            <a href="/#equipo" class="transition-colors hover:text-white">Equipo</a>
+            <a href="/#calendario" class="transition-colors hover:text-white">Calendario</a>
+            <a href="/#contacto" class="transition-colors hover:text-white">Contacto</a>
           </nav>
           <p class="text-xs text-white/45">
             &copy; {new Date().getFullYear()} Eres UNC. Todos los derechos reservados.
@@ -157,7 +157,24 @@ const organizationSchema = {
       let isDark = false;
       let isScrolled = false;
 
+      // Detect if we're on the homepage
+      const isHomepage = window.location.pathname === "/";
+
       function applyNavStyle() {
+        // On non-homepage pages, always use frosted glass style
+        if (!isHomepage) {
+          navbar.classList.add("bg-background/90", "backdrop-blur-md");
+          navLinks.forEach((l) => {
+            l.style.color = "";
+            l.classList.add("text-foreground");
+            l.classList.remove("text-white", "drop-shadow-sm");
+          });
+          menuToggleBtn.style.color = "";
+          document.body.classList.add("nav-scrolled");
+          document.body.classList.remove("nav-transparent-dark", "nav-transparent-light");
+          return;
+        }
+
         if (isScrolled) {
           // scrolled: frosted glass, use theme foreground
           navbar.style.background = "";
@@ -243,14 +260,16 @@ const organizationSchema = {
       window.addEventListener("scroll", () => {
         isScrolled = window.scrollY > 10;
         applyNavStyle();
-        if (!isScrolled) sampleBackgroundBrightness();
+        if (!isScrolled && isHomepage) sampleBackgroundBrightness();
       }, { passive: true });
 
       // Initial sample
       sampleBackgroundBrightness();
 
-      // Re-sample on resize
-      window.addEventListener("resize", sampleBackgroundBrightness, { passive: true });
+      // Re-sample on resize (only on homepage)
+      if (isHomepage) {
+        window.addEventListener("resize", sampleBackgroundBrightness, { passive: true });
+      }
     </script>
   </body>
 </html>

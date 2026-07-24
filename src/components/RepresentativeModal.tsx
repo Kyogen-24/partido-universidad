@@ -6,7 +6,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import type { Representative } from "@/data/representatives";
-import { GraduationCap, Check, Award } from "lucide-react";
+import { GraduationCap, Check, Award, ChevronRight } from "lucide-react";
 import LinkButton from "./LinkButton";
 
 interface Props {
@@ -75,6 +75,13 @@ export default function RepresentativeModal({
               ))}
             </ul>
           </div>
+          <a
+            href={`/candidato/${representative.slug}`}
+            className="flex items-center justify-center gap-2 w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Ver perfil completo
+            <ChevronRight className="h-4 w-4" />
+          </a>
         </div>
       </DialogContent>
     </Dialog>
