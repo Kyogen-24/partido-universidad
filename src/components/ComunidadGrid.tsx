@@ -11,6 +11,8 @@ const CATEGORIES: Category[] = [
   {
     label: 'Encuentros',
     images: [
+      '/responsabilidad_social/IMG_20250515_155140.webp',
+      '/responsabilidad_social/IMG_20250515_155154.webp',
       '/galeria/Encuentros/e1.webp',
       '/galeria/Encuentros/e2.webp',
       '/galeria/Encuentros/e3.webp',
@@ -20,6 +22,8 @@ const CATEGORIES: Category[] = [
   {
     label: 'Reuniones',
     images: [
+      '/responsabilidad_social/IMG-20250707-WA0015.webp',
+      '/responsabilidad_social/IMG-20250707-WA0017.webp',
       '/galeria/Reuniones/r1.webp',
       '/galeria/Reuniones/r2.webp',
     ],
@@ -28,6 +32,8 @@ const CATEGORIES: Category[] = [
   {
     label: 'Charlas',
     images: [
+      '/responsabilidad_social/IMG_20250625_102748.webp',
+      '/responsabilidad_social/IMG_20250625_104532.webp',
       '/galeria/Charlas/c1.webp',
       '/galeria/Charlas/c4.webp',
     ],
@@ -36,6 +42,7 @@ const CATEGORIES: Category[] = [
   {
     label: 'Actividades',
     images: [
+      '/responsabilidad_social/IMG_20250409_142005.webp',
       '/galeria/Actividades/a1.webp',
       '/galeria/Actividades/a2.webp',
       '/galeria/Actividades/a3.webp',

@@ -7,16 +7,54 @@ export interface FlipCardData {
   title: string;
   summary: string;
   desc: string;
-  img: string;
+  img?: string;
+  imgs?: string[];
 }
 
 interface FlipCardProps {
   data: FlipCardData;
 }
 
+const AUTOPLAY_INTERVAL = 5000;
+
 export function FlipCard({ data }: FlipCardProps) {
   const [isFlipped, setIsFlipped] = React.useState(false);
   const [imgError, setImgError] = React.useState(false);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [anyLoaded, setAnyLoaded] = React.useState(false);
+
+  const images = data.imgs ?? (data.img ? [data.img] : []);
+
+  // Preload images with a new Image() so the onLoad on the <img> tags fires reliably
+  React.useEffect(() => {
+    if (images.length === 0) return;
+    let cancelled = false;
+    Promise.all(
+      images.map(
+        (src) =>
+          new Promise<boolean>((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = src;
+          })
+      )
+    ).then((results) => {
+      if (cancelled) return;
+      setAnyLoaded(results.some(Boolean));
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [images]);
+
+  React.useEffect(() => {
+    if (images.length < 2) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, AUTOPLAY_INTERVAL);
+    return () => clearInterval(timer);
+  }, [images.length]);
 
   const cardVariants = {
     front: { rotateY: 0, transition: { duration: 0.5, ease: easeOut } },
@@ -35,7 +73,7 @@ export function FlipCard({ data }: FlipCardProps) {
     >
       <div className="relative w-full h-full">
 
-        {/* FRONT SIDE - imagen ocupa toda la card */}
+        {/* FRONT SIDE - imagen(es) ocupa toda la card */}
         <motion.div
           className="absolute inset-0 backface-hidden rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm cursor-pointer"
           animate={isFlipped ? 'back' : 'front'}
@@ -43,27 +81,53 @@ export function FlipCard({ data }: FlipCardProps) {
           style={{ transformStyle: 'preserve-3d' }}
           onClick={() => setIsFlipped(true)}
         >
-          {imgError ? (
-            /* Placeholder cuando no hay imagen */
+          {images.length === 0 || imgError ? (
             <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-emerald-800 to-teal-900">
               <span className="text-white font-bold text-sm text-center px-4">
                 {data.title}
               </span>
             </div>
           ) : (
-            <img
-              src={data.img}
-              alt={data.title}
-              className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
-              onError={() => setImgError(true)}
-            />
+            <>
+              {images.map((src, i) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt={`${data.title} ${i + 1}`}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  style={{
+                    opacity: anyLoaded && i === currentIndex ? 1 : 0,
+                    transform: anyLoaded && i === currentIndex ? 'scale(1)' : 'scale(1.06)',
+                    transition: 'opacity 700ms ease-in-out, transform 1400ms ease-out',
+                    zIndex: i === currentIndex ? 1 : 0,
+                  }}
+                />
+              ))}
+
+              {/* Indicadores de slides */}
+              {images.length > 1 && (
+                <div className="absolute top-2 right-2 z-10 flex gap-1">
+                  {images.map((_, i) => (
+                    <span
+                      key={i}
+                      className="block rounded-full transition-all duration-300"
+                      style={{
+                        width: i === currentIndex ? 14 : 5,
+                        height: 5,
+                        background: i === currentIndex ? 'white' : 'rgba(255,255,255,0.5)',
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
+            </>
           )}
 
           {/* Gradiente oscuro en la parte inferior */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none z-[2]" />
 
           {/* Título + botón superpuestos */}
-          <div className="absolute bottom-0 inset-x-0 p-3 sm:p-4 flex flex-col gap-1.5">
+          <div className="absolute bottom-0 inset-x-0 p-3 sm:p-4 flex flex-col gap-1.5 z-10">
             <h3 className="font-heading text-sm sm:text-base font-bold text-white leading-snug drop-shadow">
               {data.title}
             </h3>

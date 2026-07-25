@@ -11,11 +11,11 @@ const cardColors = [
   "bg-white",
 ];
 
-function Card({ rep, bgColor, onClick }: { rep: typeof representatives[number]; bgColor: string; onClick: () => void }) {
+function Card({ rep, bgColor, onClick, className = "" }: { rep: typeof representatives[number]; bgColor: string; onClick: () => void; className?: string }) {
   return (
     <button
       onClick={onClick}
-      className="group cursor-pointer text-left focus-visible:outline-none"
+      className={`group cursor-pointer text-left focus-visible:outline-none ${className}`}
     >
       <div className="overflow-hidden rounded-3xl bg-white border-6 border-white shadow-lg transition-shadow duration-500 hover:shadow-xl flex flex-col">
 
@@ -127,6 +127,7 @@ export default function RepresentativesCarousel() {
               rep={rep}
               bgColor={cardColors[i % cardColors.length]}
               onClick={() => openModal(rep)}
+              className={i === 0 ? "lg:order-2" : i === 1 ? "lg:order-1" : "lg:order-3"}
             />
           ))}
         </div>

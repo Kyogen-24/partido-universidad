@@ -12,6 +12,11 @@ export interface RepresentativeLink {
   url: string;
 }
 
+export interface RepresentativeStat {
+  value: string;
+  label: string;
+}
+
 export interface Representative {
   id: number;
   slug: string;
@@ -28,6 +33,8 @@ export interface Representative {
   fullBio: string;
   proposals: string[];
   links: RepresentativeLink[];
+  stats?: RepresentativeStat[];
+  highlights?: string[];
 }
 
 export const representatives: Representative[] = [
@@ -54,7 +61,27 @@ export const representatives: Representative[] = [
 "Gestión de mayores recursos para el equipamiento de laboratorios e infraestructura universitaria.",
 "Gestión para el financiamiento de proyectos estratégicos y el pago de la deuda social por homologación.",
 "Impulso a concursos públicos transparentes para el nombramiento y contratación de docentes.",
-"Fortalecimiento de la carrera docente mediante el apoyo a los procesos de ratificación, promoción y ascenso"
+      "Fortalecimiento de la carrera docente mediante el apoyo a los procesos de ratificación, promoción y ascenso"
+    ],
+    stats: [
+      { value: "30+", label: "Años de experiencia" },
+      { value: "9", label: "Certificaciones internacionales" },
+      { value: "3", label: "Especializaciones" },
+      { value: "5", label: "Cargos directivos en la UNC" },
+      { value: "2", label: "Comité de Ética del CIP" },
+      { value: "2", label: "Reconocimientos académicos" },
+    ],
+    highlights: [
+      "Doctor en Ingeniería de Sistemas",
+      "Maestro en Ciencias de la Educación Superior",
+      "Google for Education Certified Trainer",
+      "Certificación PMP® en gestión de proyectos",
+      "Certificaciones ágiles CSM®, CSPO®, CSD® y A-CSD®",
+      "Certificación ITIL® para gestión de servicios de TI",
+      "Evaluador Internacional de ICACIT",
+      "Evaluador Externo de SINEACE con fines de acreditación",
+      "Exdecano de la Facultad de Ingeniería de la UNC",
+      "Reconocimiento del IEEE Education Society Perú Chapter",
     ],
     links: [
       {
@@ -93,6 +120,27 @@ export const representatives: Representative[] = [
       "Modernizar la enseñanza universitaria, incorporando metodologías activas, transformación digital e inteligencia artificial como apoyo al aprendizaje y a la gestión académica.",
       "Impulsar el desarrollo integral del estudiante, fortaleciendo la tutoría académica, los sistemas de alerta temprana, la inclusión y el bienestar universitario para favorecer la permanencia y la titulación oportuna.",
       "Fortalecer el desarrollo docente y la internacionalización, promoviendo la capacitación permanente, la innovación educativa, la movilidad académica y la vinculación con el entorno para una formación profesional de excelencia.",
+    ],
+    stats: [
+      { value: "30+", label: "Años de trayectoria" },
+      { value: "VI", label: "Nivel RENACYT" },
+      { value: "3", label: "Grados académicos" },
+      { value: "4", label: "Cargos de gestión UNC" },
+      { value: "2", label: "Periodos como Vice Decana" },
+      { value: "2", label: "Sedes a cargo (Cajamarca + Chota)" },
+    ],
+    highlights: [
+      "Doctora en Administración por la Universidad Nacional Federico Villarreal",
+      "Magíster en Ciencias con mención en Contabilidad y Gerencia",
+      "Contadora Pública colegiada",
+      "Investigadora RENACYT Nivel VI",
+      "Especialización en Comercio Exterior",
+      "Directora de la Escuela Profesional de Contabilidad (Cajamarca y Filial Chota)",
+      "Coordinadora del Centro de Investigación y Extensión",
+      "Secretaria Académica Sustituta de la Facultad de Ciencias Económicas",
+      "Jefe de Captación de Recursos en el Banco Industrial del Perú",
+      "Vice Decana del Colegio de Contadores Públicos de Cajamarca (2020–2021)",
+      "Representante de la UNC ante el Comité Ejecutivo Regional de Exportaciones (CERX Cajamarca)",
     ],
     links: [
       {
@@ -136,7 +184,26 @@ export const representatives: Representative[] = [
       "Implementar un Sistema Integrado de Gestión de la Investigación que facilite la planificación, el seguimiento y la evaluación de la actividad científica.",
       "Incrementar la producción científica de la UNC y fortalecer la participación de docentes e investigadores en fondos concursables.",
       "Vincular la investigación y la responsabilidad social universitaria con los problemas y desafíos prioritarios de Cajamarca."
-],
+    ],
+    stats: [
+      { value: "47", label: "Publicaciones científicas" },
+      { value: "17", label: "Índice h (Scopus)" },
+      { value: "903", label: "Citas en Scopus" },
+      { value: "5", label: "Revistas como revisor par" },
+      { value: "2", label: "Membresías internacionales" },
+      { value: "1", label: "Centro de investigación dirigido" },
+      { value: "Distinguido", label: "Nivel RENACYT" },
+    ],
+    highlights: [
+      "PhD por la Universidad de Liverpool, Inglaterra",
+      "Investigador RENACYT nivel Distinguido (el nivel más alto de categorización)",
+      "Director del Centro de Investigación en Medicina Tropical de la UNC",
+      "Investigador asociado en proyectos con financiamiento internacional",
+      "Miembro de la World Association for the Advancement of Veterinary Parasitology (WAAVP)",
+      "Miembro de la American Society of Tropical Medicine and Hygiene (ASTMH)",
+      "Directivo de la Asociación Peruana de Parasitología",
+      "Reconocimientos de Editorial Elsevier, Congreso de la República y Colegio Médico Veterinario del Perú",
+    ],
     links: [
       {
         type: "scopus",
