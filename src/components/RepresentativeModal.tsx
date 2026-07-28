@@ -31,7 +31,7 @@ export default function RepresentativeModal({
             <img
               src={representative.photo}
               alt={representative.name}
-              className="h-24 w-auto aspect-[3/4] rounded-2xl object-contain ring-2 ring-white shadow-md bg-slate-100"
+              className="h-24 w-auto aspect-[3/4] rounded-2xl object-contain bg-white"
             />
             <div className="min-w-0 flex-1">
               <DialogTitle className="text-xl leading-tight">
@@ -64,11 +64,9 @@ export default function RepresentativeModal({
               {representative.proposals.map((proposal, i) => (
                 <li
                   key={i}
-                  className="flex items-start gap-3 rounded-xl bg-slate-50 border border-slate-100 px-3.5 py-3 text-sm text-slate-700 leading-relaxed"
+                  className="flex items-start gap-3 text-sm text-slate-700 leading-relaxed"
                 >
-                  <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white mt-0.5">
-                    <Check className="h-3 w-3" strokeWidth={3} />
-                  </div>
+                  <Check className="h-4 w-4 shrink-0 text-emerald-500 mt-1" strokeWidth={2.5} />
                   <span>{proposal}</span>
                 </li>
               ))}
