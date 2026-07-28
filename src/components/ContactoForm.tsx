@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { FaInstagram, FaTiktok, FaFacebook, FaWhatsapp } from "react-icons/fa6";
+import { FaWhatsapp } from "react-icons/fa6";
 import { Mail, Send, CheckCircle2 } from "lucide-react";
-import { Mail as MailIcon } from "@/lib/icons";
 
 const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/BX0OWcAWv0r0rX4nOtDW4s?s=qs&p=i&ilr=1";
 const SUGGESTIONS_EMAIL = "eres.unc.cajamarca@gmail.com";
@@ -230,56 +229,6 @@ export default function ContactoForm() {
             >
               <FaWhatsapp className="h-5 w-5" />
               Unirme al grupo oficial
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Divisor */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="border-t border-emerald-100/60" />
-      </div>
-
-      {/* ── Bloque Redes Sociales ── */}
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-          <p className="font-heading text-sm font-semibold text-slate-700">
-            Síguenos en redes sociales
-          </p>
-          <div className="flex gap-3">
-            <a
-              href="https://www.instagram.com/eres.unc.cajamarca/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-[#E4405F] shadow-sm transition-all hover:scale-105 hover:shadow-md"
-              aria-label="Instagram"
-            >
-              <FaInstagram className="h-5 w-5" />
-            </a>
-            <a
-              href="https://www.tiktok.com/@eres.unc.cajamarca"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all hover:scale-105 hover:shadow-md"
-              aria-label="TikTok"
-            >
-              <FaTiktok className="h-5 w-5" />
-            </a>
-            <a
-              href="https://www.facebook.com/eres.unc.cajamarca"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-[#1877F2] shadow-sm transition-all hover:scale-105 hover:shadow-md"
-              aria-label="Facebook"
-            >
-              <FaFacebook className="h-5 w-5" />
-            </a>
-            <a
-              href={`mailto:${SUGGESTIONS_EMAIL}`}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-500 shadow-sm transition-all hover:scale-105 hover:shadow-md"
-              aria-label="Correo de sugerencias"
-            >
-              <MailIcon className="h-4 w-4" />
             </a>
           </div>
         </div>
