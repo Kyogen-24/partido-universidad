@@ -1,5 +1,6 @@
 ---
 import { FlipCard } from "@/components/animate-ui/components/community/flip-card";
+import { PropuestaDetalleAccordion } from "@/components/PropuestaDetalleAccordion";
 
 const labImgsInvestigacion = [
   "/propuestas/investigacion.webp",
@@ -86,6 +87,11 @@ const propuestas = [
       ))}
     </div>
 
+    <!-- Accordion Section -->
+    <div class="mt-16 sm:mt-20">
+      <PropuestaDetalleAccordion client:visible />
+    </div>
+
     <!-- Bottom Button -->
     <div class="mt-12 sm:mt-16 flex justify-center">
       <a
@@ -101,4 +107,3 @@ const propuestas = [
 
   </div>
 </section>
-
