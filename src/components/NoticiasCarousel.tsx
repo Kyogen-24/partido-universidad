@@ -6,11 +6,11 @@ import FacebookEmbed from "@/components/ui/FacebookEmbed";
 type Post = { platform: "facebook"; url: string };
 
 const posts: Post[] = [
-  { platform: "facebook", url: "https://www.facebook.com/eres.unc.cajamarca/posts/pfbid02NwzmumCLYbmNizp56mTVxSMx3wQH56kx999poxpHzakcHaJikjBTU5wSvZk2zSJcl" },
-  { platform: "facebook", url: "https://www.facebook.com/reel/1583980636418181" },
-  { platform: "facebook", url: "https://www.facebook.com/eres.unc.cajamarca/posts/pfbid02prQB9s5t8EdoRswzdtnEPkyef98GhAtLco1AyusD7WWTYspWdXyRxXp3hf4p4nz9l" },
-  { platform: "facebook", url: "https://www.facebook.com/reel/28203836059220508" },
-  { platform: "facebook", url: "https://www.facebook.com/reel/1083704407567011" },
+  { platform: "facebook", url: "https://www.facebook.com/reel/2542947132852059" },
+  { platform: "facebook", url: "https://www.facebook.com/eres.unc.cajamarca/posts/pfbid0BtwgTGEZ5cb96GAgEwD8gLfsNHa5sjsfr1hUd1RyBPn6W7dhKqt2RyyTm57yUsFjl" },
+  { platform: "facebook", url: "https://www.facebook.com/eres.unc.cajamarca/posts/pfbid027NwtCc5xeb8FqhV6d3Av9K6SmcFs5S7a4mL4ktmRrTRSw1gu7WQwdBKaLfk1pCPTl" },
+  { platform: "facebook", url: "https://www.facebook.com/reel/1785376949310661" },
+  { platform: "facebook", url: "https://www.facebook.com/eres.unc.cajamarca/posts/pfbid02o2CYLCuVujuQ6zAPrgmtKb79G5RadKTWmCr2xrzNubLrBEV9LZiJvsByWLdjS6vl" },
 ];
 
 const AUTOPLAY_INTERVAL = 5000;
@@ -32,6 +32,8 @@ export default function NoticiasCarousel() {
   const isDragging = useRef(false);
   const dragStartX = useRef(0);
   const dragStartScroll = useRef(0);
+
+  const [isDraggingState, setIsDraggingState] = useState(false);
 
   const maxSlide = Math.max(posts.length - visibleCards, 0);
 
@@ -65,7 +67,7 @@ export default function NoticiasCarousel() {
 
   // Autoplay
   useEffect(() => {
-    if (isPaused) {
+    if (isPaused || isDraggingState) {
       if (intervalRef.current) clearInterval(intervalRef.current);
       return;
     }
@@ -73,7 +75,7 @@ export default function NoticiasCarousel() {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [isPaused, goNext]);
+  }, [isPaused, isDraggingState, goNext]);
 
   // Sync dots when the user scrolls/swipes natively
   const handleScroll = useCallback(() => {
@@ -89,6 +91,7 @@ export default function NoticiasCarousel() {
     const el = carouselRef.current;
     if (!el) return;
     isDragging.current = true;
+    setIsDraggingState(true);
     dragStartX.current = e.pageX;
     dragStartScroll.current = el.scrollLeft;
     el.setPointerCapture(e.pointerId);
@@ -102,6 +105,7 @@ export default function NoticiasCarousel() {
 
   const handlePointerUp = () => {
     isDragging.current = false;
+    setIsDraggingState(false);
     handleScroll();
   };
 
@@ -120,47 +124,64 @@ export default function NoticiasCarousel() {
         onPointerLeave={handlePointerUp}
         className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 scrollbar-hide cursor-grab active:cursor-grabbing"
       >
-        {posts.map((post, i) => (
-          <div
-            key={post.url}
-            ref={i === 0 ? firstCardRef : undefined}
-            className="w-[300px] shrink-0 snap-start select-none overflow-hidden rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-md shadow-lg shadow-slate-900/10 sm:w-[calc((100%-16px)/2)] lg:w-[calc((100%-32px)/3)]"
-          >
-            <div className="flex items-center gap-2 px-3 pb-2 pt-3 bg-[#1877f2]/10">
-              <svg className="h-4 w-4 text-[#1877f2]" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-              </svg>
-              <span className="text-xs font-semibold text-[#1877f2]">Facebook</span>
+        {posts.map((post, i) => {
+          const isReel = post.url.includes("/reel/");
+          return (
+            <div
+              key={post.url}
+              ref={i === 0 ? firstCardRef : undefined}
+              className="w-[85vw] max-w-[340px] shrink-0 snap-start select-none overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md shadow-slate-900/5 hover:shadow-xl transition-all duration-300 sm:w-[calc((100%-16px)/2)] lg:w-[calc((100%-32px)/3)] flex flex-col"
+            >
+              {/* Header de la Card */}
+              <div className="flex items-center justify-between px-3 py-2.5 bg-gradient-to-r from-[#1877f2]/10 via-[#1877f2]/5 to-transparent border-b border-slate-100">
+                <div className="flex items-center gap-2">
+                  <svg className="h-4 w-4 text-[#1877f2]" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                  <span className="text-xs font-bold text-slate-800 tracking-tight">ERES UNC</span>
+                </div>
+                <span
+                  className={`text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full border ${
+                    isReel
+                      ? "bg-purple-50 text-purple-700 border-purple-200"
+                      : "bg-blue-50 text-blue-700 border-blue-200"
+                  }`}
+                >
+                  {isReel ? "Reel" : "Post"}
+                </span>
+              </div>
+
+              {/* Componente de embebido */}
+              <FacebookEmbed url={post.url} isDragging={isDraggingState} />
             </div>
-            <FacebookEmbed url={post.url} />
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {maxSlide > 0 && (
         <>
           <button
             onClick={goPrev}
-            className="absolute -left-4 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/90 p-2 text-slate-600 backdrop-blur-sm transition-all hover:bg-white hover:shadow-lg hover:shadow-slate-900/15 sm:-left-6 sm:flex lg:hidden"
+            className="absolute -left-4 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/95 p-2.5 text-slate-700 shadow-md border border-slate-200/80 backdrop-blur-sm transition-all hover:bg-white hover:scale-105 sm:-left-5 sm:flex"
             aria-label="Anterior"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
           <button
             onClick={goNext}
-            className="absolute -right-4 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/90 p-2 text-slate-600 backdrop-blur-sm transition-all hover:bg-white hover:shadow-lg hover:shadow-slate-900/15 sm:-right-6 sm:flex lg:hidden"
+            className="absolute -right-4 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/95 p-2.5 text-slate-700 shadow-md border border-slate-200/80 backdrop-blur-sm transition-all hover:bg-white hover:scale-105 sm:-right-5 sm:flex"
             aria-label="Siguiente"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
 
-          <div className="mt-2 flex justify-center gap-1.5 lg:hidden">
+          <div className="mt-3 flex justify-center gap-1.5">
             {Array.from({ length: maxSlide + 1 }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => goToSlide(i)}
                 className={`h-1.5 rounded-full transition-all ${
-                  i === currentSlide ? "w-5 bg-[#1877f2]" : "w-1.5 bg-slate-300 hover:bg-slate-400"
+                  i === currentSlide ? "w-6 bg-[#1877f2]" : "w-1.5 bg-slate-300 hover:bg-slate-400"
                 }`}
                 aria-label={`Ir al grupo ${i + 1}`}
               />
@@ -171,3 +192,4 @@ export default function NoticiasCarousel() {
     </div>
   );
 }
+
