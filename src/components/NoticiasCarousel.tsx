@@ -6,11 +6,11 @@ import FacebookEmbed from "@/components/ui/FacebookEmbed";
 type Post = { platform: "facebook"; url: string };
 
 const posts: Post[] = [
-  { platform: "facebook", url: "https://www.facebook.com/reel/2542947132852059" },
-  { platform: "facebook", url: "https://www.facebook.com/eres.unc.cajamarca/posts/pfbid0BtwgTGEZ5cb96GAgEwD8gLfsNHa5sjsfr1hUd1RyBPn6W7dhKqt2RyyTm57yUsFjl" },
-  { platform: "facebook", url: "https://www.facebook.com/eres.unc.cajamarca/posts/pfbid027NwtCc5xeb8FqhV6d3Av9K6SmcFs5S7a4mL4ktmRrTRSw1gu7WQwdBKaLfk1pCPTl" },
-  { platform: "facebook", url: "https://www.facebook.com/reel/1785376949310661" },
-  { platform: "facebook", url: "https://www.facebook.com/eres.unc.cajamarca/posts/pfbid02o2CYLCuVujuQ6zAPrgmtKb79G5RadKTWmCr2xrzNubLrBEV9LZiJvsByWLdjS6vl" },
+  { platform: "facebook", url: "https://www.facebook.com/reel/906423472535971" },
+  { platform: "facebook", url: "https://www.facebook.com/61584810401423/videos/1360448286251330" },
+  { platform: "facebook", url: "https://www.facebook.com/reel/1446953427483937" },
+  { platform: "facebook", url: "https://www.facebook.com/reel/1032534376269037" },
+  { platform: "facebook", url: "https://www.facebook.com/eres.unc.cajamarca/posts/pfbid0Nj1qKA7SXcUn7EJVMwya6FMgFyUt8K3EewzAA9YbqpXdr51hTxeumwC2QJYsifixl" },
 ];
 
 const AUTOPLAY_INTERVAL = 5000;
@@ -126,6 +126,7 @@ export default function NoticiasCarousel() {
       >
         {posts.map((post, i) => {
           const isReel = post.url.includes("/reel/");
+          const isVideo = post.url.includes("/videos/") || post.url.includes("watch");
           return (
             <div
               key={post.url}
@@ -147,7 +148,7 @@ export default function NoticiasCarousel() {
                       : "bg-blue-50 text-blue-700 border-blue-200"
                   }`}
                 >
-                  {isReel ? "Reel" : "Post"}
+                  {isReel ? "Reel" : isVideo ? "Video" : "Post"}
                 </span>
               </div>
 
