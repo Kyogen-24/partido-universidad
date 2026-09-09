@@ -6,11 +6,11 @@ import FacebookEmbed from "@/components/ui/FacebookEmbed";
 type Post = { platform: "facebook"; url: string };
 
 const posts: Post[] = [
-  { platform: "facebook", url: "https://www.facebook.com/eres.unc.cajamarca/posts/pfbid02XuJyAGPKZc3UxkaCVcnmtq43W2aFKKJxYbpp4yE1NLQnxWuDuBQZYCVy8jdZnXRXl" },
-  { platform: "facebook", url: "https://www.facebook.com/eres.unc.cajamarca/posts/pfbid01EVoWSAMiEY65PZdwJa6KUfKe9TEhfMeQggTu7syiV9ixwUGbMMYprxwf9TLwfj2l" },
-  { platform: "facebook", url: "https://www.facebook.com/eres.unc.cajamarca/posts/pfbid0brDWRWrChRrSBBWk8fVq19DUnnbms9Fc7GdnuCzXKf8QfSrXNrWwVmbmRg9jA161l" },
-  { platform: "facebook", url: "https://www.facebook.com/eres.unc.cajamarca/posts/pfbid02dLi6ha4Sh8Mr7VCnTKAEkLHENCJThz7e84KFAVzdAAi7XUYijLwhfM5F2bbm3D18l" },
-  { platform: "facebook", url: "https://www.facebook.com/reel/1018495964569520" },
+  { platform: "facebook", url: "https://www.facebook.com/reel/1477371854446141" },
+  { platform: "facebook", url: "https://www.facebook.com/reel/1699042054488559" },
+  { platform: "facebook", url: "https://www.facebook.com/reel/1821661662184676" },
+  { platform: "facebook", url: "https://www.facebook.com/reel/1807663437336557" },
+  { platform: "facebook", url: "https://www.facebook.com/reel/1827543358600549" },
 ];
 
 const AUTOPLAY_INTERVAL = 5000;

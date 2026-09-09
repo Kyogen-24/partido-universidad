@@ -21,11 +21,11 @@ export default function FacebookEmbed({ url, isDragging = false, className = "" 
       )}&show_text=true&width=320`
     : `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(
         url
-      )}&show_text=false&width=320&height=560&appId`;
+      )}&show_text=false&width=320&height=300&appId`;
 
   return (
     <div
-      className={`relative w-full overflow-hidden rounded-b-2xl bg-slate-50 flex flex-col justify-between h-[480px] ${className}`}
+      className={`relative w-full overflow-hidden rounded-b-2xl bg-slate-50 flex flex-col justify-between h-[300px] ${className}`}
     >
       {/* Skeleton de carga animado */}
       {isLoading && (
