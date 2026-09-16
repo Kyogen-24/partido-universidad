@@ -6,11 +6,11 @@ import FacebookEmbed from "@/components/ui/FacebookEmbed";
 type Post = { platform: "facebook"; url: string };
 
 const posts: Post[] = [
-  { platform: "facebook", url: "https://www.facebook.com/reel/1477371854446141" },
-  { platform: "facebook", url: "https://www.facebook.com/reel/1699042054488559" },
-  { platform: "facebook", url: "https://www.facebook.com/reel/1821661662184676" },
-  { platform: "facebook", url: "https://www.facebook.com/reel/1807663437336557" },
-  { platform: "facebook", url: "https://www.facebook.com/reel/1827543358600549" },
+  { platform: "facebook", url: "https://www.facebook.com/reel/2088881898412214" },
+  { platform: "facebook", url: "https://www.facebook.com/reel/1631813385027119" },
+  { platform: "facebook", url: "https://www.facebook.com/eres.unc.cajamarca/posts/pfbid031gc5CNBHMdaxoP1vK1wpK7Rg8TmabrEoKM1izFub8jt4ohZ4YPiLsdFeX5C9ddnhl" },
+  { platform: "facebook", url: "https://www.facebook.com/eres.unc.cajamarca/posts/pfbid0mdu6wgkj9sEeD3ZGVrDgJPViK4bfmxZRTXDCQjw8z5ra76wHCmkGX9cURhHxAkrul" },
+  { platform: "facebook", url: "https://www.facebook.com/reel/1541045348038810" }
 ];
 
 const AUTOPLAY_INTERVAL = 5000;
